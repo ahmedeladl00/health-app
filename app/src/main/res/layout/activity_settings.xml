@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity">
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="97dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="619dp"
+        android:background="@drawable/circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="71dp"
+        android:layout_height="38dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="196dp"
+        android:layout_toEndOf="@+id/profile_image"
+        android:text="Hi!"
+        android:textColor="#EA80FC"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintStart_toEndOf="@+id/profile_image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/settingsList1"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_above="@+id/settingsList2"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="118dp"
+        android:layout_marginBottom="26dp" />
+
+    <ListView
+        android:id="@+id/settingsList2"
+        android:layout_width="match_parent"
+        android:layout_height="149dp"
+        android:layout_above="@+id/settingsList3"
+        android:layout_marginBottom="43dp" >
+
+
+    </ListView>
+
+    <ListView
+        android:id="@+id/settingsList3"
+        android:layout_width="match_parent"
+        android:layout_height="158dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="38dp" />
+
+</RelativeLayout>
