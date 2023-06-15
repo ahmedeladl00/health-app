@@ -11,7 +11,7 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "Questionnaire.db";
-    private static final int DATABASE_VERSION = 12;
+    private static final int DATABASE_VERSION = 20;
 
     private static final String CREATE_TABLE_MDBF = "CREATE TABLE MDBF ("
             + "id INTEGER PRIMARY KEY AUTOINCREMENT,"

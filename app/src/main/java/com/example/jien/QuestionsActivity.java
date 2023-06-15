@@ -1,16 +1,20 @@
 package com.example.jien;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.SeekBar;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.google.android.material.slider.Slider;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,12 +25,17 @@ import java.util.List;
 import java.util.Map;
 
 public class QuestionsActivity extends AppCompatActivity {
+    private TextView titleTextView;
+    private TextView qTitleTextView;
     private TextView questionTextView;
-    private SeekBar seekBar;
+    private Slider slider;
+    private Button startButton;
     private Button yesButton;
     private Button noButton;
     private Button nextButton;
     private Spinner spinner;
+    private LinearLayout control;
+    private LinearLayout yesNoQuestion;
     private List<String> MDBF = new ArrayList<>();
     private List<String> Event_Appraisal = new ArrayList<>();
     private List<String> Social_Context = new ArrayList<>();
@@ -39,7 +48,10 @@ public class QuestionsActivity extends AppCompatActivity {
 
     private int currentArrayIndex = 0;
     private int currentQuestionIndex = 0;
+    private int yesNoCounter = 0;
 
+    private String tableName;
+    private String nextTableName;
     private DatabaseHelper dbHelper;
 
     @Override
@@ -48,57 +60,154 @@ public class QuestionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_questions);
         dbHelper = new DatabaseHelper(this);
 
+        qTitleTextView = findViewById(R.id.qTitleTextView);
         questionTextView = findViewById(R.id.questionTextView);
-        seekBar = findViewById(R.id.seekBar);
+        startButton = findViewById(R.id.startButton);
+        slider = findViewById(R.id.slider);
         yesButton = findViewById(R.id.yesButton);
         noButton = findViewById(R.id.noButton);
         nextButton = findViewById(R.id.nextButton);
-        Spinner spinner = findViewById(R.id.spinner);
+        spinner = findViewById(R.id.spinner);
+        control = findViewById(R.id.control);
+        yesNoQuestion = findViewById(R.id.yesNoQuestion);
 
         currentArrayIndex = 0;
-        addInitialQuestionsToDatabase();
+//        addInitialQuestionsToDatabase();
         getQuestionsFromDatabase();
         ArrayAdapter<String> socialAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Social_Situation);
         ArrayAdapter<String> contextAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Context);
-        questionTextView.setText("Start The Test");
+        qTitleTextView.setText("Are you ready to start your well-being test ?");
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) qTitleTextView.getLayoutParams();
+                params.verticalBias = 0.0f;
+                qTitleTextView.setLayoutParams(params);
+                qTitleTextView.setText("MDBF Questions :");
+                questionTextView.setVisibility(View.VISIBLE);
+                control.setVisibility(View.VISIBLE);
+                slider.setVisibility(View.VISIBLE);
+                startButton.setVisibility(View.GONE);
+            }
+        });
 
-        showSeekBar();
+
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (currentArrayIndex < allQuestions.size()) {
                     Map.Entry<String, List<String>> currentEntry = allQuestions.entrySet().stream().skip(currentArrayIndex).findFirst().get();
-                    String tableName = currentEntry.getKey();
+                    tableName = currentEntry.getKey();
                     List<String> questions = currentEntry.getValue();
-                    if(tableName == "Context"){
+
+                    if (tableName == "Event_Appraisal") {
+                        showSlider();
+                    }
+
+                    if (tableName == "Social_Context") {
+                        qTitleTextView.setText("Social Context Questions :");
+                    }
+
+                    if (tableName == "Social_Context" && currentQuestionIndex != 0){
+                        showSlider();
+                    }
+
+                    if (tableName == "Context"){
+                        qTitleTextView.setText("Context Question:");
+                        yesNoQuestion.setVisibility(View.GONE);
                         spinner.setVisibility(View.VISIBLE);
                         spinner.setAdapter(contextAdapter);
+                        currentQuestionIndex = 0;
                         currentArrayIndex++;
                     }
+
+                    if (tableName == "Rumination"){
+                        qTitleTextView.setText("Rumination Question:");
+                        spinner.setVisibility(View.GONE);
+                        slider.setVisibility(View.VISIBLE);
+                    }
+
+
+//                    if(tableName == "Social_Situation") {
+//                        qTitleTextView.setText("Here");
+//                    }
+//                    if(tableName == "Social_Situation"){
+//                        qTitleTextView.setText("Social Situation Questions :");
+//                        spinner.setVisibility(View.VISIBLE);
+//                        yesNoQuestion.setVisibility(View.GONE);
+//                        spinner.setAdapter(socialAdapter);
+//                        currentArrayIndex++;
+//                    }
+//
+//                    if(tableName == "Context"){
+//                        spinner.setVisibility(View.VISIBLE);
+//                        spinner.setAdapter(contextAdapter);
+//                        currentArrayIndex++;
+//                    }
                     if (currentQuestionIndex < questions.size()) {
-                        int response = seekBar.getProgress();
+                        int response = (int) slider.getValue();
                         saveResponseToDatabase(tableName, currentQuestionIndex + 1, response);
                         questionTextView.setText(questions.get(currentQuestionIndex));
                         currentQuestionIndex++;
+                        if (tableName == "Context"){
+                            questionTextView.setText("Where are you right now?");
+                            currentQuestionIndex = 0;
+                        }
+
                     } else {
                         currentQuestionIndex = 0;
 
                         currentArrayIndex++;
                         if (currentArrayIndex < allQuestions.size()) {
                             Map.Entry<String, List<String>> nextEntry = allQuestions.entrySet().stream().skip(currentArrayIndex).findFirst().get();
-                            String nextTableName = nextEntry.getKey();
+                            nextTableName = nextEntry.getKey();
                             List<String> nextQuestions = nextEntry.getValue();
+                            if (nextTableName == "Event_Appraisal"){
+                                qTitleTextView.setText("Event Appraisal Questions :");
+                                showYesNoButtons();
+//                                control.setVisibility(View.GONE);
+                            }
 
-                            if (nextTableName == "Social_Situation"){
+                            if (nextTableName == "Social_Context") {
+                                qTitleTextView.setText("Social Context Questions :");
+                                showYesNoButtons();
+                            }
+
+                            if (nextTableName == "Self_Esteem") {
+                                qTitleTextView.setText("Self-Esteem Question:");
+                                slider.setVisibility(View.VISIBLE);
+                                slider.setValueTo(9);
+                            }
+
+                            if (nextTableName == "Impulsivity"){
+                                qTitleTextView.setText("Impulsivity Question:");
+                                slider.setValueTo(6);
+                            }
+
+                            if(nextTableName == "Social_Situation"){
+                                qTitleTextView.setText("Social Situation Question:");
+                                questionTextView.setText("Who is around you right now?");
+                                slider.setVisibility(View.GONE);
                                 spinner.setVisibility(View.VISIBLE);
                                 spinner.setAdapter(socialAdapter);
                                 currentArrayIndex++;
+//                                showYesNoButtons();
+//                                control.setVisibility(View.GONE);
+//                                currentArrayIndex++;
                             } else if (!nextQuestions.isEmpty()) {
                                 questionTextView.setText(nextQuestions.get(0));
                                 currentQuestionIndex++;
                             }
                         }
                     }
+                }else {
+                    ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) qTitleTextView.getLayoutParams();
+                    params.verticalBias = 0.5f;
+                    qTitleTextView.setText("Your Mood is:");
+                    slider.setVisibility(View.GONE);
+                    //TODO : calculate the mood form the database answers and then git it here
+                    questionTextView.setText("65%");
+                    nextButton.setText("Finish");
                 }
             }
         });
@@ -106,38 +215,31 @@ public class QuestionsActivity extends AppCompatActivity {
         yesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveResponseToDatabase("Event_Appraisal",currentQuestionIndex, 100);
-
-                currentQuestionIndex++;
-
-                if (currentQuestionIndex < Event_Appraisal.size()) {
-                    questionTextView.setText(Event_Appraisal.get(currentQuestionIndex));
-                    showSeekBar();
+                if (yesNoCounter == 0){
+                    saveResponseToDatabase("Event_Appraisal",currentQuestionIndex, 100);
                 } else {
-                    // All questions answered
-                    // Show final message or navigate to next activity
+                    saveResponseToDatabase("Social_Context",currentQuestionIndex, 100);
+                    currentArrayIndex += 2;
+                    tableName = "Context";
                 }
+                yesNoCounter++;
             }
         });
 
         noButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveResponseToDatabase("Event_Appraisal",currentQuestionIndex, 0);
-
-                if (currentQuestionIndex == 0) {
-                    currentQuestionIndex += 2;
+                if (yesNoCounter == 0){
+                    saveResponseToDatabase("Event_Appraisal",currentQuestionIndex, 0);
+                    saveResponseToDatabase("Event_Appraisal",currentQuestionIndex+1, 0);
+                    saveResponseToDatabase("Event_Appraisal",currentQuestionIndex+2, 0);
+                    currentQuestionIndex = 0;
+                    currentArrayIndex++;
+                    tableName = "Social_Context";
                 } else {
-                    currentQuestionIndex++;
+                    saveResponseToDatabase("Social_Context",currentQuestionIndex, 0);
                 }
-
-                if (currentQuestionIndex < Event_Appraisal.size()) {
-                    questionTextView.setText(Event_Appraisal.get(currentQuestionIndex));
-                    showSeekBar();
-                } else {
-                    // All questions answered
-                    // Show final message or navigate to next activity
-                }
+                yesNoCounter++;
             }
         });
 
@@ -197,16 +299,14 @@ public class QuestionsActivity extends AppCompatActivity {
         dbHelper.saveResponse(TableName,questionId, response);
     }
 
-    private void showSeekBar() {
-        seekBar.setVisibility(View.VISIBLE);
-        yesButton.setVisibility(View.GONE);
-        noButton.setVisibility(View.GONE);
+    private void showSlider() {
+        slider.setVisibility(View.VISIBLE);
+        yesNoQuestion.setVisibility(View.GONE);
     }
 
     private void showYesNoButtons() {
-        seekBar.setVisibility(View.GONE);
-        yesButton.setVisibility(View.VISIBLE);
-        noButton.setVisibility(View.VISIBLE);
+        yesNoQuestion.setVisibility(View.VISIBLE);
+        slider.setVisibility(View.GONE);
     }
 
     private ArrayList stringToArrayList(String str){
