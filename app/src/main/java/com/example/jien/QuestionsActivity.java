@@ -127,23 +127,6 @@ public class QuestionsActivity extends AppCompatActivity {
                         slider.setVisibility(View.VISIBLE);
                     }
 
-
-//                    if(tableName == "Social_Situation") {
-//                        qTitleTextView.setText("Here");
-//                    }
-//                    if(tableName == "Social_Situation"){
-//                        qTitleTextView.setText("Social Situation Questions :");
-//                        spinner.setVisibility(View.VISIBLE);
-//                        yesNoQuestion.setVisibility(View.GONE);
-//                        spinner.setAdapter(socialAdapter);
-//                        currentArrayIndex++;
-//                    }
-//
-//                    if(tableName == "Context"){
-//                        spinner.setVisibility(View.VISIBLE);
-//                        spinner.setAdapter(contextAdapter);
-//                        currentArrayIndex++;
-//                    }
                     if (currentQuestionIndex < questions.size()) {
                         int response = (int) slider.getValue();
                         saveResponseToDatabase(tableName, currentQuestionIndex + 1, response);
@@ -165,7 +148,6 @@ public class QuestionsActivity extends AppCompatActivity {
                             if (nextTableName == "Event_Appraisal"){
                                 qTitleTextView.setText("Event Appraisal Questions :");
                                 showYesNoButtons();
-//                                control.setVisibility(View.GONE);
                             }
 
                             if (nextTableName == "Social_Context") {
@@ -191,9 +173,6 @@ public class QuestionsActivity extends AppCompatActivity {
                                 spinner.setVisibility(View.VISIBLE);
                                 spinner.setAdapter(socialAdapter);
                                 currentArrayIndex++;
-//                                showYesNoButtons();
-//                                control.setVisibility(View.GONE);
-//                                currentArrayIndex++;
                             } else if (!nextQuestions.isEmpty()) {
                                 questionTextView.setText(nextQuestions.get(0));
                                 currentQuestionIndex++;
