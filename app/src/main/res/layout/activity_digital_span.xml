@@ -4,18 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DigitalSpanActivity">
+    tools:context=".DigitalSpanActivity"
+    android:background="@color/primary">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/digi1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="61dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="60dp"
+        android:src="@drawable/ic_1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.4"
-        android:layout_marginLeft="60dp"
-        android:src="@drawable/ic_1"/>
+        android:backgroundTint="@color/Red"
+        app:tint="@android:color/white"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/digi2"
@@ -25,7 +28,10 @@
         app:layout_constraintStart_toEndOf="@id/digi1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.4"
-        android:layout_marginLeft="60dp"/>
+        android:layout_marginLeft="60dp"
+        android:backgroundTint="@color/Red"
+        app:tint="@android:color/white"
+        android:src="@drawable/ic_2"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/digi3"
@@ -35,7 +41,10 @@
         app:layout_constraintStart_toEndOf="@id/digi2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.4"
-        android:layout_marginLeft="60dp"/>
+        android:layout_marginLeft="60dp"
+        android:backgroundTint="@color/Red"
+       android:src="@drawable/ic_3"
+        app:tint="@android:color/white"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/digi4"
@@ -46,7 +55,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/digi1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:backgroundTint="@color/Red"
+        android:src="@drawable/ic_4"
+        app:tint="@android:color/white"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/digi5"
@@ -57,7 +69,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/digi4"
         app:layout_constraintTop_toBottomOf="@+id/digi2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:backgroundTint="@color/Red"
+        android:src="@drawable/ic_5"
+        app:tint="@android:color/white"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/digi6"
@@ -68,7 +83,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/digi5"
         app:layout_constraintTop_toBottomOf="@+id/digi3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:backgroundTint="@color/Red"
+        android:src="@drawable/ic_6"
+        app:tint="@android:color/white"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/digi7"
@@ -79,7 +97,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/digi4"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:backgroundTint="@color/Red"
+        android:src="@drawable/ic_7"
+        app:tint="@android:color/white"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/digi8"
@@ -90,7 +111,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/digi7"
         app:layout_constraintTop_toBottomOf="@+id/digi5"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:backgroundTint="@color/Red"
+        android:src="@drawable/ic_8"
+        app:tint="@android:color/white"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/digi9"
@@ -101,7 +125,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/digi8"
         app:layout_constraintTop_toBottomOf="@+id/digi6"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:backgroundTint="@color/Red"
+       android:src="@drawable/ic_9"
+        app:tint="@android:color/white"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/digi0"
@@ -112,7 +139,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/digi8"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:backgroundTint="@color/Red"
+        android:src="@drawable/ic_0"
+        app:tint="@android:color/white"/>
 
     <TextView
         android:id="@+id/textView3"
