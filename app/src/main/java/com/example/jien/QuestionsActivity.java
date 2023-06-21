@@ -2,30 +2,43 @@ package com.example.jien;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.slider.Slider;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
-public class QuestionsActivity extends AppCompatActivity {
+
+
+public class QuestionsActivity extends AppCompatActivity implements SensorEventListener {
     private TextView titleTextView;
     private TextView qTitleTextView;
     private TextView questionTextView;
@@ -55,12 +68,23 @@ public class QuestionsActivity extends AppCompatActivity {
     private String tableName;
     private String nextTableName;
     private DatabaseHelper dbHelper;
+    private StepDatabaseHelper StepDBHelper;
+    private static SensorManager sensorManager;
+    private Sensor stepCounterSensor;
+    private int totalSteps;
+    private LocationManager locationManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
+
+        sensorManager = (SensorManager) getSystemService(this.SENSOR_SERVICE);
+        stepCounterSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+
         dbHelper = new DatabaseHelper(this);
+        StepDBHelper = new StepDatabaseHelper(this);
 
         qTitleTextView = findViewById(R.id.qTitleTextView);
         questionTextView = findViewById(R.id.questionTextView);
@@ -80,6 +104,9 @@ public class QuestionsActivity extends AppCompatActivity {
         ArrayAdapter<String> socialAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Social_Situation);
         ArrayAdapter<String> contextAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Context);
         qTitleTextView.setText("Are you ready to start your well-being test ?");
+
+
+
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -229,6 +256,14 @@ public class QuestionsActivity extends AppCompatActivity {
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SQLiteDatabase db = StepDBHelper.getWritableDatabase();
+                ContentValues values = new ContentValues();
+                values.put("step_count", totalSteps);
+//                values.put("latitude", getLocation().getLatitude());
+//                values.put("longitude", getLocation().getLongitude());
+                values.put("timestamp", getCurrentTimestamp());
+                db.insert("step_data", null, values);
+                db.close();
                 boolean isNoon = getIntent().getBooleanExtra("isNoon", false);
                 if (isNoon) {
                     Intent intent = new Intent(QuestionsActivity.this, DigitalSpanActivity.class);
@@ -314,4 +349,59 @@ public class QuestionsActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sensorManager.registerListener(this, stepCounterSensor, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(this);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if (event.sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
+            int stepCount = (int) event.values[0];
+
+            totalSteps = stepCount;
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        //TODO: Handle accuracy changes if needed
+    }
+
+    private String getCurrentTimestamp() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
+
+    private Location getLocation() {
+        try {
+            // Check if location permission is granted
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                    == PackageManager.PERMISSION_GRANTED) {
+
+                // Get the last known location from the network provider
+                Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                if (lastKnownLocation != null) {
+                    return lastKnownLocation;
+                }
+
+                // Get the last known location from the GPS provider
+                lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                if (lastKnownLocation != null) {
+                    return lastKnownLocation;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
