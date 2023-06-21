@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Layout;
@@ -30,6 +31,7 @@ public class QuestionsActivity extends AppCompatActivity {
     private TextView questionTextView;
     private Slider slider;
     private Button startButton;
+    private Button finishButton;
     private Button yesButton;
     private Button noButton;
     private Button nextButton;
@@ -63,6 +65,7 @@ public class QuestionsActivity extends AppCompatActivity {
         qTitleTextView = findViewById(R.id.qTitleTextView);
         questionTextView = findViewById(R.id.questionTextView);
         startButton = findViewById(R.id.startButton);
+        finishButton = findViewById(R.id.finishButton);
         slider = findViewById(R.id.slider);
         yesButton = findViewById(R.id.yesButton);
         noButton = findViewById(R.id.noButton);
@@ -186,7 +189,8 @@ public class QuestionsActivity extends AppCompatActivity {
                     slider.setVisibility(View.GONE);
                     //TODO : calculate the mood form the database answers and then git it here
                     questionTextView.setText("65%");
-                    nextButton.setText("Finish");
+                    control.setVisibility(View.GONE);
+                    finishButton.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -222,7 +226,23 @@ public class QuestionsActivity extends AppCompatActivity {
             }
         });
 
+        finishButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isNoon = getIntent().getBooleanExtra("isNoon", false);
+                if (isNoon) {
+                    Intent intent = new Intent(QuestionsActivity.this, DigitalSpanActivity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(QuestionsActivity.this, DashboardActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
     }
+
+
 
     private void addInitialQuestionsToDatabase() {
         dbHelper.insertQuestion("MDBF","In the last 24 hours I felt: Satisfied/Unsatisfied");

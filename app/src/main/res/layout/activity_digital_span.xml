@@ -145,7 +145,7 @@
         app:tint="@android:color/white"/>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewDigits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
