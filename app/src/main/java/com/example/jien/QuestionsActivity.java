@@ -1,12 +1,8 @@
 package com.example.jien;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.content.ContentValues;
-import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
@@ -23,8 +19,12 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.slider.Slider;
 
 import java.text.SimpleDateFormat;
@@ -35,7 +35,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-
+import java.util.Random;
 
 
 public class QuestionsActivity extends AppCompatActivity implements SensorEventListener {
@@ -43,6 +43,8 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
     private TextView qTitleTextView;
     private TextView questionTextView;
     private Slider slider;
+    private Slider slider2;
+    private Slider slider3;
     private Button startButton;
     private Button finishButton;
     private Button yesButton;
@@ -72,6 +74,7 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
     private static SensorManager sensorManager;
     private Sensor stepCounterSensor;
     private int totalSteps;
+    private int mood;
     private LocationManager locationManager;
 
 
@@ -91,6 +94,8 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
         startButton = findViewById(R.id.startButton);
         finishButton = findViewById(R.id.finishButton);
         slider = findViewById(R.id.slider);
+        slider2 = findViewById(R.id.slider2);
+        slider3 = findViewById(R.id.slider3);
         yesButton = findViewById(R.id.yesButton);
         noButton = findViewById(R.id.noButton);
         nextButton = findViewById(R.id.nextButton);
@@ -118,6 +123,7 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
                 control.setVisibility(View.VISIBLE);
                 slider.setVisibility(View.VISIBLE);
                 startButton.setVisibility(View.GONE);
+                currentQuestionIndex++;
             }
         });
 
@@ -158,7 +164,14 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
                     }
 
                     if (currentQuestionIndex < questions.size()) {
-                        int response = (int) slider.getValue();
+                        int response = Math.max((int) slider.getValue(),(int) slider2.getValue()*100/9);
+                        response = Math.max(response,(int) slider3.getValue()*100/6);
+                        if (!(tableName == "Event_Appraisal" || tableName == "Social_Context")){
+                            mood += response;
+                        }
+                        slider.setValue(0.0f);
+                        slider2.setValue(0.0f);
+                        slider3.setValue(0.0f);
                         saveResponseToDatabase(tableName, currentQuestionIndex + 1, response);
                         questionTextView.setText(questions.get(currentQuestionIndex));
                         currentQuestionIndex++;
@@ -188,12 +201,14 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
                             if (nextTableName == "Self_Esteem") {
                                 qTitleTextView.setText("Self-Esteem Question:");
                                 slider.setVisibility(View.VISIBLE);
-                                slider.setValueTo(9);
+                                slider.setVisibility(View.GONE);
+                                slider2.setVisibility(View.VISIBLE);
                             }
 
                             if (nextTableName == "Impulsivity"){
                                 qTitleTextView.setText("Impulsivity Question:");
-                                slider.setValueTo(6);
+                                slider2.setVisibility(View.GONE);
+                                slider3.setVisibility(View.VISIBLE);
                             }
 
                             if(nextTableName == "Social_Situation"){
@@ -213,11 +228,34 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
                     ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) qTitleTextView.getLayoutParams();
                     params.verticalBias = 0.5f;
                     qTitleTextView.setText("Your Mood is:");
-                    slider.setVisibility(View.GONE);
-                    //TODO : calculate the mood form the database answers and then git it here
-                    questionTextView.setText("65%");
+                    slider3.setVisibility(View.GONE);
+                    mood = (mood*100)/1100;
+                    questionTextView.setText(Integer.toString(mood)+"%");
                     control.setVisibility(View.GONE);
                     finishButton.setVisibility(View.VISIBLE);
+                    if (mood < 50){
+                        Random random = new Random();
+                        boolean showExerciseIntervention = random.nextBoolean();
+                        if (showExerciseIntervention) {
+                            new MaterialAlertDialogBuilder(QuestionsActivity.this)
+                                .setTitle("Intervention Suggestion")
+                                .setMessage("As your mood is below 50%, we suggest that you do some intervention.\nyou can choose a random one")
+                                .setPositiveButton("Go", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent(QuestionsActivity.this, InterventionActivity.class);
+                                        startActivity(intent);
+                                    }
+                                })
+                                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                    }
+                                })
+                                .show();
+                        }
+                    }
                 }
             }
         });
