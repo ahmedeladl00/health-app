@@ -1,15 +1,12 @@
 package com.example.jien;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -47,7 +44,7 @@ public class DashboardActivity extends AppCompatActivity {
             cards.add(new Card(false,R.drawable.namecard,"Afternoon Questions"));
         }
 
-        if (currentHour >= 17 && currentHour <= 19){
+        if (currentHour >= 17 && currentHour <= 24){
             cards.add(new Card(true,R.drawable.poster,"Night Questions"));
         }else{
             cards.add(new Card(false,R.drawable.poster,"Night Questions"));
