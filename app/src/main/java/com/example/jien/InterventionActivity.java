@@ -1,6 +1,8 @@
 package com.example.jien;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.media3.common.MediaItem;
+import androidx.media3.exoplayer.ExoPlayer;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,9 +10,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class InterventionActivity extends AppCompatActivity {
 
@@ -31,6 +35,22 @@ public class InterventionActivity extends AppCompatActivity {
         for (int resourceId : videoResourceIds) {
             String videoName = getResources().getResourceEntryName(resourceId);
             videoNames.add(videoName);
+        }
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            String videoName = intent.getStringExtra("videoName");
+
+            if (videoName != null) {
+                Random random = new Random();
+                int randomIndex = random.nextInt(videoNames.size());
+                
+                String randomVideo = videoNames.get(randomIndex);
+
+                intent = new Intent(InterventionActivity.this, VideoPlayerActivity.class);
+                intent.putExtra("videoName", randomVideo);
+                startActivity(intent);
+            }
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, videoNames);

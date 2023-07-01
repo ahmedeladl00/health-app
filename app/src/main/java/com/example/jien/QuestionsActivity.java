@@ -239,11 +239,12 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
                         if (showExerciseIntervention) {
                             new MaterialAlertDialogBuilder(QuestionsActivity.this)
                                 .setTitle("Intervention Suggestion")
-                                .setMessage("As your mood is below 50%, we suggest that you do some intervention.\nyou can choose a random one")
+                                .setMessage("As your mood is below 50%, we suggest that you do some intervention.\nA random one is selected to you")
                                 .setPositiveButton("Go", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         Intent intent = new Intent(QuestionsActivity.this, InterventionActivity.class);
+                                        intent.putExtra("videoName", "random");
                                         startActivity(intent);
                                     }
                                 })
