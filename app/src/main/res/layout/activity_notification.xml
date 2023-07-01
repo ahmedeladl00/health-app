@@ -61,20 +61,6 @@
         app:layout_constraintVertical_bias="0.119"
         app:srcCompat="@drawable/icon" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="64dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="300dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.808"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.255"
-        app:srcCompat="@drawable/arrow_back_24px" />
-
     <Button
         android:id="@+id/noonBtn"
         android:layout_width="334dp"
