@@ -30,6 +30,7 @@ public class InterventionRecordActivity extends AppCompatActivity {
     private Spinner interventionNames;
     private Intervention intervention;
     private LocalDate currentDate;
+    private DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,12 +95,16 @@ public class InterventionRecordActivity extends AppCompatActivity {
         timerHandler.postDelayed(timerRunnable, timerInterval);
         isTimerRunning = true;
         startBtn.setText("Stop Recording");
+        intervention.setTimeFrom();
     }
 
     private void stopTimer() {
         timerHandler.removeCallbacks(timerRunnable);
         isTimerRunning = false;
         startBtn.setText("Start Recording Again");
+        intervention.setTimeTo();
+        dbHelper = new DatabaseHelper(this);
+        dbHelper.insertIntervention(intervention);
     }
 
     private List<String> loadDataFromRaw() {
