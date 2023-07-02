@@ -2,6 +2,7 @@ package com.example.jien;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +17,13 @@ public class NotificationBroadcastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+
+        Intent notificationIntent = new Intent(context, DashboardActivity.class);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        // Erstelle ein PendingIntent für die Intent
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_MUTABLE);
+
         NotificationManager notificationManager =
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -25,24 +33,20 @@ public class NotificationBroadcastReceiver extends BroadcastReceiver {
                 notificationManager.createNotificationChannel(channel);
             }
         }
-        // Get the current time
-        Calendar calendar = Calendar.getInstance();
-        int hour = calendar.get(Calendar.HOUR_OF_DAY);
 
-        // Check if it is morning, noon, or night
-        if ((hour >= 7 && hour <= 11) || (hour >= 12 && hour <= 14) || (hour >= 17 && hour <= 19)) {
             NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "notification");
 
-            builder.setSmallIcon(R.drawable.icon)
+            builder.setSmallIcon(R.drawable.ic_circle)
                     .setContentTitle("HI! How do you feel?")
                     .setContentText("It's time to answer some questions!")
                     .setAutoCancel(true)
                     .setDefaults(NotificationCompat.DEFAULT_SOUND)
-                    .setPriority(NotificationCompat.PRIORITY_MAX);
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setContentIntent(pendingIntent);
+
 
             if (notificationManager != null) {
                 notificationManager.notify(1, builder.build());
             }
         }
-    }
 }

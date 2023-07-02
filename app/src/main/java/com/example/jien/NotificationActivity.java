@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -39,6 +40,7 @@ public class NotificationActivity extends AppCompatActivity {
     Button morningBtn;
     Button noonBtn;
     Button nightBtn;
+
     int hour, minute;
    private static final String MORNING_TIME_KEY = "MorningTime";
     private static final String NOON_TIME_KEY = "NoonTime";
@@ -53,8 +55,6 @@ public class NotificationActivity extends AppCompatActivity {
         morningBtn = findViewById(R.id.morningBtn);
         noonBtn = findViewById(R.id.noonBtn);
         nightBtn = findViewById(R.id.nightBtn);
-
-
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -123,7 +123,6 @@ public class NotificationActivity extends AppCompatActivity {
     }
 
     private void saveSelectedTime(String key, int hour, int minute) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(key + "_hour", hour);
         editor.putInt(key + "_minute", minute);
@@ -153,7 +152,6 @@ public class NotificationActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(NotificationActivity.this, "please pick a time between 7:00 PM and 11:00 PM", Toast.LENGTH_LONG).show();
                     }
-
                 }
             };
 
@@ -171,16 +169,16 @@ public class NotificationActivity extends AppCompatActivity {
                 public void onTimeSet(TimePicker view, int selectedHour, int selectedMinute) {
                     hour = selectedHour;
                     minute = selectedMinute;
+                    saveSelectedTime(NOON_TIME_KEY, selectedHour, selectedMinute);
 
-                    if (selectedHour >= 12 && selectedHour <= 13 && selectedMinute >= 0 && selectedMinute <= 59) {
+
+                    if (selectedHour >= 12 && selectedHour <= 14 && selectedMinute >= 0 && selectedMinute <= 59) {
                         noonBtn.setText(String.format(Locale.getDefault(), "%02d:%02d", hour, minute));
                         scheduleNotification(selectedHour,selectedMinute);
-                        saveSelectedTime(NOON_TIME_KEY, selectedHour, selectedMinute);
 
                     } else if (selectedHour == 14 && selectedMinute == 0) {
                         noonBtn.setText(String.format(Locale.getDefault(), "%02d:%02d", hour, minute));
                         scheduleNotification(selectedHour,selectedMinute);
-                        saveSelectedTime(NOON_TIME_KEY, selectedHour, selectedMinute);
 
                     } else {
                         Toast.makeText(NotificationActivity.this, "please pick a time between 12:00 PM and 14:00 PM", Toast.LENGTH_LONG).show();
@@ -201,16 +199,15 @@ public class NotificationActivity extends AppCompatActivity {
                     hour = selectedHour;
                     minute = selectedMinute;
 
+                    saveSelectedTime(NIGHT_TIME_KEY, selectedHour, selectedMinute);
 
-                    if (selectedHour >= 17 && selectedHour <= 21 && selectedMinute >= 0 && selectedMinute <= 59) {
+                    if (selectedHour >= 17 && selectedHour <= 18 && selectedMinute >= 0 && selectedMinute <= 59) {
                         nightBtn.setText(String.format(Locale.getDefault(), "%02d:%02d", hour, minute));
                         scheduleNotification(selectedHour,selectedMinute);
-                        saveSelectedTime(NIGHT_TIME_KEY, selectedHour, selectedMinute);
 
                     } else if (selectedHour == 19 && selectedMinute == 0) {
                         nightBtn.setText(String.format(Locale.getDefault(), "%02d:%02d", hour, minute));
                         scheduleNotification(selectedHour,selectedMinute);
-                        saveSelectedTime(NIGHT_TIME_KEY, selectedHour, selectedMinute);
 
                     } else {
                         Toast.makeText(NotificationActivity.this, "please pick a time between 17:00 PM and 19:00 PM", Toast.LENGTH_LONG).show();
