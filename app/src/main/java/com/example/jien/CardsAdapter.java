@@ -12,16 +12,19 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import java.util.List;
 
 public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.CardsViewHolder> {
 
-    private List<Card> cards;
+    private static List<Card> cards;
     private Context context;
+    private static OnCardClickListener onCardClickListener;
 
-    public CardsAdapter(List<Card> cards, Context context){
+    public CardsAdapter(List<Card> cards, Context context, OnCardClickListener onCardClickListener){
         this.cards = cards;
         this.context = context;
+        this.onCardClickListener = onCardClickListener;
     }
 
 
@@ -50,6 +53,10 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.CardsViewHol
         return cards.size();
     }
 
+    public interface OnCardClickListener {
+        void onCardClick(Card card);
+    }
+
     public static class CardsViewHolder extends RecyclerView.ViewHolder{
         private CardView cardOutline;
         private ImageView cardImage;
@@ -59,6 +66,16 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.CardsViewHol
             cardOutline = itemView.findViewById(R.id.cardOutline);
             cardImage = itemView.findViewById(R.id.cardImage);
             cardName = itemView.findViewById(R.id.cardName);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        Card card = cards.get(position);
+                        onCardClickListener.onCardClick(card); // Trigger event listener
+                    }
+                }
+            });
         }
     }
 }
