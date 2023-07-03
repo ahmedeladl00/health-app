@@ -1,6 +1,5 @@
 package com.example.jien;
 
-package com.example.myphysicalactivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
