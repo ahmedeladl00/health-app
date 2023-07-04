@@ -36,7 +36,7 @@ public class PhysicalsDatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Physical_Data");
         onCreate(sqLiteDatabase);
     }
-    public void insertActivity(String activityName, long timeFrom, long timeTo, Date day) {
+   /* public void insertActivity(String activityName, long timeFrom, long timeTo, Date day) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("activity", physicalActivities.getActivity());
@@ -45,6 +45,6 @@ public class PhysicalsDatabaseHelper extends SQLiteOpenHelper {
         values.put("day", day.getTime());
         db.insert("Physical_Data", null, values);
         db.close();
-    }
+    }*/
 
 }

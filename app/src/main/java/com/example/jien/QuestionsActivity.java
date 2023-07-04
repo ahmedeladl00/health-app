@@ -298,8 +298,8 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
                 SQLiteDatabase db = StepDBHelper.getWritableDatabase();
                 ContentValues values = new ContentValues();
                 values.put("step_count", totalSteps);
-//                values.put("latitude", getLocation().getLatitude());
-//                values.put("longitude", getLocation().getLongitude());
+//              values.put("latitude", getLocation().getLatitude());
+//              values.put("longitude", getLocation().getLongitude());
                 values.put("timestamp", getCurrentTimestamp());
                 db.insert("step_data", null, values);
                 db.close();

@@ -1,8 +1,13 @@
 package com.example.jien;
 
 
+import static com.example.jien.PhysicalsDatabaseHelper.*;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -20,7 +25,7 @@ import java.util.Locale;
 
 public class PhysicalActivity extends AppCompatActivity {
     private Spinner spinnersactivities;
-    private PhysicalActivities physicalActivities;
+    private PhysicalActivities physicalActivities = new PhysicalActivities(null,0,0,null);;
     private static final long START_TIME_IN_MILLIS=600000;
     private TextView mTextViewCountDown;
     private Button mButtonStartPause;
@@ -28,12 +33,13 @@ public class PhysicalActivity extends AppCompatActivity {
     private CountDownTimer mcountDownTimer;
     private boolean mTimerRunning;
     private long mTimeLeftInMillis=START_TIME_IN_MILLIS;
+    private PhysicalsDatabaseHelper physicalsDatabaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_physical);
-        spinnersactivities.findViewById(R.id.spinnersactivities);
+        spinnersactivities=findViewById(R.id.spinnersactivities);
         ArrayList<String> activities = new ArrayList<>();
         activities.add("Running or Jogging");
         activities.add("Walking");
@@ -49,7 +55,14 @@ public class PhysicalActivity extends AppCompatActivity {
         spinnersactivities.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                physicalActivities.setActivity(activities.get(i));
+                if (physicalActivities != null) {
+                    physicalActivities.setActivity(activities.get(i));
+                    // المزيد من الأكواد
+                } else {
+
+                    physicalActivities = new PhysicalActivities(null, 0, 0, null);
+                }
+
                 physicalActivities.setDay(new Date());
                 long startTime =System.currentTimeMillis();
                 long stopTime=0;
@@ -70,12 +83,23 @@ public class PhysicalActivity extends AppCompatActivity {
         mButtonStartPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*SQLiteDatabase db = physicalsDatabaseHelper.getWritableDatabase();
+                ContentValues values = new ContentValues();
+                values.put("activity", physicalActivities.getActivity());
+                values.put("timeFrom", physicalActivities.getTimeFrom());
+                values.put("timeTo", physicalActivities.getTimeTo());
+                values.put("day", physicalActivities.getDay().getTime());
+                db.insert("Physical_Data", null, values);
+                db.close();*/
                 if (mTimerRunning){
                     pauseTimer();
+                   /* Intent intent = new Intent(PhysicalActivity.this, PhysicalActiList.class);
+                    startActivity(intent);*/
                 }else{
                     startTimer();
                 }
             }
+
         });
         mButtonReset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,10 +110,13 @@ public class PhysicalActivity extends AppCompatActivity {
         updateCountDownText();
     }
     private void startTimer(){
+        spinnersactivities.setEnabled(false);
         mcountDownTimer=new CountDownTimer(mTimeLeftInMillis,1000) {
             @Override
             public void onTick(long l) {
+                physicalActivities.setTimeFrom(System.currentTimeMillis());
                 mTimeLeftInMillis=l;
+
                 updateCountDownText();
 
             }
@@ -100,6 +127,7 @@ public class PhysicalActivity extends AppCompatActivity {
                 mButtonStartPause.setText("Start");
                 mButtonStartPause.setVisibility(View.INVISIBLE);
                 mButtonReset.setVisibility(View.VISIBLE);
+                physicalActivities.setTimeTo(System.currentTimeMillis());
 
             }
         }.start();
@@ -109,10 +137,12 @@ public class PhysicalActivity extends AppCompatActivity {
 
     }
     private void pauseTimer(){
+        spinnersactivities.setEnabled(true);
         mcountDownTimer.cancel();
         mTimerRunning=false;
         mButtonStartPause.setText("Start");
         mButtonReset.setVisibility(View.VISIBLE);
+
     }
     private void resetTimer(){
         mTimeLeftInMillis=START_TIME_IN_MILLIS;
