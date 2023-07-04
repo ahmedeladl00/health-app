@@ -28,6 +28,7 @@ public class PhysicalBaseAdapter extends BaseAdapter {
         return listActivities.length;
     }
 
+
     @Override
     public Object getItem(int i) {
         return null;

@@ -11,6 +11,7 @@ import java.util.Date;
 public class PhysicalsDatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME="physicals.db";
     private static final int DATABASE_VERSION= 1;
+    PhysicalActivities physicalActivities;
     private static final String CREATE_PHYSICAL_DATA = "CREATE TABLE Physical_Data ("
             + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
             + "day DATE,"
@@ -38,9 +39,9 @@ public class PhysicalsDatabaseHelper extends SQLiteOpenHelper {
     public void insertActivity(String activityName, long timeFrom, long timeTo, Date day) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("activity", activityName);
-        values.put("timeFrom", timeFrom);
-        values.put("timeTo", timeTo);
+        values.put("activity", physicalActivities.getActivity());
+        values.put("timeFrom", physicalActivities.getTimeFrom());
+        values.put("timeTo", physicalActivities.getTimeTo());
         values.put("day", day.getTime());
         db.insert("Physical_Data", null, values);
         db.close();

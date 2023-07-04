@@ -51,8 +51,10 @@ public class PhysicalActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 physicalActivities.setActivity(activities.get(i));
                 physicalActivities.setDay(new Date());
-                physicalActivities.setTimeFrom(START_TIME_IN_MILLIS);
-                physicalActivities.setTimeTo(mTimeLeftInMillis);
+                long startTime =System.currentTimeMillis();
+                long stopTime=0;
+                physicalActivities.setTimeFrom(startTime);
+                physicalActivities.setTimeTo(stopTime);
                 Toast.makeText(PhysicalActivity.this,activities.get(i)+"selectes",Toast.LENGTH_SHORT).show();
             }
 
@@ -124,5 +126,22 @@ public class PhysicalActivity extends AppCompatActivity {
         int seconds=(int) (mTimeLeftInMillis/1000)%60;
         String timeLeftFormatted=String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds);
         mTextViewCountDown.setText(timeLeftFormatted);
+    }
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean("timerRunning", mTimerRunning);
+        outState.putLong("timeLeftInMillis", mTimeLeftInMillis);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        mTimerRunning = savedInstanceState.getBoolean("timerRunning");
+        mTimeLeftInMillis = savedInstanceState.getLong("timeLeftInMillis");
+        updateCountDownText();
+        if (mTimerRunning) {
+            startTimer();
+        }
     }
 }

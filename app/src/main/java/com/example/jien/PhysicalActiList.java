@@ -14,10 +14,11 @@ import java.util.Date;
 
 
 public class PhysicalActiList extends AppCompatActivity {
+    PhysicalActivities physicalActivities;
 
     PhysicalsDatabaseHelper physicalsDatabaseHelper;
     ListView activitiesList;
-    ArrayList<PhysicalActivities> activitiesArrayList;
+
 
 
     PhysicalBaseAdapter adapter;
@@ -30,9 +31,9 @@ public class PhysicalActiList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_physical_acti_list);
         activitiesList= findViewById(R.id.physicalacti);
-        activitiesArrayList=new ArrayList<>();
         physicalsDatabaseHelper=new PhysicalsDatabaseHelper(this);
         activitiesList=(ListView) findViewById(R.id.physicalacti);
+
         SQLiteDatabase db = physicalsDatabaseHelper.getReadableDatabase();
         Cursor cursor = db.query("Physical_Data", null, null, null, null, null, null);
 
