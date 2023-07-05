@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
@@ -27,7 +28,7 @@ import java.util.Locale;
 public class PhysicalActivity extends AppCompatActivity {
     private Spinner spinnersactivities;
     private EditText mEditTextTimerDuration;
-    private PhysicalActivities physicalActivities = new PhysicalActivities(null,0,0,null);;
+    private PhysicalActivities physicalActivities ;
     private static final long START_TIME_IN_MILLIS=0;
     private TextView mTextViewCountDown;
     private Button mButtonStartPause;
@@ -37,6 +38,7 @@ public class PhysicalActivity extends AppCompatActivity {
     private long mTimeLeftInMillis=START_TIME_IN_MILLIS;
     private PhysicalsDatabaseHelper physicalsDatabaseHelper;
     private SQLiteDatabase database;
+    LocalDate currentsdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,19 +63,11 @@ public class PhysicalActivity extends AppCompatActivity {
         spinnersactivities.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (physicalActivities != null) {
-                    physicalActivities.setActivity(activities.get(i));
-                    // المزيد من الأكواد
-                } else {
+                String selectedActivity= adapterView.getItemAtPosition(i).toString();
+                currentsdate=LocalDate.now();
+                physicalActivities=new PhysicalActivities(selectedActivity,currentsdate);
 
-                    physicalActivities = new PhysicalActivities(null, 0, 0, null);
-                }
 
-                physicalActivities.setDay(new Date());
-                long startTime =System.currentTimeMillis();
-                long stopTime=0;
-                physicalActivities.setTimeFrom(startTime);
-                physicalActivities.setTimeTo(stopTime);
                 Toast.makeText(PhysicalActivity.this,activities.get(i)+"selectes",Toast.LENGTH_SHORT).show();
             }
 
@@ -92,7 +86,6 @@ public class PhysicalActivity extends AppCompatActivity {
 
                 if (mTimerRunning){
                     pauseTimer();
-                    saveActivityToDatabase();
 
                 }else{
                     startTimer();
@@ -108,18 +101,11 @@ public class PhysicalActivity extends AppCompatActivity {
         });
         updateCountDownText();
     }
-    private void saveActivityToDatabase() {
-        ContentValues values = new ContentValues();
-        values.put("activity", physicalActivities.getActivity());
-        values.put("timeFrom", physicalActivities.getTimeFrom());
-        values.put("timeTo", physicalActivities.getTimeTo());
-        values.put("day", physicalActivities.getDay().getTime());
-        database.insert("Physical_Data", null, values);
-    }
     private void startTimer(){
 
         spinnersactivities.setEnabled(false);
         String durationText = mEditTextTimerDuration.getText().toString();
+        physicalActivities.setTimeFrom();
         if (durationText.isEmpty()) {
             Toast.makeText(PhysicalActivity.this, "Please enter a timer duration", Toast.LENGTH_SHORT).show();
             return;
@@ -130,7 +116,6 @@ public class PhysicalActivity extends AppCompatActivity {
         mcountDownTimer=new CountDownTimer(durationMillis,1000) {
             @Override
             public void onTick(long l) {
-                physicalActivities.setTimeFrom(System.currentTimeMillis());
                 mTimeLeftInMillis=l;
 
                 updateCountDownText();
@@ -143,7 +128,7 @@ public class PhysicalActivity extends AppCompatActivity {
                 mButtonStartPause.setText("Start");
                 mButtonStartPause.setVisibility(View.INVISIBLE);
                 mButtonReset.setVisibility(View.VISIBLE);
-                physicalActivities.setTimeTo(System.currentTimeMillis());
+
 
             }
         }.start();
@@ -158,6 +143,9 @@ public class PhysicalActivity extends AppCompatActivity {
         mTimerRunning=false;
         mButtonStartPause.setText("Start");
         mButtonReset.setVisibility(View.VISIBLE);
+        physicalActivities.setTimeTo();
+        physicalsDatabaseHelper=new PhysicalsDatabaseHelper(this);
+        physicalsDatabaseHelper.insertActivity(physicalActivities);
 
     }
     private void resetTimer(){
