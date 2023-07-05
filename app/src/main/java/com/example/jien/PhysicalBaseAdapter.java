@@ -33,7 +33,6 @@ public class PhysicalBaseAdapter extends BaseAdapter {
     public Object getItem(int i) {
         return null;
     }
-
     @Override
     public long getItemId(int i) {
         return 0;

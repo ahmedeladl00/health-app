@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,8 +26,9 @@ import java.util.Locale;
 
 public class PhysicalActivity extends AppCompatActivity {
     private Spinner spinnersactivities;
+    private EditText mEditTextTimerDuration;
     private PhysicalActivities physicalActivities = new PhysicalActivities(null,0,0,null);;
-    private static final long START_TIME_IN_MILLIS=600000;
+    private static final long START_TIME_IN_MILLIS=0;
     private TextView mTextViewCountDown;
     private Button mButtonStartPause;
     private Button mButtonReset;
@@ -34,12 +36,16 @@ public class PhysicalActivity extends AppCompatActivity {
     private boolean mTimerRunning;
     private long mTimeLeftInMillis=START_TIME_IN_MILLIS;
     private PhysicalsDatabaseHelper physicalsDatabaseHelper;
+    private SQLiteDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_physical);
         spinnersactivities=findViewById(R.id.spinnersactivities);
+        mEditTextTimerDuration = findViewById(R.id.edit_text_timer_duration);
+        physicalsDatabaseHelper = new PhysicalsDatabaseHelper(this);
+        database = physicalsDatabaseHelper.getWritableDatabase();
         ArrayList<String> activities = new ArrayList<>();
         activities.add("Running or Jogging");
         activities.add("Walking");
@@ -83,18 +89,11 @@ public class PhysicalActivity extends AppCompatActivity {
         mButtonStartPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*SQLiteDatabase db = physicalsDatabaseHelper.getWritableDatabase();
-                ContentValues values = new ContentValues();
-                values.put("activity", physicalActivities.getActivity());
-                values.put("timeFrom", physicalActivities.getTimeFrom());
-                values.put("timeTo", physicalActivities.getTimeTo());
-                values.put("day", physicalActivities.getDay().getTime());
-                db.insert("Physical_Data", null, values);
-                db.close();*/
+
                 if (mTimerRunning){
                     pauseTimer();
-                   /* Intent intent = new Intent(PhysicalActivity.this, PhysicalActiList.class);
-                    startActivity(intent);*/
+                    saveActivityToDatabase();
+
                 }else{
                     startTimer();
                 }
@@ -109,9 +108,26 @@ public class PhysicalActivity extends AppCompatActivity {
         });
         updateCountDownText();
     }
+    private void saveActivityToDatabase() {
+        ContentValues values = new ContentValues();
+        values.put("activity", physicalActivities.getActivity());
+        values.put("timeFrom", physicalActivities.getTimeFrom());
+        values.put("timeTo", physicalActivities.getTimeTo());
+        values.put("day", physicalActivities.getDay().getTime());
+        database.insert("Physical_Data", null, values);
+    }
     private void startTimer(){
+
         spinnersactivities.setEnabled(false);
-        mcountDownTimer=new CountDownTimer(mTimeLeftInMillis,1000) {
+        String durationText = mEditTextTimerDuration.getText().toString();
+        if (durationText.isEmpty()) {
+            Toast.makeText(PhysicalActivity.this, "Please enter a timer duration", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        int durationMinutes = Integer.parseInt(durationText);
+        long durationMillis = durationMinutes * 60 * 1000;
+        mcountDownTimer=new CountDownTimer(durationMillis,1000) {
             @Override
             public void onTick(long l) {
                 physicalActivities.setTimeFrom(System.currentTimeMillis());
