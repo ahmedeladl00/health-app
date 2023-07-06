@@ -16,12 +16,6 @@
             android:name=".ActiPhysList"
             android:exported="false" />
         <activity
-            android:name=".ActivitiesView"
-            android:exported="false" />
-        <activity
-            android:name=".PhysicalActiList"
-            android:exported="false" />
-        <activity
             android:name=".PhysicalActivity"
             android:exported="false" />
         <activity

@@ -31,14 +31,13 @@ public class ActiPhysList extends AppCompatActivity {
         activitysList=findViewById(R.id.activityList);
         List<PhysicalActivities> activities=new ArrayList<>();
         activities = new ArrayList<PhysicalActivities>();
-        activities.add(new PhysicalActivities("Running or Jogging", currentday));
-        activities.add(new PhysicalActivities("Walking", currentday));
-        activities.add(new PhysicalActivities("Swimming", currentday));
+        activities.add(new PhysicalActivities("Running or Jogging","22:22","00:00",currentday));
+        activities.add(new PhysicalActivities("Walking","03:13","04:04", currentday));
+        activities.add(new PhysicalActivities("Swimming","10:10","10:10", currentday));
         adapter= new ActivityAdapter(activities,getApplicationContext());
         activitysList.setAdapter(adapter);
-        activitysList.setLayoutManager(new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false));
         physicalsData=new PhysicalsDatabaseHelper(this);
-        database= physicalsData.getReadableDatabase();
+        //database= physicalsData.getReadableDatabase();
         // loadActivitiesFromDatabase();
          /* private void loadActivitiesFromDatabase(){
         List<PhysicalActivities> activitiess=new ArrayList<>();

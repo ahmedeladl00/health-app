@@ -14,6 +14,14 @@ public class PhysicalActivities {
 
 
         }
+    public PhysicalActivities(String aktivityName, String timeFrom,String timeTo,LocalDate day){
+        this.aktivityName=aktivityName;
+        this.timeFrom=timeFrom;
+        this.timeTo=timeTo;
+        this.day=day;
+
+
+    }
 
 
     public String getActivity() {
