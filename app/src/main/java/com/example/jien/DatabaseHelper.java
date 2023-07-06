@@ -117,7 +117,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put("intervention", intervention.getInterventionName());
+        values.put("intervention", intervention.getName());
         values.put("time_from", intervention.getTimeFrom());
         values.put("time_to", intervention.getTimeTo());
         values.put("day", intervention.getDay().toString());
