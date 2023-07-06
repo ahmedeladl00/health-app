@@ -28,6 +28,12 @@ Thank you for using our application. Please read and understand the following te
 
 Please read and accept the terms of use before using the application.
 
-Please customize this text according to the needs and requirements of your specific application. After adding this text, you can display it to users when they start using the application and request their agreement to the terms before proceeding.</string>
+Please customize this text according to the needs and requirements of your specific application. After adding this text, you can display it to users when they start using the application and request their agreement to the terms before proceeding.
+
+
+
+    </string>
+    <string name="terms_and_conditions">Terms And Conditions</string>
+    <string name="next">Next</string>
 
 </resources>

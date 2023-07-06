@@ -12,7 +12,7 @@ import android.widget.CompoundButton;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-public class sensor_data_page extends AppCompatActivity {
+public class Terms_of_use extends AppCompatActivity {
 
     private CheckBox checkBox;
     private Button button;
@@ -21,9 +21,9 @@ public class sensor_data_page extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sensor_data_page);
+        setContentView(R.layout.activity_terms_of_use_page);
 
-        getSupportActionBar().hide();
+      //  getSupportActionBar().hide();
 
         //termsCheckbox//check_id
         //nextbutton//button_id
@@ -36,7 +36,7 @@ public class sensor_data_page extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(sensor_data_page.this, DashboardActivity.class);
+                Intent intent = new Intent(Terms_of_use.this, DashboardActivity.class);
                 startActivity(intent);
             }
         });
