@@ -10,13 +10,13 @@ import java.util.Date;
 
 public class PhysicalsDatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME="physicals.db";
-    private static final int DATABASE_VERSION= 1;
-    PhysicalActivities physicalActivities;
+    private static final int DATABASE_VERSION= 3;
+
     private static final String CREATE_PHYSICAL_DATA = "CREATE TABLE Physical_Data ("
             + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
             + "activity TEXT,"
-            + "timeFrom TEXT,"
-            + "timeTo TEXT,"
+            + "time_from TEXT,"
+            + "time_to TEXT,"
             + "day TEXT)";
 
 
@@ -39,9 +39,9 @@ public class PhysicalsDatabaseHelper extends SQLiteOpenHelper {
     public void insertActivity(PhysicalActivities physicalActivities) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("activity", physicalActivities.getActivity());
-        values.put("timeFrom", physicalActivities.getTimeFrom());
-        values.put("timeTo", physicalActivities.getTimeTo());
+        values.put("activity", physicalActivities.getName());
+        values.put("time_from", physicalActivities.getTimeFrom());
+        values.put("time_to", physicalActivities.getTimeTo());
         values.put("day", physicalActivities.getDay().toString());
         db.insert("Physical_Data", null, values);
         db.close();
