@@ -27,8 +27,11 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-        android:name=".ActiPhysList"
-        android:exported="false" />
+            android:name=".PhyDevelopmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ActiPhysList"
+            android:exported="false" />
         <activity
             android:name=".PhysicalActivity"
             android:exported="false" />
