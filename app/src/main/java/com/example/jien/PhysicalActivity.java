@@ -47,7 +47,7 @@ public class PhysicalActivity extends AppCompatActivity {
         spinnersactivities=findViewById(R.id.spinnersactivities);
         mEditTextTimerDuration = findViewById(R.id.edit_text_timer_duration);
         physicalsDatabaseHelper = new PhysicalsDatabaseHelper(this);
-        database = physicalsDatabaseHelper.getWritableDatabase();
+
         ArrayList<String> activities = new ArrayList<>();
         activities.add("Running or Jogging");
         activities.add("Walking");

@@ -12,7 +12,7 @@ public class InterventionListActivity extends AppCompatActivity implements Inter
 
     private InterventionAdapter adapter;
     private DatabaseHelper dbHelper;
-    private List<Intervention> interventions;
+    private List<IABase> interventions;
 
 
     @Override
@@ -32,7 +32,7 @@ public class InterventionListActivity extends AppCompatActivity implements Inter
 
     @Override
     public void onDeleteClick(int position) {
-        Intervention intervention = interventions.get(position);
+        IABase intervention = interventions.get(position);
         intervention.removeInterventionFromDatabase(dbHelper,"Intervention",intervention.getId());
         interventions.remove(position);
         adapter.notifyItemRemoved(position);

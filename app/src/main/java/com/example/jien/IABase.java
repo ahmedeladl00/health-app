@@ -85,8 +85,8 @@ public class IABase {
         this.day = day;
     }
 
-    List<Intervention> fetchDataFromDatabase(SQLiteOpenHelper dop, String tableName, String mainCol) {
-        List<Intervention> interventions = new ArrayList<>();
+    List<IABase> fetchDataFromDatabase(SQLiteOpenHelper dop, String tableName, String mainCol) {
+        List<IABase> interActItems = new ArrayList<>();
 
         SQLiteDatabase db = dop.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + tableName, null);
@@ -111,16 +111,15 @@ public class IABase {
                     day = LocalDate.now();
                     continue;
                 }
-                Intervention intervention = new Intervention(id, name, timeFrom, timeTo, day);
-                System.out.println(intervention.getName());
-                interventions.add(intervention);
+                IABase interActItem = new IABase(id, name, timeFrom, timeTo, day);
+                interActItems.add(interActItem);
             } while (cursor.moveToNext());
         }
 
         cursor.close();
         db.close();
 
-        return interventions;
+        return interActItems;
     }
 
     void removeInterventionFromDatabase(SQLiteOpenHelper dop, String tableName, int id) {

@@ -12,10 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class InterventionAdapter extends RecyclerView.Adapter<InterventionAdapter.ViewHolder> {
-    private final List<Intervention> interventions;
+    private final List<IABase> interventions;
     private final OnItemClickListener clickListener;
 
-    public InterventionAdapter(List<Intervention> interventions,OnItemClickListener clickListener) {
+    public InterventionAdapter(List<IABase> interventions, OnItemClickListener clickListener) {
         this.interventions = interventions;
         this.clickListener = clickListener;
     }
@@ -34,7 +34,7 @@ public class InterventionAdapter extends RecyclerView.Adapter<InterventionAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Intervention intervention = interventions.get(position);
+        IABase intervention = interventions.get(position);
 
         holder.interActNameTextView.setText(intervention.getName());
         holder.dateTextView.setText(intervention.getDay().toString());
