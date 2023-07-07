@@ -1,6 +1,10 @@
 package com.example.jien;
 
 
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -18,7 +22,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class PhysicalActivity extends AppCompatActivity {
+public class PhysicalActivity extends AppCompatActivity implements SensorEventListener {
     private Spinner spinnersactivities;
     private EditText mEditTextTimerDuration;
     private PhysicalActivities physicalActivities ;
@@ -32,13 +36,21 @@ public class PhysicalActivity extends AppCompatActivity {
     private PhysicalsDatabaseHelper physicalsDatabaseHelper;
     LocalDate currentsdate;
 
+    private SensorManager sensorManager;
+    private Sensor accelerometer;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_physical);
+
+
         spinnersactivities=findViewById(R.id.spinnersactivities);
         mEditTextTimerDuration = findViewById(R.id.edit_text_timer_duration);
         physicalsDatabaseHelper = new PhysicalsDatabaseHelper(this);
+        sensorManager = (SensorManager) getSystemService(this.SENSOR_SERVICE);
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
         ArrayList<String> activities = new ArrayList<>();
         activities.add("Running or Jogging");
@@ -81,6 +93,12 @@ public class PhysicalActivity extends AppCompatActivity {
 
                 }else{
                     startTimer();
+                }
+
+                if (mTimerRunning) {
+                    sensorManager.registerListener(PhysicalActivity.this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+                } else {
+                    sensorManager.unregisterListener(PhysicalActivity.this);
                 }
             }
 
@@ -170,4 +188,30 @@ public class PhysicalActivity extends AppCompatActivity {
             startTimer();
         }
     }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if (physicalActivities != null) {
+            Accelerometer<PhysicalActivities> accelerometer = new Accelerometer<>(physicalActivities, event.values[0], event.values[1], event.values[2]);
+            physicalsDatabaseHelper.insertAccelerometer(accelerometer);
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(this);
+    }
+
 }
