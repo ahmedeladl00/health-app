@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class InterventionListActivity extends AppCompatActivity implements InterventionAdapter.OnItemClickListener {
+public class InterventionListActivity extends AppCompatActivity implements InterActAdapter.OnItemClickListener {
 
-    private InterventionAdapter adapter;
+    private InterActAdapter adapter;
     private DatabaseHelper dbHelper;
     private List<IABase> interventions;
 
@@ -25,7 +25,7 @@ public class InterventionListActivity extends AppCompatActivity implements Inter
         dbHelper = new DatabaseHelper(this);
         Intervention intervention = new Intervention();
         interventions = intervention.fetchDataFromDatabase(dbHelper,"Intervention","intervention");
-        adapter = new InterventionAdapter(interventions, this);
+        adapter = new InterActAdapter(interventions, this);
 
         recyclerView.setAdapter(adapter);
     }
