@@ -1,13 +1,6 @@
 package com.example.jien;
 
 
-import static com.example.jien.PhysicalsDatabaseHelper.*;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.ContentValues;
-import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -19,10 +12,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.DateFormat;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Locale;
 
 public class PhysicalActivity extends AppCompatActivity {
@@ -37,7 +30,6 @@ public class PhysicalActivity extends AppCompatActivity {
     private boolean mTimerRunning;
     private long mTimeLeftInMillis=START_TIME_IN_MILLIS;
     private PhysicalsDatabaseHelper physicalsDatabaseHelper;
-    private SQLiteDatabase database;
     LocalDate currentsdate;
 
     @Override

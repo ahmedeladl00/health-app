@@ -6,15 +6,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
-public class ActiPhysList extends AppCompatActivity implements InterventionAdapter.OnItemClickListener{
+public class ActiPhysList extends AppCompatActivity implements InterActAdapter.OnItemClickListener{
 
 
     private List<IABase> activities;
-    private InterventionAdapter adapter;
+    private InterActAdapter adapter;
     private PhysicalsDatabaseHelper physicalsData;
 
 
@@ -26,9 +24,9 @@ public class ActiPhysList extends AppCompatActivity implements InterventionAdapt
         RecyclerView recyclerView = findViewById(R.id.interActItems);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         physicalsData = new PhysicalsDatabaseHelper(this);
-        Intervention intervention = new Intervention();
-        activities = intervention.fetchDataFromDatabase(physicalsData,"Physical_Data","activity");
-        adapter = new InterventionAdapter(activities, this);
+        PhysicalActivities activity = new PhysicalActivities();
+        activities = activity.fetchDataFromDatabase(physicalsData,"Physical_Data","activity");
+        adapter = new InterActAdapter(activities, this);
 
         recyclerView.setAdapter(adapter);
 
