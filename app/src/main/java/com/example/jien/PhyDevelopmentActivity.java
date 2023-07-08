@@ -19,6 +19,7 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.time.LocalDate;
@@ -69,32 +70,6 @@ public class PhyDevelopmentActivity extends AppCompatActivity {
 
 
 
-        // Cursor durchlaufen und Daten in eine Liste speichern
-       /* while (cursor.moveToNext()) {
-             Date day = new Date(cursor.getLong(cursor.getColumnIndex("day")));
-             long timeFrom = cursor.getLong(cursor.getColumnIndex("timeFrom"));
-             long timeTo = cursor.getLong(cursor.getColumnIndex("timeTo"));
-             String activity = cursor.getString(cursor.getColumnIndex("activity"));
-
-            PhysicalActivities physicalActivity = new PhysicalActivities(1,day, timeFrom, timeTo, activity);
-            activities.add(physicalActivity);
-        }*/
-
-
-       /* PhysicalActivities physicalActivities1 = new PhysicalActivities(1, "jogging","10:10:05","12:13:00", LocalDate.now());
-        PhysicalActivities physicalActivities2 = new PhysicalActivities(2, "tanzen","09:13:05","10:20:00",LocalDate.now());
-        PhysicalActivities physicalActivities3 = new PhysicalActivities(3, "swimming","08:13:05","09:20:00",LocalDate.now());
-        PhysicalActivities physicalActivities4 = new PhysicalActivities(4, "yoga","07:00:00","07:30:00",LocalDate.now());
-
-        activities.add(physicalActivities1);
-        activities.add(physicalActivities2);
-        activities.add(physicalActivities3);
-        activities.add(physicalActivities4);*/
-
-
-        // Cursor und Datenbankverbindung schließen
-        // cursor.close();
-        // db.close();
 
         return activities;
     }
@@ -117,6 +92,13 @@ public class PhyDevelopmentActivity extends AppCompatActivity {
         barDataSet.setValueTextColor(Color.WHITE);
         barDataSet.setValueTextSize(12f);
 
+        barDataSet.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                return String.format("%.2f min", value); // Format the value with "min"
+            }
+        });
+
         BarData barData = new BarData(barDataSet);
         barData.setBarWidth(0.5f);
 
@@ -135,6 +117,17 @@ public class PhyDevelopmentActivity extends AppCompatActivity {
         barChart.setDrawValueAboveBar(true);
         barChart.getLegend().setEnabled(true);
         barChart.getLegend().setTextColor(Color.WHITE);
+        barChart.getAxisLeft().setEnabled(true);
+        barChart.getAxisLeft().setTextColor(Color.WHITE);
+        barChart.getAxisLeft().setDrawTopYLabelEntry(true);
+        barChart.getAxisLeft().setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                return String.format("%.2f min", value); // Format the value with "min"
+
+            }
+        });
+        barChart.getAxisRight().setEnabled(false);
         barChart.setFitBars(true);
         barChart.invalidate();
         barChart.animate();
@@ -152,11 +145,17 @@ public class PhyDevelopmentActivity extends AppCompatActivity {
             pieEntries.add(new PieEntry(timeDuration, activityName));
         }
 
+
         PieDataSet pieDataSet = new PieDataSet(pieEntries, "Physical Activities");
         pieDataSet.setColors(ColorTemplate.PASTEL_COLORS);
         pieDataSet.setValueTextColor(Color.WHITE);
         pieDataSet.setValueTextSize(12f);
-
+        pieDataSet.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                return String.format("%.2f min", value); // Format the value with "min"
+            }
+        });
         PieData pieData = new PieData(pieDataSet);
 
         // Chart konfigurieren
@@ -182,7 +181,7 @@ public class PhyDevelopmentActivity extends AppCompatActivity {
         // Convert hours, minutes, and seconds to milliseconds
         float timeMillis = hours * 3600000 + minutes * 60000 + seconds * 1000;
 
-        return (timeMillis / (1000 * 60 )) / 60;
+        return (timeMillis / (1000 * 60 )) ;
     }
 
 }
