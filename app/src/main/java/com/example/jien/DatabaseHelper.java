@@ -11,7 +11,7 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "Questionnaire.db";
-    private static final int DATABASE_VERSION = 22;
+    private static final int DATABASE_VERSION = 23;
 
     private static final String CREATE_TABLE_MDBF = "CREATE TABLE MDBF ("
             + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -81,6 +81,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS Rumination");
         db.execSQL("DROP TABLE IF EXISTS Self_Esteem");
         db.execSQL("DROP TABLE IF EXISTS Impulsivity");
+        db.execSQL("DROP TABLE IF EXISTS Intervention");
         onCreate(db);
     }
 
@@ -126,8 +127,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.close();
     }
-
-
-
+    public boolean areTablesEmpty() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM MDBF", null);
+        cursor.moveToFirst();
+        int count = cursor.getInt(0);
+        cursor.close();
+        db.close();
+        return count == 0;
+    }
 
 }

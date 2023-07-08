@@ -104,7 +104,10 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
         yesNoQuestion = findViewById(R.id.yesNoQuestion);
 
         currentArrayIndex = 0;
-//        addInitialQuestionsToDatabase();
+        mood = 0;
+        if (dbHelper.areTablesEmpty()){
+            addInitialQuestionsToDatabase();
+        }
         getQuestionsFromDatabase();
         ArrayAdapter<String> socialAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Social_Situation);
         ArrayAdapter<String> contextAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Context);

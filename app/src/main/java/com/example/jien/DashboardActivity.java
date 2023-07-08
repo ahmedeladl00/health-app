@@ -32,7 +32,7 @@ public class DashboardActivity extends AppCompatActivity {
         cardsBar = findViewById(R.id.cardBar);
 
         List<Card> cards = new ArrayList<>();
-        if (currentHour >= 7 && currentHour < 12){
+        if (currentHour >= 00 && currentHour < 12){
             cards.add(new Card(true,R.drawable.brochure,"Morning Questions"));
         }else{
             cards.add(new Card(false,R.drawable.brochure,"Morning Questions"));
@@ -44,7 +44,7 @@ public class DashboardActivity extends AppCompatActivity {
             cards.add(new Card(false,R.drawable.namecard,"Afternoon Questions"));
         }
 
-        if (currentHour >= 17 && currentHour <= 24){
+        if (currentHour >= 17 && currentHour <= 19){
             cards.add(new Card(true,R.drawable.poster,"Night Questions"));
         }else{
             cards.add(new Card(false,R.drawable.poster,"Night Questions"));
