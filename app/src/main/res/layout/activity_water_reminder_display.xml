@@ -8,7 +8,7 @@
     android:background="@color/white"
     tools:context=".WaterReminderDisplay">
 
-    <EditText
+    <TextView
         android:id="@+id/targetxt"
         android:layout_width="169dp"
         android:layout_height="48dp"
@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/record"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
