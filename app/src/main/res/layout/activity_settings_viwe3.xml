@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/textview3"
         android:gravity="center"
-        android:text="My text3"/>
+        android:text="My text3"
+        android:textColor="@color/white"/>
 
 </LinearLayout>

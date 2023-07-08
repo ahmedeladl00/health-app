@@ -10,18 +10,18 @@
     <ListView
         android:id="@+id/settingsList1"
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="165dp"
         android:layout_above="@+id/settingsList2"
         android:layout_below="@+id/textView4"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="68dp"
         android:layout_marginBottom="26dp" />
 
     <ListView
         android:id="@+id/settingsList2"
-        android:layout_width="match_parent"
-        android:layout_height="149dp"
+        android:layout_width="401dp"
+        android:layout_height="172dp"
         android:layout_above="@+id/settingsList3"
-        android:layout_marginBottom="43dp" >
+        android:layout_marginBottom="20dp">
 
 
     </ListView>
