@@ -18,6 +18,7 @@ public class SettingsBaseAdapter3 extends BaseAdapter {
         this.ctx3=ctx3;
         this.listSettings3=listSettings3;
         this.listImage3=listImage3;
+        inflater=LayoutInflater.from(ctx3);
     }
     @Override
     public int getCount() {

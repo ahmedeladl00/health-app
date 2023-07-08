@@ -11,7 +11,7 @@ public class SettingsActivity extends AppCompatActivity {
     String settingsList3[]={"General","Batery","Privacy and Security","Accessibility","Dark Mode"};
 
     int settingsimag1[]={R.drawable.ic_language,R.drawable.ic_wifi,R.drawable.ic_blutooth,R.drawable.ic_phone};
-    int settingsimag2[]={R.drawable.ic_notification,R.drawable.sound,R.drawable.ic_screenbright};
+    int settingsimag2[]={R.drawable.ic_notification, R.drawable.soundd,R.drawable.ic_screenbright};
     int settingsimage3[]={R.drawable.ic_general,R.drawable.ic_battery,R.drawable.ic_privacy,R.drawable.ic_accessibility,R.drawable.ic_darkmode};
 
     ListView listView1;
