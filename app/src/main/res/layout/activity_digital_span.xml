@@ -141,7 +141,7 @@
         app:layout_constraintTop_toBottomOf="@+id/digi8"
         app:layout_constraintVertical_bias="0.0"
         android:backgroundTint="@color/Red"
-        android:src="@drawable/ic_0"
+        android:src="@drawable/add"
         app:tint="@android:color/white"/>
 
     <TextView
