@@ -6,6 +6,10 @@
     <color name="success">#28A745</color>
     <color name="color3">#365FF4</color>
     <color name="warning">#F4D436</color>
-    <color name="Red">#B84242</color>
     <color name="primary">#1B2430</color>
+    <color name="Red">#B84242</color>
+    <color name="beige">#91876c</color>
+    <color name="gold">#cc9704</color>
+
+
 </resources>

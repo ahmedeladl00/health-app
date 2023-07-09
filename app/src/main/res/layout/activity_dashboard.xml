@@ -61,18 +61,19 @@
 
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:orientation="vertical"
         android:layout_marginTop="8dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_app_bar">
 
         <androidx.core.widget.NestedScrollView
-            android:overScrollMode="never"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:overScrollMode="never">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cardBar"
@@ -82,4 +83,8 @@
 
 
     </LinearLayout>
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
