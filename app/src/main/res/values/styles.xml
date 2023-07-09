@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
+    <style name="TimePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/water</item>
+    </style>
+
     <style name="MyFab" parent="Widget.MaterialComponents.FloatingActionButton">
         <item name="shapeAppearance">@style/RoundShape</item>
     </style>
