@@ -14,13 +14,13 @@
         android:gravity="top|left"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_32sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
         android:layout_weight="0.20"
-        android:text="Write a Note about :"
+        android:text="@string/write_a_note_about"
         android:textColor="@color/white"
-        android:textSize="34sp" />
+        android:textSize="@dimen/_27ssp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -29,13 +29,13 @@
 
         <EditText
             android:id="@+id/ediText"
-            android:paddingTop="23dp"
-            android:layout_marginTop="27dp"
+            android:paddingTop="@dimen/_23sdp"
+            android:layout_marginTop="@dimen/_27sdp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/raduis_text"
             android:inputType="textMultiLine"
-            android:hint="Write Your Notes Here ..."
+            android:hint="@string/write_your_notes_here"
             android:maxLines="5"
             android:minLines="3"
             android:maxLength="1000"
