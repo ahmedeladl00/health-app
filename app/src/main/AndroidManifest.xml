@@ -27,6 +27,9 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31" >
         <activity
+            android:name=".WaterReminderActivity"
+            android:exported="false" />
+        <activity
             android:name=".PhyDevelopmentActivity"
             android:exported="false" />
         <activity
