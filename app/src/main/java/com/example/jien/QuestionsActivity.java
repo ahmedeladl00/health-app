@@ -25,7 +25,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.slider.Slider;
 
 import java.text.SimpleDateFormat;
@@ -46,11 +45,11 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
     private Slider slider;
     private Slider slider2;
     private Slider slider3;
-    private FloatingActionButton startButton;
-    private FloatingActionButton finishButton;
-    private FloatingActionButton yesButton;
-    private FloatingActionButton noButton;
-    private FloatingActionButton nextButton;
+    private Button startButton;
+    private Button finishButton;
+    private Button yesButton;
+    private Button noButton;
+    private Button nextButton;
     private Spinner spinner;
     private LinearLayout control;
     private LinearLayout yesNoQuestion;
@@ -104,7 +103,6 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
         control = findViewById(R.id.control);
         yesNoQuestion = findViewById(R.id.yesNoQuestion);
 
-
         currentArrayIndex = 0;
         mood = 0;
         if (dbHelper.areTablesEmpty()){
@@ -113,7 +111,7 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
         getQuestionsFromDatabase();
         ArrayAdapter<String> socialAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Social_Situation);
         ArrayAdapter<String> contextAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Context);
-        qTitleTextView.setText(R.string.are_you_ready_to_start_your_well_being_test);
+        qTitleTextView.setText("Are you ready to start your well-being test ?");
 
 
 
@@ -123,7 +121,7 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
                 ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) qTitleTextView.getLayoutParams();
                 params.verticalBias = 0.0f;
                 qTitleTextView.setLayoutParams(params);
-                qTitleTextView.setText(R.string.mdbf_questions);
+                qTitleTextView.setText("MDBF Questions :");
                 questionTextView.setVisibility(View.VISIBLE);
                 control.setVisibility(View.VISIBLE);
                 slider.setVisibility(View.VISIBLE);
@@ -146,7 +144,7 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
                     }
 
                     if (tableName == "Social_Context") {
-                        qTitleTextView.setText(R.string.social_context_questions);
+                        qTitleTextView.setText("Social Context Questions :");
                     }
 
                     if (tableName == "Social_Context" && currentQuestionIndex != 0){
@@ -154,7 +152,7 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
                     }
 
                     if (tableName == "Context"){
-                        qTitleTextView.setText(R.string.context_question);
+                        qTitleTextView.setText("Context Question:");
                         yesNoQuestion.setVisibility(View.GONE);
                         spinner.setVisibility(View.VISIBLE);
                         spinner.setAdapter(contextAdapter);
@@ -163,7 +161,7 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
                     }
 
                     if (tableName == "Rumination"){
-                        qTitleTextView.setText(R.string.rumination_question);
+                        qTitleTextView.setText("Rumination Question:");
                         spinner.setVisibility(View.GONE);
                         slider.setVisibility(View.VISIBLE);
                     }
@@ -181,7 +179,7 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
                         questionTextView.setText(questions.get(currentQuestionIndex));
                         currentQuestionIndex++;
                         if (tableName == "Context"){
-                            questionTextView.setText(R.string.where_are_you_right_now);
+                            questionTextView.setText("Where are you right now?");
                             currentQuestionIndex = 0;
                         }
 
@@ -194,31 +192,31 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
                             nextTableName = nextEntry.getKey();
                             List<String> nextQuestions = nextEntry.getValue();
                             if (nextTableName == "Event_Appraisal"){
-                                qTitleTextView.setText(R.string.event_appraisal_questions);
+                                qTitleTextView.setText("Event Appraisal Questions :");
                                 showYesNoButtons();
                             }
 
                             if (nextTableName == "Social_Context") {
-                                qTitleTextView.setText(R.string.social_context_questions);
+                                qTitleTextView.setText("Social Context Questions :");
                                 showYesNoButtons();
                             }
 
                             if (nextTableName == "Self_Esteem") {
-                                qTitleTextView.setText(R.string.self_esteem_question);
+                                qTitleTextView.setText("Self-Esteem Question:");
                                 slider.setVisibility(View.VISIBLE);
                                 slider.setVisibility(View.GONE);
                                 slider2.setVisibility(View.VISIBLE);
                             }
 
                             if (nextTableName == "Impulsivity"){
-                                qTitleTextView.setText(R.string.impulsivity_question);
+                                qTitleTextView.setText("Impulsivity Question:");
                                 slider2.setVisibility(View.GONE);
                                 slider3.setVisibility(View.VISIBLE);
                             }
 
                             if(nextTableName == "Social_Situation"){
-                                qTitleTextView.setText(R.string.social_situation_question);
-                                questionTextView.setText(R.string.who_is_around_you_right_now);
+                                qTitleTextView.setText("Social Situation Question:");
+                                questionTextView.setText("Who is around you right now?");
                                 slider.setVisibility(View.GONE);
                                 spinner.setVisibility(View.VISIBLE);
                                 spinner.setAdapter(socialAdapter);
@@ -232,7 +230,7 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
                 }else {
                     ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) qTitleTextView.getLayoutParams();
                     params.verticalBias = 0.5f;
-                    qTitleTextView.setText(R.string.your_mood_is);
+                    qTitleTextView.setText("Your Mood is:");
                     slider3.setVisibility(View.GONE);
                     mood = (mood*100)/1100;
                     questionTextView.setText(Integer.toString(mood)+"%");
