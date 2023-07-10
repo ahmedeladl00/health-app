@@ -136,13 +136,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_32sdp"
         android:backgroundTint="@color/Red"
-        android:src="@drawable/ic_0"
+        android:src="@drawable/zero"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/digi8"
         app:layout_constraintStart_toStartOf="@+id/digi8"
         app:layout_constraintTop_toBottomOf="@+id/digi8"
         app:layout_constraintVertical_bias="0.0"
-        app:tint="@android:color/white"/>
+        app:tint="@android:color/white" />
 
     <TextView
         android:id="@+id/textViewDigits"
