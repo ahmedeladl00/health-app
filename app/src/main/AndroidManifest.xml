@@ -12,6 +12,12 @@
 
     <uses-feature android:name="android.hardware.location.gps" />
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.SET_ALARM"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -23,7 +29,22 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".WaterReminderDisplay"
+            android:name=".WaterReminderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PhyDevelopmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ActiPhysList"
+            android:exported="false" />
+        <activity
+            android:name=".PhysicalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InterventionListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InterventionRecordActivity"
             android:exported="false" />
         <activity
             android:name=".InterventionActivity"
@@ -44,6 +65,9 @@
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
+            android:name=".NotificationActivity"
+            android:exported="false" />
+        <activity
             android:name=".DashboardActivity"
             android:exported="false" />
         <activity
@@ -58,6 +82,10 @@
         <receiver android:name=".WRNotificationReciever"
                 android:enabled="true"
             android:exported="true"/>
+        <receiver
+            android:name=".NotificationBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>

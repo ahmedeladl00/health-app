@@ -104,7 +104,10 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
         yesNoQuestion = findViewById(R.id.yesNoQuestion);
 
         currentArrayIndex = 0;
-//        addInitialQuestionsToDatabase();
+        mood = 0;
+        if (dbHelper.areTablesEmpty()){
+            addInitialQuestionsToDatabase();
+        }
         getQuestionsFromDatabase();
         ArrayAdapter<String> socialAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Social_Situation);
         ArrayAdapter<String> contextAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Context);
@@ -240,7 +243,7 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
                             new MaterialAlertDialogBuilder(QuestionsActivity.this)
                                 .setTitle("Intervention Suggestion")
                                 .setMessage("As your mood is below 50%, we suggest that you do some intervention.\nA random one is selected to you")
-                                .setPositiveButton("Go", new DialogInterface.OnClickListener() {
+                                .setPositiveButton("GO", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         Intent intent = new Intent(QuestionsActivity.this, InterventionActivity.class);
@@ -298,8 +301,8 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
                 SQLiteDatabase db = StepDBHelper.getWritableDatabase();
                 ContentValues values = new ContentValues();
                 values.put("step_count", totalSteps);
-//                values.put("latitude", getLocation().getLatitude());
-//                values.put("longitude", getLocation().getLongitude());
+//              values.put("latitude", getLocation().getLatitude());
+//              values.put("longitude", getLocation().getLongitude());
                 values.put("timestamp", getCurrentTimestamp());
                 db.insert("step_data", null, values);
                 db.close();

@@ -37,11 +37,8 @@ public class WaterReminderDisplay extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_water_reminder_display);
         addButton = findViewById(R.id.add);
-        recordEditText = findViewById(R.id.record);
         addGoal = findViewById(R.id.ptntarget);
-        recordGoal = findViewById(R.id.targetxt);
         notificationBtn = findViewById(R.id.notification);
 
 

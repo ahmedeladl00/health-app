@@ -11,7 +11,7 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "Questionnaire.db";
-    private static final int DATABASE_VERSION = 21;
+    private static final int DATABASE_VERSION = 23;
 
     private static final String CREATE_TABLE_MDBF = "CREATE TABLE MDBF ("
             + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -46,6 +46,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + "question_text TEXT,"
             + "response INTEGER DEFAULT 0)";
 
+    public static final String CREATE_TABLE_INTERVENTION = "CREATE TABLE Intervention ("
+            + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + "intervention TEXT,"
+            + "time_from TEXT,"
+            + "time_to TEXT,"
+            + "day TEXT)";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -61,6 +67,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_RUMINATION);
         db.execSQL(CREATE_TABLE_SELF_ESTEEM);
         db.execSQL(CREATE_TABLE_IMPULSIVITY);
+        db.execSQL(CREATE_TABLE_INTERVENTION);
     }
 
     @Override
@@ -74,6 +81,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS Rumination");
         db.execSQL("DROP TABLE IF EXISTS Self_Esteem");
         db.execSQL("DROP TABLE IF EXISTS Impulsivity");
+        db.execSQL("DROP TABLE IF EXISTS Intervention");
         onCreate(db);
     }
 
@@ -104,6 +112,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("response", response);
         db.update(TableName, values, "id = ?", new String[]{String.valueOf(questionId)});
         db.close();
+    }
+
+    public void insertIntervention(Intervention intervention) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("intervention", intervention.getName());
+        values.put("time_from", intervention.getTimeFrom());
+        values.put("time_to", intervention.getTimeTo());
+        values.put("day", intervention.getDay().toString());
+
+        db.insert("Intervention", null, values);
+
+        db.close();
+    }
+    public boolean areTablesEmpty() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM MDBF", null);
+        cursor.moveToFirst();
+        int count = cursor.getInt(0);
+        cursor.close();
+        db.close();
+        return count == 0;
     }
 
 }
