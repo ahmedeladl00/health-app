@@ -57,6 +57,9 @@
             android:name=".DigitalSpanActivity"
             android:exported="false" />
         <activity
+            android:name=".Terms_of_use"
+            android:exported="false" />
+        <activity
             android:name=".QuestionsActivity"
             android:exported="false" />
         <activity
