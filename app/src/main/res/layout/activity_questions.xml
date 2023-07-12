@@ -10,9 +10,9 @@
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Good Morning, Rodrigo"
+        android:text="@string/good_morning_rodrigo"
         android:textColor="@color/white"
-        android:textSize="35sp"
+        android:textSize="@dimen/_32ssp"
         android:fontFamily="@font/righteous_regular"
         app:layout_constraintBottom_toTopOf="@+id/imageView6"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,7 +22,7 @@
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="match_parent"
-        android:layout_height="580dp"
+        android:layout_height="@dimen/_445sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -34,10 +34,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="24dp"
-        android:padding="10dp"
+        android:layout_marginTop="@dimen/_24sdp"
+        android:padding="@dimen/_9sdp"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="@dimen/_15ssp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,41 +50,92 @@
         android:id="@+id/questionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="In the last 24 hours I felt: Satisfied/Unsatisfied "
+        android:layout_marginStart="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginEnd="@dimen/_36sdp"
+        android:text="@string/in_the_last_24_hours_i_felt_satisfied_unsatisfied"
         android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintStart_toStartOf="@+id/imageView6"
         app:layout_constraintTop_toBottomOf="@+id/qTitleTextView"
-        android:visibility="gone"/>
+        android:visibility="gone" />
+
 
     <com.google.android.material.slider.Slider
         android:id="@+id/slider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_margin="@dimen/_15sdp"
+        android:max="100"
+        android:stepSize="1"
         android:valueFrom="0"
         android:valueTo="100"
-        android:stepSize="1"
+        android:visibility="gone"
         app:labelBehavior="withinBounds"
-        android:max="100"
         app:layout_constraintBottom_toTopOf="@+id/control"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionTextView"
+        app:thumbColor="@color/beige"
+        app:trackColorActive="@color/beige"
+        app:trackColorInactive="@color/white"
+        app:haloColor="@color/gold" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/slider2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_15sdp"
+        android:max="100"
+        android:stepSize="1"
+        android:valueFrom="0"
+        android:valueTo="9"
         android:visibility="gone"
+        app:labelBehavior="withinBounds"
+        app:layout_constraintBottom_toTopOf="@+id/control"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionTextView"
+        app:thumbColor="@color/beige"
+        app:trackColorActive="@color/beige"
+        app:trackColorInactive="@color/white"
+        app:haloColor="@color/gold"
+
         />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/slider3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_15sdp"
+        android:max="100"
+        android:stepSize="1"
+        android:valueFrom="0"
+        android:valueTo="6"
+        android:visibility="gone"
+        app:labelBehavior="withinBounds"
+        app:layout_constraintBottom_toTopOf="@+id/control"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionTextView"
+        app:thumbColor="@color/beige"
+        app:trackColorActive="@color/beige"
+        app:trackColorInactive="@color/white"
+        app:haloColor="@color/gold"/>
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/CustomSpinnerStyle"
         app:layout_constraintBottom_toTopOf="@+id/control"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionTextView"
         android:visibility="gone"
+        android:background="#97CADB"
+
         />
 
     <LinearLayout
@@ -100,21 +151,36 @@
         android:visibility="gone">
 
 
-        <Button
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/noButton"
+            style="@style/MyFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="40dp"
+            android:layout_marginRight="@dimen/_40sdp"
+            android:backgroundTint="@color/Red"
+            android:src="@drawable/close"
             android:text="No"
-            />
+            app:tint="@android:color/white" />
 
-        <Button
+
+
+        />
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/yesButton"
+            style="@style/MyFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:text="Yes"
-            />
+            android:layout_marginLeft="@dimen/_40sdp"
+            android:backgroundTint="@color/success"
+            android:src="@drawable/checked"
+            android:text="@string/yes"
+            app:tint="@android:color/white" />
+
+
+
+        />
 
     </LinearLayout>
 
@@ -126,34 +192,78 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="@dimen/_24sdp"
         android:orientation="horizontal"
         android:visibility="gone">
 
-        <Button
-            android:id="@+id/backButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="60dp"
-            android:text="Back"/>
 
-        <Button
-            android:id="@+id/nextButton"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/backButton"
+            style="@style/MyFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:text="Next"/>
+            android:layout_marginRight="@dimen/_55sdp"
+            android:backgroundTint="@color/beige"
+            android:src="@drawable/ic_arrow"
+            android:text="Back"
+
+            app:tint="@android:color/white">
+
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/nextButton"
+            style="@style/MyFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_55sdp"
+            android:backgroundTint="@color/gold"
+            android:src="@drawable/next"
+            android:text="Next"
+
+            app:tint="@android:color/white">
+
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
 
     </LinearLayout>
 
-    <Button
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/startButton"
+        style="@style/MyFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="Start"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="@dimen/_24sdp"
+        android:backgroundTint="@color/success"
+        android:src="@drawable/start"
+        android:text="@string/start"
+        app:fabSize="auto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:tint="@android:color/white">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/finishButton"
+        style="@style/MyFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_24sdp"
+        android:backgroundTint="@color/danger"
+        android:src="@drawable/finish"
+        android:text="@string/finish"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"
+        >
+
+</com.google.android.material.floatingactionbutton.FloatingActionButton>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

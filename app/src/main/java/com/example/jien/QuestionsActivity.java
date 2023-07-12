@@ -1,12 +1,18 @@
 package com.example.jien;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
+import android.Manifest;
 import android.content.ContentValues;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,25 +20,37 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.slider.Slider;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Random;
 
-public class QuestionsActivity extends AppCompatActivity {
+
+public class QuestionsActivity extends AppCompatActivity implements SensorEventListener {
     private TextView titleTextView;
     private TextView qTitleTextView;
     private TextView questionTextView;
     private Slider slider;
-    private Button startButton;
-    private Button yesButton;
-    private Button noButton;
-    private Button nextButton;
+    private Slider slider2;
+    private Slider slider3;
+    private FloatingActionButton startButton;
+    private FloatingActionButton finishButton;
+    private FloatingActionButton yesButton;
+    private FloatingActionButton noButton;
+    private FloatingActionButton nextButton;
     private Spinner spinner;
     private LinearLayout control;
     private LinearLayout yesNoQuestion;
@@ -53,17 +71,32 @@ public class QuestionsActivity extends AppCompatActivity {
     private String tableName;
     private String nextTableName;
     private DatabaseHelper dbHelper;
+    private StepDatabaseHelper StepDBHelper;
+    private static SensorManager sensorManager;
+    private Sensor stepCounterSensor;
+    private int totalSteps;
+    private int mood;
+    private LocationManager locationManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
+
+        sensorManager = (SensorManager) getSystemService(this.SENSOR_SERVICE);
+        stepCounterSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+
         dbHelper = new DatabaseHelper(this);
+        StepDBHelper = new StepDatabaseHelper(this);
 
         qTitleTextView = findViewById(R.id.qTitleTextView);
         questionTextView = findViewById(R.id.questionTextView);
         startButton = findViewById(R.id.startButton);
+        finishButton = findViewById(R.id.finishButton);
         slider = findViewById(R.id.slider);
+        slider2 = findViewById(R.id.slider2);
+        slider3 = findViewById(R.id.slider3);
         yesButton = findViewById(R.id.yesButton);
         noButton = findViewById(R.id.noButton);
         nextButton = findViewById(R.id.nextButton);
@@ -71,23 +104,31 @@ public class QuestionsActivity extends AppCompatActivity {
         control = findViewById(R.id.control);
         yesNoQuestion = findViewById(R.id.yesNoQuestion);
 
+
         currentArrayIndex = 0;
-//        addInitialQuestionsToDatabase();
+        mood = 0;
+        if (dbHelper.areTablesEmpty()){
+            addInitialQuestionsToDatabase();
+        }
         getQuestionsFromDatabase();
         ArrayAdapter<String> socialAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Social_Situation);
         ArrayAdapter<String> contextAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Context);
-        qTitleTextView.setText("Are you ready to start your well-being test ?");
+        qTitleTextView.setText(R.string.are_you_ready_to_start_your_well_being_test);
+
+
+
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) qTitleTextView.getLayoutParams();
                 params.verticalBias = 0.0f;
                 qTitleTextView.setLayoutParams(params);
-                qTitleTextView.setText("MDBF Questions :");
+                qTitleTextView.setText(R.string.mdbf_questions);
                 questionTextView.setVisibility(View.VISIBLE);
                 control.setVisibility(View.VISIBLE);
                 slider.setVisibility(View.VISIBLE);
                 startButton.setVisibility(View.GONE);
+                currentQuestionIndex++;
             }
         });
 
@@ -105,7 +146,7 @@ public class QuestionsActivity extends AppCompatActivity {
                     }
 
                     if (tableName == "Social_Context") {
-                        qTitleTextView.setText("Social Context Questions :");
+                        qTitleTextView.setText(R.string.social_context_questions);
                     }
 
                     if (tableName == "Social_Context" && currentQuestionIndex != 0){
@@ -113,7 +154,7 @@ public class QuestionsActivity extends AppCompatActivity {
                     }
 
                     if (tableName == "Context"){
-                        qTitleTextView.setText("Context Question:");
+                        qTitleTextView.setText(R.string.context_question);
                         yesNoQuestion.setVisibility(View.GONE);
                         spinner.setVisibility(View.VISIBLE);
                         spinner.setAdapter(contextAdapter);
@@ -122,35 +163,25 @@ public class QuestionsActivity extends AppCompatActivity {
                     }
 
                     if (tableName == "Rumination"){
-                        qTitleTextView.setText("Rumination Question:");
+                        qTitleTextView.setText(R.string.rumination_question);
                         spinner.setVisibility(View.GONE);
                         slider.setVisibility(View.VISIBLE);
                     }
 
-
-//                    if(tableName == "Social_Situation") {
-//                        qTitleTextView.setText("Here");
-//                    }
-//                    if(tableName == "Social_Situation"){
-//                        qTitleTextView.setText("Social Situation Questions :");
-//                        spinner.setVisibility(View.VISIBLE);
-//                        yesNoQuestion.setVisibility(View.GONE);
-//                        spinner.setAdapter(socialAdapter);
-//                        currentArrayIndex++;
-//                    }
-//
-//                    if(tableName == "Context"){
-//                        spinner.setVisibility(View.VISIBLE);
-//                        spinner.setAdapter(contextAdapter);
-//                        currentArrayIndex++;
-//                    }
                     if (currentQuestionIndex < questions.size()) {
-                        int response = (int) slider.getValue();
+                        int response = Math.max((int) slider.getValue(),(int) slider2.getValue()*100/9);
+                        response = Math.max(response,(int) slider3.getValue()*100/6);
+                        if (!(tableName == "Event_Appraisal" || tableName == "Social_Context")){
+                            mood += response;
+                        }
+                        slider.setValue(0.0f);
+                        slider2.setValue(0.0f);
+                        slider3.setValue(0.0f);
                         saveResponseToDatabase(tableName, currentQuestionIndex + 1, response);
                         questionTextView.setText(questions.get(currentQuestionIndex));
                         currentQuestionIndex++;
                         if (tableName == "Context"){
-                            questionTextView.setText("Where are you right now?");
+                            questionTextView.setText(R.string.where_are_you_right_now);
                             currentQuestionIndex = 0;
                         }
 
@@ -163,37 +194,35 @@ public class QuestionsActivity extends AppCompatActivity {
                             nextTableName = nextEntry.getKey();
                             List<String> nextQuestions = nextEntry.getValue();
                             if (nextTableName == "Event_Appraisal"){
-                                qTitleTextView.setText("Event Appraisal Questions :");
+                                qTitleTextView.setText(R.string.event_appraisal_questions);
                                 showYesNoButtons();
-//                                control.setVisibility(View.GONE);
                             }
 
                             if (nextTableName == "Social_Context") {
-                                qTitleTextView.setText("Social Context Questions :");
+                                qTitleTextView.setText(R.string.social_context_questions);
                                 showYesNoButtons();
                             }
 
                             if (nextTableName == "Self_Esteem") {
-                                qTitleTextView.setText("Self-Esteem Question:");
+                                qTitleTextView.setText(R.string.self_esteem_question);
                                 slider.setVisibility(View.VISIBLE);
-                                slider.setValueTo(9);
+                                slider.setVisibility(View.GONE);
+                                slider2.setVisibility(View.VISIBLE);
                             }
 
                             if (nextTableName == "Impulsivity"){
-                                qTitleTextView.setText("Impulsivity Question:");
-                                slider.setValueTo(6);
+                                qTitleTextView.setText(R.string.impulsivity_question);
+                                slider2.setVisibility(View.GONE);
+                                slider3.setVisibility(View.VISIBLE);
                             }
 
                             if(nextTableName == "Social_Situation"){
-                                qTitleTextView.setText("Social Situation Question:");
-                                questionTextView.setText("Who is around you right now?");
+                                qTitleTextView.setText(R.string.social_situation_question);
+                                questionTextView.setText(R.string.who_is_around_you_right_now);
                                 slider.setVisibility(View.GONE);
                                 spinner.setVisibility(View.VISIBLE);
                                 spinner.setAdapter(socialAdapter);
                                 currentArrayIndex++;
-//                                showYesNoButtons();
-//                                control.setVisibility(View.GONE);
-//                                currentArrayIndex++;
                             } else if (!nextQuestions.isEmpty()) {
                                 questionTextView.setText(nextQuestions.get(0));
                                 currentQuestionIndex++;
@@ -203,11 +232,36 @@ public class QuestionsActivity extends AppCompatActivity {
                 }else {
                     ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) qTitleTextView.getLayoutParams();
                     params.verticalBias = 0.5f;
-                    qTitleTextView.setText("Your Mood is:");
-                    slider.setVisibility(View.GONE);
-                    //TODO : calculate the mood form the database answers and then git it here
-                    questionTextView.setText("65%");
-                    nextButton.setText("Finish");
+                    qTitleTextView.setText(R.string.your_mood_is);
+                    slider3.setVisibility(View.GONE);
+                    mood = (mood*100)/1100;
+                    questionTextView.setText(Integer.toString(mood)+"%");
+                    control.setVisibility(View.GONE);
+                    finishButton.setVisibility(View.VISIBLE);
+                    if (mood < 50){
+                        Random random = new Random();
+                        boolean showExerciseIntervention = random.nextBoolean();
+                        if (showExerciseIntervention) {
+                            new MaterialAlertDialogBuilder(QuestionsActivity.this)
+                                .setTitle("Intervention Suggestion")
+                                .setMessage("As your mood is below 50%, we suggest that you do some intervention.\nA random one is selected to you")
+                                .setPositiveButton("GO", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent(QuestionsActivity.this, InterventionActivity.class);
+                                        intent.putExtra("videoName", "random");
+                                        startActivity(intent);
+                                    }
+                                })
+                                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                    }
+                                })
+                                .show();
+                        }
+                    }
                 }
             }
         });
@@ -243,7 +297,31 @@ public class QuestionsActivity extends AppCompatActivity {
             }
         });
 
+        finishButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SQLiteDatabase db = StepDBHelper.getWritableDatabase();
+                ContentValues values = new ContentValues();
+                values.put("step_count", totalSteps);
+//              values.put("latitude", getLocation().getLatitude());
+//              values.put("longitude", getLocation().getLongitude());
+                values.put("timestamp", getCurrentTimestamp());
+                db.insert("step_data", null, values);
+                db.close();
+                boolean isNoon = getIntent().getBooleanExtra("isNoon", false);
+                if (isNoon) {
+                    Intent intent = new Intent(QuestionsActivity.this, DigitalSpanActivity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(QuestionsActivity.this, DashboardActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
     }
+
+
 
     private void addInitialQuestionsToDatabase() {
         dbHelper.insertQuestion("MDBF","In the last 24 hours I felt: Satisfied/Unsatisfied");
@@ -315,4 +393,59 @@ public class QuestionsActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sensorManager.registerListener(this, stepCounterSensor, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(this);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if (event.sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
+            int stepCount = (int) event.values[0];
+
+            totalSteps = stepCount;
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        //TODO: Handle accuracy changes if needed
+    }
+
+    private String getCurrentTimestamp() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
+
+    private Location getLocation() {
+        try {
+            // Check if location permission is granted
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                    == PackageManager.PERMISSION_GRANTED) {
+
+                // Get the last known location from the network provider
+                Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                if (lastKnownLocation != null) {
+                    return lastKnownLocation;
+                }
+
+                // Get the last known location from the GPS provider
+                lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                if (lastKnownLocation != null) {
+                    return lastKnownLocation;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
