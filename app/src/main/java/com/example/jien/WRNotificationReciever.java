@@ -11,10 +11,11 @@ import android.os.Build;
 import androidx.core.app.NotificationCompat;
 
 public class WRNotificationReciever extends BroadcastReceiver {
+    private Water water;
     @Override
     public void onReceive(Context context, Intent intent) {
 
-
+        water = Water.getInstance(context);
         Intent notificationIntent = new Intent(context, WaterReminderDisplay.class);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
@@ -35,7 +36,7 @@ public class WRNotificationReciever extends BroadcastReceiver {
 
         builder.setSmallIcon(R.drawable.ic_notification)
                 .setContentTitle("HI! How do you feel?")
-                .setContentText("Don't forget to drink!")
+                .setContentText("You still have " + water.getRemaining() + " ml to drink today")
                 .setAutoCancel(true)
                 .setDefaults(NotificationCompat.DEFAULT_LIGHTS)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)

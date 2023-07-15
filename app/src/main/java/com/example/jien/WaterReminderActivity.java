@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -30,9 +29,6 @@ public class WaterReminderActivity extends AppCompatActivity {
 
     FloatingActionButton notificationBtn;
     int hour, minute;
-    private SharedPreferences sharedPreferences;
-
-
     private Water water;
 
     @Override
@@ -51,26 +47,20 @@ public class WaterReminderActivity extends AppCompatActivity {
 
         updateRemainingTextView();
 
-        notificationBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        notificationBtn.setOnClickListener(v -> {
 
-                TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int selectedHour, int selectedMinute) {
-                        hour = selectedHour;
-                        minute = selectedMinute;
-                        scheduleNotification(hour, minute);
-                    }
-                };
-                TimePickerDialog timePickerDialog = new TimePickerDialog(WaterReminderActivity.this,R.style.TimePickerDialogTheme, onTimeSetListener,hour,minute,true);
+            TimePickerDialog.OnTimeSetListener onTimeSetListener = (view, selectedHour, selectedMinute) -> {
+                hour = selectedHour;
+                minute = selectedMinute;
+                scheduleNotification(hour, minute);
+            };
+            TimePickerDialog timePickerDialog = new TimePickerDialog(WaterReminderActivity.this,R.style.TimePickerDialogTheme, onTimeSetListener,hour,minute,true);
 
-                timePickerDialog.setTitle("Select Reminder");
-                timePickerDialog.show();
+            timePickerDialog.setTitle("Select Reminder");
+            timePickerDialog.show();
 
-            }
         });
-        sharedPreferences = getSharedPreferences(getPackageName(), Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), Context.MODE_PRIVATE);
     }
 
     private void showGoalDialog() {
