@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         logInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Terms_of_use.class);
+                Intent intent = new Intent(MainActivity.this, WaterReminderActivity.class);
                 startActivity(intent);
             }
         });

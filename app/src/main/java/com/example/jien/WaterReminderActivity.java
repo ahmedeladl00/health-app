@@ -1,5 +1,11 @@
 package com.example.jien;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -16,10 +22,13 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.Calendar;
 import java.util.Objects;
 
 public class WaterReminderActivity extends AppCompatActivity {
 
+    FloatingActionButton notificationBtn;
+    int hour, minute;
     private Water water;
 
     @Override
@@ -27,6 +36,8 @@ public class WaterReminderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_water_reminder);
         water = Water.getInstance(this);
+        notificationBtn = findViewById(R.id.notification);
+
 
         FloatingActionButton addButton = findViewById(R.id.add);
         addButton.setOnClickListener(view -> showAddWaterDialog());
@@ -35,6 +46,21 @@ public class WaterReminderActivity extends AppCompatActivity {
         addGoal.setOnClickListener(view -> showGoalDialog());
 
         updateRemainingTextView();
+
+        notificationBtn.setOnClickListener(v -> {
+
+            TimePickerDialog.OnTimeSetListener onTimeSetListener = (view, selectedHour, selectedMinute) -> {
+                hour = selectedHour;
+                minute = selectedMinute;
+                scheduleNotification(hour, minute);
+            };
+            TimePickerDialog timePickerDialog = new TimePickerDialog(WaterReminderActivity.this,R.style.TimePickerDialogTheme, onTimeSetListener,hour,minute,true);
+
+            timePickerDialog.setTitle("Select Reminder");
+            timePickerDialog.show();
+
+        });
+        SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), Context.MODE_PRIVATE);
     }
 
     private void showGoalDialog() {
@@ -124,5 +150,33 @@ public class WaterReminderActivity extends AppCompatActivity {
         goaltxt.setText("My Goal: " + String.valueOf(water.getGoal()) + " ml");
         consumedTxt.setText(String.valueOf(water.getConsumed()) + " ml");
         remainingTextView.setText("Remaining " + remaining + " ml");
+    }
+
+    private void scheduleNotification ( int hour, int minute){
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+
+        if (calendar.before(Calendar.getInstance())) {
+            calendar.add(Calendar.DATE, 1);
+        }
+
+        Intent notificationIntent = new Intent(this, WRNotificationReciever.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                this,
+                0,
+                notificationIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+        );
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        if (alarmManager != null) {
+            alarmManager.setRepeating(
+                    AlarmManager.RTC_WAKEUP,
+                    calendar.getTimeInMillis(),
+                    AlarmManager.INTERVAL_DAY,
+                    pendingIntent
+            );
+        }
     }
 }
