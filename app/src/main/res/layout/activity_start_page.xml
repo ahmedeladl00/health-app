@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1B2430"
+    android:clickable="true"
+    android:focusable="true"
+    tools:context=".StartPageActivity">
+
+
+    <TextView
+        android:id="@+id/downTxt"
+        android:layout_width="367dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/niramit"
+        android:textAlignment="center"
+        android:textColor="#F4F1F1"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:text="your best sleep monitor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableRow2"
+        app:layout_constraintVertical_bias="0.083"
+        tools:ignore="HardcodedText,UnknownId" />
+
+    <TextView
+        android:id="@+id/goodSleepTxt"
+        android:layout_width="412dp"
+        android:layout_height="116dp"
+        android:fontFamily="@font/niramit"
+        android:text="Good sleep"
+        android:textAlignment="center"
+        android:textColor="#F0F2F4"
+        android:textSize="200px"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.048" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="311dp"
+        android:layout_height="266dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/startpic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goodSleepTxt"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/logInBtn"
+        style="@style/MyFab"
+        android:layout_width="153dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#7282B1FF"
+        android:fontFamily="@font/niramit"
+        android:text="Log In"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="80px"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/signUpBtn"
+        app:layout_constraintEnd_toStartOf="@+id/signUpBtn"
+        app:layout_constraintHorizontal_bias="0.296"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/signUpBtn"
+        style="@style/MyFab"
+        android:layout_width="138dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="50dp"
+        android:backgroundTint="#82B1FF"
+        android:fontFamily="@font/niramit"
+        android:text="Sign Up"
+        android:textColor="@color/black"
+        android:textSize="80px"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/downTxt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
