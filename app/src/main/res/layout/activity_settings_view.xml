@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsBaseAdapter2">
+    tools:context=".SettingsBaseAdapter">
+
     <ImageView
+        android:id="@+id/imageIcon"
         android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:id="@+id/imageIcom2"/>
+        android:layout_height="30dp"/>
+
     <TextView
+        android:id="@+id/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textview2"
         android:gravity="center"
-        android:text="My text2"
+        android:text="My text1"
         android:textColor="@color/white"/>
 
 </LinearLayout>

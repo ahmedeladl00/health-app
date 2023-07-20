@@ -11,24 +11,20 @@ import android.widget.TextView;
 public class SettingsBaseAdapter extends BaseAdapter {
 
      Context context;
-     String listSettings1[];
-     int listImage1[];
-
-     Context context2;
-     String listSettings2[];
-     int listImage2[];
+     String listSettings[];
+     int listImage[];
      LayoutInflater inflater;
 
-     public SettingsBaseAdapter(Context ctx, String[] listSettings1, int[] listImage1){
+     public SettingsBaseAdapter(Context ctx, String[] listSettings, int[] listImage){
          this.context=ctx;
-         this.listSettings1=listSettings1;
-         this.listImage1=listImage1;
+         this.listSettings=listSettings;
+         this.listImage=listImage;
          inflater=LayoutInflater.from(ctx);
      }
 
     @Override
     public int getCount() {
-        return listSettings1.length;
+        return listSettings.length;
     }
 
     @Override
@@ -42,14 +38,12 @@ public class SettingsBaseAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position1, View convertview1, ViewGroup parent1) {
-         convertview1=inflater.inflate(R.layout.activity_settings_view1,null);
-        TextView txtview1=(TextView) convertview1.findViewById(R.id.textview1);
-        ImageView imgview1=(ImageView) convertview1.findViewById(R.id.imageIcom1);
-        txtview1.setText(listSettings1[position1]);
-        imgview1.setImageResource(listImage1[position1]);
-
-
-        return convertview1;
+    public View getView(int position, View convertview, ViewGroup parent1) {
+         convertview=inflater.inflate(R.layout.activity_settings_view,null);
+         TextView txtview=(TextView) convertview.findViewById(R.id.textview);
+         ImageView imgview=(ImageView) convertview.findViewById(R.id.imageIcon);
+         txtview.setText(listSettings[position]);
+         imgview.setImageResource(listImage[position]);
+         return convertview;
     }
 }
