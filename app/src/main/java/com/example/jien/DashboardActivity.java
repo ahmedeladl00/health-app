@@ -6,11 +6,12 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,6 +31,7 @@ public class DashboardActivity extends AppCompatActivity {
         LinearLayout activityList = findViewById(R.id.activityList);
         LinearLayout activityRecord = findViewById(R.id.activityRecord);
         LinearLayout phyDevelopment = findViewById(R.id.phyDevelopment);
+        FloatingActionButton waterBtn =  findViewById(R.id.waterBtn);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setBackground(null);
 
@@ -57,6 +59,19 @@ public class DashboardActivity extends AppCompatActivity {
             Intent intent = new Intent(DashboardActivity.this, PhyDevelopmentActivity.class);
             startActivity(intent);
         });
+        waterBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(DashboardActivity.this,WaterReminderActivity.class);
+            startActivity(intent);
+        });
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.settings) {
+                Intent intent = new Intent(DashboardActivity.this, SettingsActivity.class);
+                startActivity(intent);
+                return true;
+            }
+            return false;
+        });
+
         Calendar calendar = Calendar.getInstance();
         currentHour = calendar.get(Calendar.HOUR_OF_DAY);
 
