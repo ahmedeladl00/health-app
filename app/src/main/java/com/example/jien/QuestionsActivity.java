@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -308,6 +309,14 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
                 values.put("timestamp", getCurrentTimestamp());
                 db.insert("step_data", null, values);
                 db.close();
+                if (ContextCompat.checkSelfPermission(QuestionsActivity.this, android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(QuestionsActivity.this,
+                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                            1);
+                } else {
+                    new DBSender(QuestionsActivity.this,"Questionnaire.db","Ahmed Eladl").uploadFile();
+                }
                 boolean isNoon = getIntent().getBooleanExtra("isNoon", false);
                 if (isNoon) {
                     Intent intent = new Intent(QuestionsActivity.this, DigitalSpanActivity.class);
