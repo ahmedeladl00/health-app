@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DigitalSpanActivity"
+    android:background="@color/primary">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/digi1"
+        android:layout_width="@dimen/_45sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginLeft="@dimen/_45sdp"
+        android:src="@drawable/ic_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        android:backgroundTint="@color/Red"
+        app:tint="@android:color/white"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/digi2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/digi1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        android:layout_marginLeft="@dimen/_40sdp"
+        android:backgroundTint="@color/Red"
+        app:tint="@android:color/white"
+        android:src="@drawable/ic_2"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/digi3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/digi2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        android:layout_marginLeft="@dimen/_40sdp"
+        android:backgroundTint="@color/Red"
+       android:src="@drawable/ic_3"
+        app:tint="@android:color/white"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/digi4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_45sdp"
+        android:layout_marginTop="@dimen/_32sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/digi1"
+        app:layout_constraintVertical_bias="0.0"
+        android:backgroundTint="@color/Red"
+        android:src="@drawable/ic_4"
+        app:tint="@android:color/white"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/digi5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_32sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/digi4"
+        app:layout_constraintTop_toBottomOf="@+id/digi2"
+        app:layout_constraintVertical_bias="0.0"
+        android:backgroundTint="@color/Red"
+        android:src="@drawable/ic_5"
+        app:tint="@android:color/white"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/digi6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_32sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/digi5"
+        app:layout_constraintTop_toBottomOf="@+id/digi3"
+        app:layout_constraintVertical_bias="0.0"
+        android:backgroundTint="@color/Red"
+        android:src="@drawable/ic_6"
+        app:tint="@android:color/white"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/digi7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_45sdp"
+        android:layout_marginTop="@dimen/_32sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/digi4"
+        app:layout_constraintVertical_bias="0.0"
+        android:backgroundTint="@color/Red"
+        android:src="@drawable/ic_7"
+        app:tint="@android:color/white"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/digi8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_32sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/digi7"
+        app:layout_constraintTop_toBottomOf="@+id/digi5"
+        app:layout_constraintVertical_bias="0.0"
+        android:backgroundTint="@color/Red"
+        android:src="@drawable/ic_8"
+        app:tint="@android:color/white"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/digi9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_32sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/digi8"
+        app:layout_constraintTop_toBottomOf="@+id/digi6"
+        app:layout_constraintVertical_bias="0.0"
+        android:backgroundTint="@color/Red"
+       android:src="@drawable/ic_9"
+        app:tint="@android:color/white"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/digi0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_32sdp"
+        android:backgroundTint="@color/Red"
+        android:src="@drawable/ic_0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/digi8"
+        app:layout_constraintStart_toStartOf="@+id/digi8"
+        app:layout_constraintTop_toBottomOf="@+id/digi8"
+        app:layout_constraintVertical_bias="0.0"
+        app:tint="@android:color/white"/>
+
+    <TextView
+        android:id="@+id/textViewDigits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#97CADB"
+        android:textColor="@color/Red"
+        android:textStyle="bold"
+        android:text="TextView"
+
+        app:layout_constraintBottom_toTopOf="@+id/digi2"
+        app:layout_constraintEnd_toEndOf="@+id/digi2"
+        app:layout_constraintStart_toStartOf="@+id/digi2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
