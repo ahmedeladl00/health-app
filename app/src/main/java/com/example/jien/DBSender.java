@@ -28,37 +28,30 @@ public class DBSender {
     }
 
     void uploadFile() {
-        // Create Retrofit instance
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(API_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        // Create service
         FileUploadService service = retrofit.create(FileUploadService.class);
 
-        // Prepare file to be uploaded
         File file = new File(context.getDatabasePath(this.dbName).getPath());
         RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
         MultipartBody.Part filePart = MultipartBody.Part.createFormData("file", file.getName(), requestFile);
 
-        // Send the file
         Call<ResponseBody> call = service.uploadFile(getRequestBody(this.username), filePart);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
-                    // File upload successful
                     Toast.makeText(context, "File uploaded successfully", Toast.LENGTH_SHORT).show();
                 } else {
-                    // File upload failed
                     Toast.makeText(context, "File upload failed", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                // File upload failed
                 Toast.makeText(context, "File upload failed", Toast.LENGTH_SHORT).show();
             }
         });
