@@ -22,6 +22,7 @@ public class InterventionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intervention);
+        new TopBarHelper(this);
 
         videoListView = findViewById(R.id.videoList);
         videoResourceIds = new ArrayList<>();

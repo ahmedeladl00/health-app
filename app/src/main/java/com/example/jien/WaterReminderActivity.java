@@ -35,6 +35,8 @@ public class WaterReminderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_water_reminder);
+        new TopBarHelper(this);
+
         water = Water.getInstance(this);
         notificationBtn = findViewById(R.id.notification);
 

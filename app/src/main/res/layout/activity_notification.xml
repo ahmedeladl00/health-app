@@ -7,6 +7,13 @@
     android:background="#1B2430"
     tools:context=".NotificationActivity">
 
+    <include
+        android:id="@+id/top_bar_layout"
+        layout="@layout/top_bar_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/nightBtn"
         android:layout_width="@dimen/_204sdp"

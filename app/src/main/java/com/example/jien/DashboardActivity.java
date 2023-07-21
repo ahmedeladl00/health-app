@@ -79,6 +79,9 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     private void init(){
+
+        new TopBarHelper(this);
+
         RecyclerView cardsBar = findViewById(R.id.cardBar);
 
         List<Card> cards = new ArrayList<>();

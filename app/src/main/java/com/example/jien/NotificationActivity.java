@@ -37,6 +37,8 @@ public class NotificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
+        new TopBarHelper(this);
+
         morningBtn = findViewById(R.id.morningBtn);
         noonBtn = findViewById(R.id.noonBtn);
         nightBtn = findViewById(R.id.nightBtn);

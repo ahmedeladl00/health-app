@@ -23,6 +23,8 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        new TopBarHelper(this);
+
         listView1= (ListView) findViewById(R.id.settingsList1);
         SettingsBaseAdapter settingsBaseAdapter1=new SettingsBaseAdapter(getApplicationContext(),settingsList1,settingsImg1);
         listView1.setAdapter(settingsBaseAdapter1);

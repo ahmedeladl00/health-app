@@ -28,6 +28,8 @@ public class DigitalSpanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_digital_span);
+        new TopBarHelper(this);
+
         startGame();
         for (int i = 0; i < 10; i++) {
             int resId = getResources().getIdentifier("digi" + i, "id", getPackageName());
