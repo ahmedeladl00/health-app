@@ -36,6 +36,7 @@ public class InterventionRecordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intervention_record);
+        new TopBarHelper(this);
 
         timerTextView = findViewById(R.id.timerTextView);
         startBtn = findViewById(R.id.startBtn);

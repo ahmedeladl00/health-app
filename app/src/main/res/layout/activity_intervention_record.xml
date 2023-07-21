@@ -6,59 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".SignUpActivity">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/top_app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary"
-        android:paddingTop="@dimen/_6sdp"
-        android:paddingBottom="@dimen/_6sdp"
+    <include
+        android:id="@+id/top_bar_layout"
+        layout="@layout/top_bar_layout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:theme="@style/ThemeOverlay.MaterialComponents.ActionBar">
-
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:layout_width="@dimen/_45sdp"
-            android:layout_height="@dimen/_45sdp"
-            android:src="@drawable/profile_pic"
-            app:civ_border_color="#1dbbe6"
-            app:civ_border_width="@dimen/_2sdp"
-            app:civ_shadow="false"
-            app:civ_shadow_radius="@dimen/_1sdp" />
-
-        <TextView
-            android:id="@+id/user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_18sdp"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:text="Ahmed Eladl"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_13ssp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/profile_image"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/burger_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center_vertical"
-            android:layout_marginEnd="@dimen/_13sdp"
-            android:src="@drawable/ic_right_alt_menu" />
-
-        <ImageView
-            android:id="@+id/notification_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center_vertical"
-            android:layout_marginEnd="@dimen/_13sdp"
-            android:src="@drawable/ic_notification" />
-
-    </com.google.android.material.appbar.MaterialToolbar>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
