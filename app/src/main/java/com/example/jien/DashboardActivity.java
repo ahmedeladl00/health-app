@@ -95,7 +95,7 @@ public class DashboardActivity extends AppCompatActivity {
         }
 
 
-        if (currentHour >= 17 && currentHour <= 24){
+        if (currentHour >= 17 && currentHour <= 19){
 
             cards.add(new Card(true,R.drawable.poster,"Night Questions"));
         }else{
