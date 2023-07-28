@@ -74,15 +74,30 @@
         android:layout_height="@dimen/_60sdp"
         android:layout_margin="@dimen/_15sdp"
         android:backgroundTint="#1dbbe6"
+        android:enabled="false"
         android:text="Choose Intervention"
         android:textColor="#fff"
         android:textSize="@dimen/_20ssp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.578"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.76"
-        android:enabled="false"/>
+        app:layout_constraintVertical_bias="0.555" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/installBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#1dbbe6"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976"
+        app:srcCompat="@drawable/add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
