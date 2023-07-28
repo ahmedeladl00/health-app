@@ -7,6 +7,8 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class SignUpActivity extends AppCompatActivity {
     private EditText editTextName;
     private EditText editTextEmail;
@@ -20,7 +22,8 @@ public class SignUpActivity extends AppCompatActivity {
         editTextName = findViewById(R.id.editTextName);
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextEmail2);
-        Button signUpBtn = findViewById(R.id.logInBtn);
+        Button signUpBtn = findViewById(R.id.signUpBtn);
+        FloatingActionButton logInBtn = findViewById(R.id.logInBtn);
 
         User.getInstance().loadUserData(this);
 
@@ -40,5 +43,11 @@ public class SignUpActivity extends AppCompatActivity {
             Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
             startActivity(intent);
         });
+
+        logInBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(SignUpActivity.this, StartPageActivity.class);
+            startActivity(intent);
+        });
+
     }
 }

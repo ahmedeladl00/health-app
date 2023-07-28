@@ -1,4 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">Jien</string>
     <string name="title_activity_dashboard">DashboardActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -57,8 +59,8 @@
     <string name="user">user</string>
     <string name="write_a_note_about">Write a Note about :</string>
     <string name="write_your_notes_here">Write Your Notes Here ...</string>
-    <string name="log_in">Log In</string>
-    <string name="sign_up">Sign Up</string>
+    <string name="log_in">Anmeldung</string>
+    <string name="sign_up">New Anmeldung </string>
     <string name="please_log_in">Please Log In</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -66,4 +68,7 @@
     <string name="welcome_to_jien_app">Welcome to Jien App</string>
     <string name="please_sign_up">Please Sign Up</string>
     <string name="name">Name</string>
+
+
+
 </resources>

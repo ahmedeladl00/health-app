@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="whitebleu">#ccf4ff</color>
+    <color name="white">#ffffff</color>
     <color name="danger">#DC3545</color>
     <color name="success">#28A745</color>
     <color name="color3">#365FF4</color>
     <color name="warning">#F4D436</color>
     <color name="primary">#1B2430</color>
+    <color name="darkbleu">#003f73</color>
     <color name="Red">#B84242</color>
     <color name="beige">#91876c</color>
     <color name="gold">#cc9704</color>

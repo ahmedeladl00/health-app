@@ -21,15 +21,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextEmail2);
         Button logInBtn = findViewById(R.id.logInBtn);
-        FloatingActionButton signUpBtn = findViewById(R.id.signUpBtn);
+        FloatingActionButton homeBtn = findViewById(R.id.homeBtn);
 
-        signUpBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,SignUpActivity.class);
+        homeBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this,StartPageActivity.class);
             startActivity(intent);
         });
 

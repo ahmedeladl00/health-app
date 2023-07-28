@@ -86,23 +86,23 @@ public class DashboardActivity extends AppCompatActivity {
 
         List<Card> cards = new ArrayList<>();
         if (currentHour >= 7 && currentHour < 12){
-            cards.add(new Card(true,R.drawable.brochure,"Morning Questions"));
+            cards.add(new Card(true,R.drawable.morningq,"Morning Questions"));
         }else{
-            cards.add(new Card(false,R.drawable.brochure,"Morning Questions"));
+            cards.add(new Card(false,R.drawable.morningq,"Morning Questions"));
         }
 
         if (currentHour >= 12 && currentHour <= 14){
-            cards.add(new Card(true,R.drawable.namecard,"Afternoon Questions"));
+            cards.add(new Card(true,R.drawable.afternoonq,"Afternoon Questions"));
         }else{
-            cards.add(new Card(false,R.drawable.namecard,"Afternoon Questions"));
+            cards.add(new Card(false,R.drawable.afternoonq,"Afternoon Questions"));
         }
 
 
         if (currentHour >= 17 && currentHour <= 19){
 
-            cards.add(new Card(true,R.drawable.poster,"Night Questions"));
+            cards.add(new Card(true,R.drawable.nightq,"Night Questions"));
         }else{
-            cards.add(new Card(false,R.drawable.poster,"Night Questions"));
+            cards.add(new Card(false,R.drawable.nightq,"Night Questions"));
         }
 
 

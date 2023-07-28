@@ -4,100 +4,104 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1B2430"
+    android:background="@color/white"
     android:clickable="true"
     android:focusable="true"
     tools:context=".StartPageActivity">
 
 
-    <TextView
-        android:id="@+id/downTxt"
-        android:layout_width="367dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="32dp"
-        android:fontFamily="@font/niramit"
-        android:textAlignment="center"
-        android:textColor="#F4F1F1"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:text="your best sleep monitor"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="285dp"
+        android:layout_height="141dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableRow2"
-        app:layout_constraintVertical_bias="0.083"
-        tools:ignore="HardcodedText,UnknownId" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/blue_top" />
 
     <TextView
-        android:id="@+id/goodSleepTxt"
-        android:layout_width="412dp"
-        android:layout_height="116dp"
+        android:id="@+id/downTxt"
+        android:layout_width="@dimen/_307sdp"
+        android:layout_height="@dimen/_50sdp"
         android:fontFamily="@font/niramit"
-        android:text="Good sleep"
+        android:text="Your Personal Well-being App"
         android:textAlignment="center"
-        android:textColor="#F0F2F4"
-        android:textSize="200px"
+        android:textColor="@color/water"
+        android:textSize="@dimen/_20sdp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView5"
+        app:layout_constraintStart_toStartOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        tools:ignore="HardcodedText,UnknownId" />
+
+    <ImageView
+        android:id="@+id/goodSleepTxt"
+        android:layout_width="@dimen/_276sdp"
+        android:layout_height="@dimen/_84sdp"
+        android:src="@drawable/goodlife"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.048" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView13" />
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="311dp"
-        android:layout_height="266dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginBottom="8dp"
-        android:src="@drawable/startpic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goodSleepTxt"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_width="217dp"
+        android:layout_height="203dp"
+        android:src="@drawable/logo1"
+        app:layout_constraintEnd_toEndOf="@+id/goodSleepTxt"
+        app:layout_constraintStart_toStartOf="@+id/goodSleepTxt"
+        app:layout_constraintTop_toBottomOf="@+id/goodSleepTxt" />
 
     <Button
         android:id="@+id/logInBtn"
         style="@style/MyFab"
-        android:layout_width="153dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="#7282B1FF"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_54sdp"
+        android:backgroundTint="#219ccc"
+        android:layout_marginRight="@dimen/_32sdp"
+        android:layout_marginLeft="@dimen/_32sdp"
         android:fontFamily="@font/niramit"
-        android:text="Log In"
+        android:text="@string/log_in"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="80px"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_25sdp"
         android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/signUpBtn"
-        app:layout_constraintEnd_toStartOf="@+id/signUpBtn"
-        app:layout_constraintHorizontal_bias="0.296"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/signUpBtn"
+        app:layout_constraintStart_toStartOf="@+id/signUpBtn"
+        app:layout_constraintTop_toBottomOf="@+id/signUpBtn" />
 
     <Button
         android:id="@+id/signUpBtn"
         style="@style/MyFab"
-        android:layout_width="138dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="50dp"
-        android:backgroundTint="#82B1FF"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_54sdp"
+        android:layout_margin="@dimen/_16sdp"
+        android:backgroundTint="@color/darkbleu"
         android:fontFamily="@font/niramit"
-        android:text="Sign Up"
-        android:textColor="@color/black"
-        android:textSize="80px"
+        android:text="@string/sign_up"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_25sdp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/downTxt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/downTxt" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_202sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/intro_background_bottom" />
+
+    <Spinner
+        android:id="@+id/langSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        app:layout_constraintBottom_toTopOf="@+id/goodSleepTxt"
+        app:layout_constraintEnd_toStartOf="@+id/imageView13"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

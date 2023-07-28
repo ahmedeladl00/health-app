@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Jien</string>
     <string name="title_activity_dashboard">DashboardActivity</string>
@@ -66,4 +67,7 @@
     <string name="welcome_to_jien_app">Welcome to Jien App</string>
     <string name="please_sign_up">Please Sign Up</string>
     <string name="name">Name</string>
+
+
+
 </resources>

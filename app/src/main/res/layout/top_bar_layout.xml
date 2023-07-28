@@ -32,7 +32,7 @@
             android:layout_marginStart="18dp"
             android:layout_marginTop="@dimen/_8sdp"
             android:text="Ahmed Eladl"
-            android:textColor="@color/white"
+            android:textColor="@color/water"
             android:textStyle="bold"
             android:textSize="@dimen/_16ssp"
             app:layout_constraintStart_toEndOf="@+id/profile_image"
@@ -44,7 +44,8 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_right_alt_menu"
             android:layout_gravity="right|center_vertical"
-            android:layout_marginEnd="@dimen/_16sdp"/>
+            android:layout_marginEnd="@dimen/_16sdp"
+            />
 
         <ImageView
             android:id="@+id/notification_icon"
