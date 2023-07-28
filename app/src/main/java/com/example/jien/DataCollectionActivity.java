@@ -41,6 +41,7 @@ public class DataCollectionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_collection);
+        new TopBarHelper(this);
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);

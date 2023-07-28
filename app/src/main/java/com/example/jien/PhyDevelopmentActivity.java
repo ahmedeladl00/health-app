@@ -42,6 +42,7 @@ public class PhyDevelopmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phy_development);
+        new TopBarHelper(this);
 
         //Assing variable
         barChart = findViewById(R.id.bar_chart);

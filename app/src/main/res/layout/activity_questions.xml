@@ -6,18 +6,25 @@
     android:layout_height="match_parent"
     android:background="@color/primary">
 
+    <include
+        android:id="@+id/top_bar_layout"
+        layout="@layout/top_bar_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/righteous_regular"
         android:text="@string/good_morning_rodrigo"
         android:textColor="@color/white"
         android:textSize="@dimen/_32ssp"
-        android:fontFamily="@font/righteous_regular"
         app:layout_constraintBottom_toTopOf="@+id/imageView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/top_bar_layout" />
 
     <ImageView
         android:id="@+id/imageView6"

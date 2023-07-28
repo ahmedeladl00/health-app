@@ -17,23 +17,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/blue_top" />
 
+
     <ImageView
         android:id="@+id/imageView18"
-        android:layout_width="414dp"
+        android:layout_width="match_parent"
         android:layout_height="282dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.507"
-        app:srcCompat="@drawable/intro_backgroung_bottom" />
-
+        app:srcCompat="@drawable/intro_background_bottom" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_240sdp"
-
         android:layout_marginStart="@dimen/_32sdp"
         android:layout_marginEnd="@dimen/_32sdp"
         android:orientation="vertical"
@@ -50,7 +47,7 @@
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/homeBtb"
+        android:id="@+id/homeBtn"
         style="@style/MyFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,7 +58,6 @@
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:tint="@android:color/white">
-
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
     <TextView
@@ -125,7 +121,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/forget_password"
-        android:textSize="@dimen/_22ssp"
+        android:textSize="@dimen/_20ssp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

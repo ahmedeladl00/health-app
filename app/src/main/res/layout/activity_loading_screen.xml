@@ -17,14 +17,14 @@
 
     <ImageView
         android:id="@+id/imageView18"
-        android:layout_width="414dp"
-        android:layout_height="282dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_200sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.507"
-        app:srcCompat="@drawable/intro_backgroung_bottom" />
+        app:srcCompat="@drawable/intro_background_bottom" />
 
 
 

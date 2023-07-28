@@ -55,9 +55,11 @@
     <Button
         android:id="@+id/logInBtn"
         style="@style/MyFab"
-        android:layout_width="@dimen/_153sdp"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/_54sdp"
         android:backgroundTint="#219ccc"
+        android:layout_marginRight="@dimen/_32sdp"
+        android:layout_marginLeft="@dimen/_32sdp"
         android:fontFamily="@font/niramit"
         android:text="@string/log_in"
         android:textAlignment="center"
@@ -71,9 +73,9 @@
     <Button
         android:id="@+id/signUpBtn"
         style="@style/MyFab"
-        android:layout_width="@dimen/_173sdp"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/_54sdp"
-        android:layout_marginTop="16dp"
+        android:layout_margin="@dimen/_16sdp"
         android:backgroundTint="@color/darkbleu"
         android:fontFamily="@font/niramit"
         android:text="@string/sign_up"
@@ -86,19 +88,16 @@
 
     <ImageView
         android:id="@+id/imageView18"
-        android:layout_width="414dp"
-        android:layout_height="282dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_202sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/downTxt"
-        app:layout_constraintVertical_bias="0.507"
-        app:srcCompat="@drawable/intro_backgroung_bottom" />
+        app:srcCompat="@drawable/intro_background_bottom" />
 
     <Spinner
         android:id="@+id/langSpinner"
-        android:layout_width="131dp"
+        android:layout_width="wrap_content"
         android:layout_height="29dp"
         app:layout_constraintBottom_toTopOf="@+id/goodSleepTxt"
         app:layout_constraintEnd_toStartOf="@+id/imageView13"

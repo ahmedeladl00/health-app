@@ -17,14 +17,14 @@
 
     <ImageView
         android:id="@+id/imageView18"
-        android:layout_width="414dp"
-        android:layout_height="282dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_201sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.507"
-        app:srcCompat="@drawable/intro_backgroung_bottom" />
+        app:srcCompat="@drawable/intro_background_bottom" />
 
 
 
@@ -50,13 +50,13 @@
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/homeBtb"
+        android:id="@+id/logInBtn"
         style="@style/MyFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:backgroundTint="#1DBBE6"
-        android:src="@drawable/ic_home"
+        android:src="@drawable/ic_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
@@ -142,7 +142,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/logInBtn"
+        android:id="@+id/signUpBtn"
         style="@style/MyFab"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_45sdp"
