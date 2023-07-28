@@ -7,10 +7,18 @@
     tools:context=".PhysicalActivity"
     android:background="@color/primary">
 
+    <include
+        android:id="@+id/top_bar_layout"
+        layout="@layout/top_bar_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Spinner
         android:id="@+id/spinnersactivities"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/_55sdp"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_below="@+id/top_bar_layout"
         android:layout_above="@+id/text_view_countdown"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
@@ -19,11 +27,6 @@
         android:layout_marginTop="@dimen/_55sdp"
         android:layout_marginEnd="@dimen/_60sdp"
         android:layout_marginBottom="@dimen/_75sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.079"
         android:background="@color/white"/>
 

@@ -44,6 +44,7 @@ public class PhysicalActivity extends AppCompatActivity implements SensorEventLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_physical);
+        new TopBarHelper(this);
 
 
         spinnersactivities=findViewById(R.id.spinnersactivities);

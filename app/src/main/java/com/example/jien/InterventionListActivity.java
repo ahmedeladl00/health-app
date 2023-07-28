@@ -19,6 +19,7 @@ public class InterventionListActivity extends AppCompatActivity implements Inter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intervention_list);
+        new TopBarHelper(this);
 
         RecyclerView recyclerView = findViewById(R.id.interActItems);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

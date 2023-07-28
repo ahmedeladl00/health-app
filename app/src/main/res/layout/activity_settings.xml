@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity">
+
+    <include
+        android:id="@+id/top_bar_layout"
+        layout="@layout/top_bar_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/settingsList1"
+        android:layout_width="match_parent"
+        android:layout_height="165dp"
+        android:layout_above="@+id/settingsList2"
+        android:layout_below="@+id/top_bar_layout"
+        android:layout_marginTop="68dp"
+        android:layout_marginBottom="26dp" />
+
+    <ListView
+        android:id="@+id/settingsList2"
+        android:layout_width="401dp"
+        android:layout_height="172dp"
+        android:layout_above="@+id/settingsList3"
+        android:layout_marginBottom="20dp">
+
+
+    </ListView>
+
+    <ListView
+        android:id="@+id/settingsList3"
+        android:layout_width="match_parent"
+        android:layout_height="158dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="38dp" />
+
+</RelativeLayout>
