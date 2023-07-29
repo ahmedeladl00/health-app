@@ -2,18 +2,18 @@
 <resources>
 
     <string name="app_name">Jien</string>
-    <string name="title_activity_dashboard">DashboardActivity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_dashboard">Dashboard-Aktivität</string>
+    <string name="navigation_drawer_open">Öffnen Sie die Navigationsleiste</string>
+    <string name="navigation_drawer_close">Navigationsleiste schließen</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="nav_header_desc">Navigationskopfzeile</string>
+    <string name="action_settings">Einstellungen</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="settings">Settings</string>
+    <string name="menu_gallery">Galerie</string>
+    <string name="menu_slideshow">Diashow</string>
+    <string name="settings">Einstellungen</string>
     <string name="long_text">
     <![CDATA[
         **Terms of Use**
@@ -34,41 +34,90 @@
     ]]>
 </string>
 
-    <string name="terms_and_conditions">Terms And Conditions</string>
-    <string name="next">Next</string>
+    <string name="terms_and_conditions">Geschäftsbedingungen</string>
+    <string name="next">Nächste</string>
     <string name="raw" />
-    <string name="good_morning_rodrigo">Have a Great Day</string>
-    <string name="in_the_last_24_hours_i_felt_satisfied_unsatisfied">In the last 24 hours I felt: Satisfied/Unsatisfied</string>
-    <string name="mdbf_questions">MDBF Questions :</string>
-    <string name="are_you_ready_to_start_your_well_being_test">Are you ready to start your well-being test ?</string>
-    <string name="social_context_questions">Social Context Questions :</string>
-    <string name="context_question">Context Question:</string>
-    <string name="rumination_question">Rumination Question:</string>
-    <string name="where_are_you_right_now">Where are you right now?</string>
-    <string name="event_appraisal_questions">Event Appraisal Questions :</string>
-    <string name="self_esteem_question">Self-Esteem Question:</string>
-    <string name="impulsivity_question">Impulsivity Question:</string>
-    <string name="social_situation_question">Social Situation Question:</string>
-    <string name="who_is_around_you_right_now">Who is around you right now?</string>
-    <string name="your_mood_is">Your Mood is:</string>
-    <string name="no">No</string>
-    <string name="yes">Yes</string>
-    <string name="physical_development">Physical development</string>
-    <string name="finish">Finish</string>
+    <string name="good_morning_rodrigo">Einen wunderbaren Tag</string>
+    <string name="in_the_last_24_hours_i_felt_satisfied_unsatisfied">In den letzten 24 Stunden fühlte ich mich: Zufrieden/Unzufrieden</string>
+    <string name="mdbf_questions">MDBF-Fragen:</string>
+    <string name="are_you_ready_to_start_your_well_being_test">Sind Sie bereit, mit Ihrem Wohlbefindenstest zu beginnen?</string>
+    <string name="social_context_questions">Fragen zum sozialen Kontext:</string>
+    <string name="context_question">Kontextfrage:</string>
+    <string name="rumination_question">Grübelfrage:</string>
+    <string name="where_are_you_right_now">Wo bist du gerade?</string>
+    <string name="event_appraisal_questions">Fragen zur Veranstaltungsbewertung:</string>
+    <string name="self_esteem_question">Frage zum Selbstwertgefühl:</string>
+    <string name="impulsivity_question">Impulsivitätsfrage:</string>
+    <string name="social_situation_question">Frage zur sozialen Situation:</string>
+    <string name="who_is_around_you_right_now">Wer ist gerade in deiner Nähe?</string>
+    <string name="your_mood_is">Deine Stimmung ist:</string>
+    <string name="no">Nein</string>
+    <string name="yes">Ja</string>
+    <string name="physical_development">Körperliche Entwicklung</string>
+    <string name="finish">Beenden</string>
     <string name="start">Start</string>
-    <string name="user">user</string>
-    <string name="write_a_note_about">Write a Note about :</string>
-    <string name="write_your_notes_here">Write Your Notes Here ...</string>
+    <string name="user">Benutzer/in</string>
+    <string name="write_a_note_about">Schreiben Sie eine Notiz über:</string>
+    <string name="write_your_notes_here">Schreiben Sie hier Ihre Notizen ...</string>
     <string name="log_in">Anmeldung</string>
     <string name="sign_up">New Anmeldung </string>
-    <string name="please_log_in">Please Log In</string>
+    <string name="please_log_in">Bitte loggen Sie sich ein</string>
     <string name="email">Email</string>
-    <string name="password">Password</string>
-    <string name="forget_password">Forget Password!</string>
-    <string name="welcome_to_jien_app">Welcome to Jien App</string>
-    <string name="please_sign_up">Please Sign Up</string>
+    <string name="password">Passwort</string>
+    <string name="forget_password">Passwort vergessen!</string>
+    <string name="welcome_to_jien_app">Willkommen bei der Jien-App</string>
+    <string name="please_sign_up">Bitte melden Sie sich an</string>
     <string name="name">Name</string>
 
+    <string name="inter_list">Inter List</string>
+    <string name="inter_record">Inter Aufzeichnen</string>
+    <string name="last_inter">Zuletzt Inter</string>
+    <string name="activity">Aktivität</string>
+    <string name="record_activity">Aktivität aufzeichnen</string>
+    <string name="my_statistics">Meine Statistiken</string>
+    <string name="morning_questions">Morgenfragen</string>
+    <string name="afternoon_questions"> Nachmittagfragen</string>
+    <string name="night_questions">Nachtfragen</string>
+    <string name="sorry_it_s_not_the_right_time_to_answer_this_questioner">Es tut uns leid, es ist nicht der richtige Zeitpunkt, diesen Fragebogen zu beantworten</string>
+    <string name="isnoon">ist Mittag</string>
+    <string name="event_appraisal">Event_Appraisal</string>
+    <string name="social_context">Sozialer Kontext</string>
+    <string name="context">Kontext</string>
+    <string name="rumination">Wiederkäuen</string>
+    <string name="self_esteem">Selbstachtung</string>
+    <string name="impulsivity">Impulsivität</string>
+    <string name="social_situation">Soziale Lage</string>
+    <string name="intervention_suggestion">Interventionsvorschlag</string>
+    <string name="as_your_mood_is_below_50_we_suggest_that_you_do_some_intervention_a_random_one_is_selected_to_you">Da deine Stimmung unter 50% liegt, schlagen wir vor, dass du eine Intervention durchführst.\nEine zufällige wird für dich ausgewählt.</string>
+    <string name="go">LOS</string>
+    <string name="videoname">VideoName</string>
+    <string name="random">zufällig</string>
+    <string name="cancel">ABBRECHEN</string>
+    <string name="step_count">Schrittanzahl</string>
+    <string name="timestamp">Zeitstempel</string>
+    <string name="step_data">Schrittdaten</string>
+    <string name="questionnaire_db">Fragebogen.db</string>
+    <string name="mdbf">MDBF</string>
+    <string name="in_the_last_24_hours_i_felt_restless_calm">In den letzten 24 Stunden fühlte ich mich: Unruhig/Ruhig</string>
+    <string name="in_the_last_24_hours_i_felt_well_unwell">In den letzten 24 Stunden fühlte ich mich: Gut/Ungut</string>
+    <string name="in_the_last_24_hours_i_felt_relaxed_tense">In den letzten 24 Stunden fühlte ich mich: Entspannt/Gespannt</string>
+    <string name="in_the_last_24_hours_i_felt_full_of_energy_without_energy">In den letzten 24 Stunden fühlte ich mich: Voll Energie/Ohne Energie</string>
+    <string name="in_the_last_24_hours_i_felt_tired_awake">In den letzten 24 Stunden fühlte ich mich: Müde/Wach</string>
+    <string name="since_the_last_questionnaire_did_you_have_one_or_more_negative_experiences">Hattest du seit dem letzten Fragebogen eine oder mehrere negative Erfahrungen?</string>
+    <string name="how_intense_was_the_most_negative_event">Wie intensiv war das negativste Ereignis?</string>
+    <string name="how_intense_was_the_most_positive_event">Wie intensiv war das positivste Ereignis?</string>
+    <string name="are_you_alone_at_the_moment">Bist du gerade allein?</string>
+    <string name="when_you_think_of_the_people_you_are_around_you_right_now_how_does_the_following_statement_apply_i_do_not_like_these_people">Wenn du an die Menschen denkst, die gerade um dich herum sind, wie trifft die folgende Aussage auf dich zu? "Ich mag diese Leute nicht"</string>
+    <string name="my_attention_is_often_focused_on_characteristics_of_myself_that_i_don_t_want_to_think_about">Meine Aufmerksamkeit konzentriert sich oft auf Eigenschaften von mir selbst, über die ich nicht nachdenken möchte.</string>
+    <string name="i_often_have_the_feeling_that_things_resurface_in_my_head_that_i_have_said_or_done_in_the_past">Ich habe oft das Gefühl, dass Dinge in meinem Kopf wieder auftauchen, die ich in der Vergangenheit gesagt oder getan habe.</string>
+    <string name="sometimes_i_have_a_hard_time_to_stop_thinking_about_myself">Manchmal fällt es mir schwer, aufzuhören, über mich selbst nachzudenken.</string>
+    <string name="for_a_long_time_after_i_got_into_a_fight_or_a_disagreement_is_settled_my_thoughts_about_these_events_resurface">Noch lange Zeit nachdem ich mich gestritten habe oder eine Meinungsverschiedenheit beigelegt ist, tauchen meine Gedanken über diese Ereignisse wieder auf.</string>
+    <string name="currently_i_m_satisfied_with_myself">Aktuell bin ich mit mir selbst zufrieden.</string>
+    <string name="currently_i_think_about_myself_that_i_am_a_failure">Aktuell denke ich über mich selbst, dass ich ein Versager bin.</string>
+    <string name="since_the_last_questionnaire_i_reacted_impulsive_meaning_i_acted_without_thinking_about_potential_consequences">Seit dem letzten Fragebogen habe ich impulsiv reagiert - das bedeutet, ich habe ohne an mögliche Konsequenzen zu denken gehandelt.</string>
+    <string name="since_the_last_questionnaire_i_have_been_angry_or_aggressive_to_another_person_which_i_regretted_later_on">Seit dem letzten Fragebogen war ich wütend oder aggressiv gegenüber einer anderen Person, was ich später bereut habe.</string>
+    <string name="invalid_credentials_please_try_again">Invalid credentials. Please try again.</string>
+    <string name="you_haven_t_signed_up_yet_please_sign_up_first">You haven\'t signed up yet. Please sign up first.</string>
 
 
 </resources>

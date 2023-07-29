@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-public class loading_screen extends AppCompatActivity {
+public class LoadingScreenActivity extends AppCompatActivity {
     Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,13 +14,10 @@ public class loading_screen extends AppCompatActivity {
         setContentView(R.layout.activity_loading_screen);
 
         handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(loading_screen.this, StartPageActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        },3000);
+        handler.postDelayed(() -> {
+            Intent intent = new Intent(LoadingScreenActivity.this, StartPageActivity.class);
+            startActivity(intent);
+            finish();
+        },2000);
     }
 }

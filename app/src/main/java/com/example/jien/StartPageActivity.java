@@ -19,7 +19,7 @@ import java.util.Locale;
 public class StartPageActivity extends AppCompatActivity {
     Spinner langSpinner;
 
-    public static final String[] languages = {"Select langusge", "Englich" , "German"};
+    public static final String[] languages = {"Select language", "English" , "German"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
