@@ -68,6 +68,55 @@
     <string name="please_sign_up">Please Sign Up</string>
     <string name="name">Name</string>
 
+    <string name="inter_list">Inter List</string>
+    <string name="inter_record">Inter Record</string>
+    <string name="last_inter">Last Inter</string>
+    <string name="activity">Activity</string>
+    <string name="record_activity">Record Activity</string>
+    <string name="my_statistics">My Statistics</string>
+    <string name="morning_questions">Morning Questions</string>
+    <string name="afternoon_questions">Afternoon Questions</string>
+    <string name="night_questions">Night Questions</string>
+    <string name="sorry_it_s_not_the_right_time_to_answer_this_questioner">Sorry, It\'s not the right time to answer this questioner</string>
+    <string name="isnoon">isNoon</string>
+    <string name="event_appraisal">Event_Appraisal</string>
+    <string name="social_context">Social_Context</string>
+    <string name="context">Context</string>
+    <string name="rumination">Rumination</string>
+    <string name="self_esteem">Self_Esteem</string>
+    <string name="impulsivity">Impulsivity</string>
+    <string name="social_situation">Social_Situation</string>
+    <string name="intervention_suggestion">Intervention Suggestion</string>
+    <string name="as_your_mood_is_below_50_we_suggest_that_you_do_some_intervention_a_random_one_is_selected_to_you">As your mood is below 50%, we suggest that you do some intervention.\nA random one is selected to you</string>
+    <string name="go">GO</string>
+    <string name="videoname">videoName</string>
+    <string name="random">random</string>
+    <string name="cancel">CANCEL</string>
+    <string name="step_count">step_count</string>
+    <string name="timestamp">timestamp</string>
+    <string name="step_data">step_data</string>
+    <string name="questionnaire_db">Questionnaire.db</string>
+    <string name="mdbf">MDBF</string>
+    <string name="in_the_last_24_hours_i_felt_restless_calm">In the last 24 hours I felt: Restless/Calm</string>
+    <string name="in_the_last_24_hours_i_felt_well_unwell">In the last 24 hours I felt: Well/Unwell</string>
+    <string name="in_the_last_24_hours_i_felt_relaxed_tense">In the last 24 hours I felt: Relaxed/Tense</string>
+    <string name="in_the_last_24_hours_i_felt_full_of_energy_without_energy">In the last 24 hours I felt: Full of Energy/Without Energy</string>
+    <string name="in_the_last_24_hours_i_felt_tired_awake">In the last 24 hours I felt: Tired/Awake</string>
+    <string name="since_the_last_questionnaire_did_you_have_one_or_more_negative_experiences">Since the last questionnaire, did you have one or more negative experiences?</string>
+    <string name="how_intense_was_the_most_negative_event">How intense was the most negative event?</string>
+    <string name="how_intense_was_the_most_positive_event">How intense was the most positive event?</string>
+    <string name="are_you_alone_at_the_moment">Are you alone at the moment?</string>
+    <string name="when_you_think_of_the_people_you_are_around_you_right_now_how_does_the_following_statement_apply_i_do_not_like_these_people">When you think of the people you are around you right now, how does the following statement apply? “I do not like these people”</string>
+    <string name="my_attention_is_often_focused_on_characteristics_of_myself_that_i_don_t_want_to_think_about">My attention is often focused on characteristics of myself that I don’t want to think about.</string>
+    <string name="i_often_have_the_feeling_that_things_resurface_in_my_head_that_i_have_said_or_done_in_the_past">I often have the feeling that things resurface in my head that I have said or done in the past.</string>
+    <string name="sometimes_i_have_a_hard_time_to_stop_thinking_about_myself">Sometimes I have a hard time to stop thinking about myself.</string>
+    <string name="for_a_long_time_after_i_got_into_a_fight_or_a_disagreement_is_settled_my_thoughts_about_these_events_resurface">For a long time after I got into a fight or a disagreement is settled, my thoughts about these events resurface.</string>
+    <string name="currently_i_m_satisfied_with_myself">Currently I’m satisfied with myself.</string>
+    <string name="currently_i_think_about_myself_that_i_am_a_failure">Currently I think about myself that I am a failure.</string>
+    <string name="since_the_last_questionnaire_i_reacted_impulsive_meaning_i_acted_without_thinking_about_potential_consequences">Since the last questionnaire, I reacted impulsive – meaning I acted without thinking about potential consequences.</string>
+    <string name="since_the_last_questionnaire_i_have_been_angry_or_aggressive_to_another_person_which_i_regretted_later_on">Since the last questionnaire, I have been angry or aggressive to another person, which I regretted later on.</string>
+    <string name="invalid_credentials_please_try_again">Invalid credentials. Please try again.</string>
+    <string name="you_haven_t_signed_up_yet_please_sign_up_first">You haven\'t signed up yet. Please sign up first.</string>
 
 
 </resources>

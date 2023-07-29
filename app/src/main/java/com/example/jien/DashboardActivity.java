@@ -6,7 +6,6 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -86,34 +85,34 @@ public class DashboardActivity extends AppCompatActivity {
 
         List<Card> cards = new ArrayList<>();
         if (currentHour >= 7 && currentHour < 12){
-            cards.add(new Card(true,R.drawable.morningq,"Morning Questions"));
+            cards.add(new Card(true,R.drawable.morningq,getString(R.string.morning_questions)));
         }else{
-            cards.add(new Card(false,R.drawable.morningq,"Morning Questions"));
+            cards.add(new Card(false,R.drawable.morningq,getString(R.string.morning_questions)));
         }
 
         if (currentHour >= 12 && currentHour <= 14){
-            cards.add(new Card(true,R.drawable.afternoonq,"Afternoon Questions"));
+            cards.add(new Card(true,R.drawable.afternoonq,getString(R.string.afternoon_questions)));
         }else{
-            cards.add(new Card(false,R.drawable.afternoonq,"Afternoon Questions"));
+            cards.add(new Card(false,R.drawable.afternoonq,getString(R.string.afternoon_questions)));
         }
 
 
         if (currentHour >= 17 && currentHour <= 19){
 
-            cards.add(new Card(true,R.drawable.nightq,"Night Questions"));
+            cards.add(new Card(true,R.drawable.nightq,getString(R.string.night_questions)));
         }else{
-            cards.add(new Card(false,R.drawable.nightq,"Night Questions"));
+            cards.add(new Card(false,R.drawable.nightq,getString(R.string.night_questions)));
         }
 
 
         CardsAdapter.OnCardClickListener onCardClickListener = card -> {
             if (!card.isAnswered()){
-                Toast.makeText(DashboardActivity.this, "Sorry, It's not the right time to answer this questioner", Toast.LENGTH_LONG).show();
+                Toast.makeText(DashboardActivity.this, getString(R.string.sorry_it_s_not_the_right_time_to_answer_this_questioner), Toast.LENGTH_LONG).show();
                 return;
             }
             Intent intent = new Intent(DashboardActivity.this, QuestionsActivity.class);
-            if (card.getTitle().equals("Night Questions")){
-                intent.putExtra("isNoon", true);
+            if (card.getTitle().equals(getString(R.string.night_questions))){
+                intent.putExtra(getString(R.string.isnoon), true);
             }
             startActivity(intent);
         };
