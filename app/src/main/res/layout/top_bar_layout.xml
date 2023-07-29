@@ -23,7 +23,10 @@
             app:civ_border_color="#1dbbe6"
             app:civ_border_width="@dimen/_2sdp"
             app:civ_shadow="false"
-            app:civ_shadow_radius="@dimen/_1sdp" />
+            app:civ_shadow_radius="@dimen/_1sdp"
+            android:id="@+id/user_pic"
+
+            />
 
         <TextView
             android:id="@+id/user_name"

@@ -12,6 +12,7 @@ public class TopBarHelper {
     private final ImageView burgerIcon;
     private final ImageView notificationIcon;
 
+
     public TopBarHelper(Activity activity) {
         CircularImageView profileImageView = activity.findViewById(R.id.profile_image);
         userNameTextView = activity.findViewById(R.id.user_name);
@@ -32,7 +33,7 @@ public class TopBarHelper {
 
         burgerIcon.setOnClickListener(v -> {
             // Handle burger icon click here
-            Intent intent = new Intent(activity, SettingsActivity.class);
+            Intent intent = new Intent(activity, ProfileActivity.class);
             activity.startActivity(intent);
         });
 

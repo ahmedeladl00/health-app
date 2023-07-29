@@ -115,4 +115,8 @@
     <string name="since_the_last_questionnaire_i_have_been_angry_or_aggressive_to_another_person_which_i_regretted_later_on">Since the last questionnaire, I have been angry or aggressive to another person, which I regretted later on.</string>
     <string name="invalid_credentials_please_try_again">Invalid credentials. Please try again.</string>
     <string name="you_haven_t_signed_up_yet_please_sign_up_first">You haven\'t signed up yet. Please sign up first.</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="notification">Notification</string>
+    <string name="logout">Logout</string>
+    <string name="change">Change</string>
 </resources>

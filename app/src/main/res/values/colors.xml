@@ -13,5 +13,7 @@
     <color name="beige">#91876c</color>
     <color name="gold">#cc9704</color>
     <color name ="water">#219BCC</color>
+    <color name ="grey">#f1f1f1</color>
+
 
 </resources>
