@@ -2,9 +2,9 @@ package com.example.jien;
 
 public class Card {
 
-    private boolean answered;
-    private int image;
-    private String title;
+    private final boolean answered;
+    private final int image;
+    private final String title;
 
     public Card(boolean answered, int image, String title) {
         this.answered = answered;
@@ -16,23 +16,12 @@ public class Card {
         return answered;
     }
 
-    public void setAnswered(boolean answered) {
-        this.answered = answered;
-    }
-
     public int getImage() {
         return image;
-    }
-
-    public void setImage(int image) {
-        this.image = image;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
 }

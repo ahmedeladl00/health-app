@@ -14,12 +14,12 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:theme="@style/ThemeOverlay.MaterialComponents.ActionBar"
         app:titleTextColor="@color/white"
-        android:layout_marginTop="@dimen/_8sdp">
+        android:layout_marginTop="@dimen/_6sdp">
 
         <com.mikhaellopez.circularimageview.CircularImageView
-            android:layout_width="@dimen/_50sdp"
+            android:layout_width="@dimen/_45sdp"
             android:layout_height="wrap_content"
-            android:src="@drawable/profile_pic"
+            android:src="@drawable/m1"
             app:civ_border_color="#1dbbe6"
             app:civ_border_width="@dimen/_2sdp"
             app:civ_shadow="false"
@@ -34,10 +34,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
             android:layout_marginTop="@dimen/_8sdp"
-            android:text="Ahmed Eladl"
+            android:text="Full Name"
             android:textColor="@color/water"
             android:textStyle="bold"
-            android:textSize="@dimen/_16ssp"
+            android:textSize="@dimen/_12ssp"
             app:layout_constraintStart_toEndOf="@+id/profile_image"
             app:layout_constraintTop_toTopOf="parent" />
 

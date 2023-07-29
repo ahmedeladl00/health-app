@@ -1,11 +1,10 @@
 package com.example.jien;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -35,12 +34,9 @@ public class DigitalSpanActivity extends AppCompatActivity {
             int resId = getResources().getIdentifier("digi" + i, "id", getPackageName());
             FloatingActionButton button = findViewById(resId);
             int finalI = i;
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (userPlaying) {
-                        handleUserInput(finalI);
-                    }
+            button.setOnClickListener(v -> {
+                if (userPlaying) {
+                    handleUserInput(finalI);
                 }
             });
         }
@@ -67,12 +63,7 @@ public class DigitalSpanActivity extends AppCompatActivity {
         }
 
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                showNumberSequence();
-            }
-        }, SHOW_DELAY);
+        handler.postDelayed(this::showNumberSequence, SHOW_DELAY);
     }
 
     private void showNumberSequence() {
@@ -86,12 +77,7 @@ public class DigitalSpanActivity extends AppCompatActivity {
         textViewDigits.setText(sb.toString());
 
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                waitForUserInput();
-            }
-        }, USER_INPUT_DELAY);
+        handler.postDelayed(this::waitForUserInput, USER_INPUT_DELAY);
     }
 
     private void waitForUserInput() {
@@ -114,12 +100,7 @@ public class DigitalSpanActivity extends AppCompatActivity {
 
                     // Generate the next number sequence after a delay
                     Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            generateNextNumber();
-                        }
-                    }, SHOW_DELAY);
+                    handler.postDelayed(this::generateNextNumber, SHOW_DELAY);
                 }
             }
         } else {

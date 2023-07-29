@@ -84,7 +84,7 @@
             android:name=".StartPageActivity"
             android:exported="false" />
         <activity
-            android:name=".loading_screen"
+            android:name=".LoadingScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -18,13 +18,13 @@ import java.util.List;
 public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.CardsViewHolder> {
 
     private static List<Card> cards;
-    private Context context;
+    private final Context context;
     private static OnCardClickListener onCardClickListener;
 
     public CardsAdapter(List<Card> cards, Context context, OnCardClickListener onCardClickListener){
-        this.cards = cards;
+        CardsAdapter.cards = cards;
         this.context = context;
-        this.onCardClickListener = onCardClickListener;
+        CardsAdapter.onCardClickListener = onCardClickListener;
     }
 
 
@@ -33,8 +33,7 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.CardsViewHol
     public CardsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.item,parent,false);
-        CardsViewHolder viewHolder = new CardsViewHolder(view);
-        return viewHolder;
+        return new CardsViewHolder(view);
     }
 
     @Override
@@ -58,22 +57,19 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.CardsViewHol
     }
 
     public static class CardsViewHolder extends RecyclerView.ViewHolder{
-        private CardView cardOutline;
-        private ImageView cardImage;
-        private TextView cardName;
+        private final CardView cardOutline;
+        private final ImageView cardImage;
+        private final TextView cardName;
         public CardsViewHolder(@NonNull View itemView){
             super(itemView);
             cardOutline = itemView.findViewById(R.id.cardOutline);
             cardImage = itemView.findViewById(R.id.cardImage);
             cardName = itemView.findViewById(R.id.cardName);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION) {
-                        Card card = cards.get(position);
-                        onCardClickListener.onCardClick(card); // Trigger event listener
-                    }
+            itemView.setOnClickListener(view -> {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    Card card = cards.get(position);
+                    onCardClickListener.onCardClick(card);
                 }
             });
         }
