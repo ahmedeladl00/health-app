@@ -15,7 +15,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_TABLE_MDBF = "CREATE TABLE MDBF ("
             + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + "question_text TEXT,"
+            + "negative_question TEXT,"
+            + "positive_question TEXT,"
             + "response INTEGER DEFAULT 0)";
     public static final String CREATE_TABLE_EVENT_APPRAISAL = "CREATE TABLE Event_Appraisal ("
             + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -93,6 +94,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void insertMDBFQuestion(String negative, String positive){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("negative_question", negative);
+        values.put("positive_question", positive);
+        db.insert("MDBF",null, values);
+        db.close();
+    }
+
     public List<String> getAllQuestions(String TableName) {
         List<String> questions = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -104,6 +114,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return questions;
+    }
+
+    public List<String> getMDBFQuestions() {
+        List<String> questionsList = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {"negative_question", "positive_question"};
+
+        Cursor cursor = db.query("MDBF", columns, null, null, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            int negative = cursor.getColumnIndex("negative_question");
+            int positive = cursor.getColumnIndex("positive_question");
+            do {
+                String negativeQuestion = cursor.getString(negative);
+                String positiveQuestion = cursor.getString(positive);
+
+                questionsList.add(negativeQuestion);
+                questionsList.add(positiveQuestion);
+
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return questionsList;
     }
 
     public void saveResponse(String TableName,int questionId, int response) {

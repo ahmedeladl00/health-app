@@ -334,12 +334,12 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
 
 
     private void addInitialQuestionsToDatabase() {
-        dbHelper.insertQuestion("MDBF","In the last 24 hours I felt: Satisfied/Unsatisfied");
-        dbHelper.insertQuestion("MDBF","In the last 24 hours I felt: Restless/Calm");
-        dbHelper.insertQuestion("MDBF","In the last 24 hours I felt: Well/Unwell");
-        dbHelper.insertQuestion("MDBF","In the last 24 hours I felt: Relaxed/Tense");
-        dbHelper.insertQuestion("MDBF","In the last 24 hours I felt: Full of Energy/Without Energy");
-        dbHelper.insertQuestion("MDBF","In the last 24 hours I felt: Tired/Awake");
+        dbHelper.insertMDBFQuestion("Unsatisfied","Satisfied");
+        dbHelper.insertMDBFQuestion("Calm","Restless");
+        dbHelper.insertMDBFQuestion("Unwell","Well");
+        dbHelper.insertMDBFQuestion("Tense","Relaxed");
+        dbHelper.insertMDBFQuestion("Without Energy","Full of Energy");
+        dbHelper.insertMDBFQuestion("Awake","Tired");
 
         dbHelper.insertQuestion("Event_Appraisal","Since the last questionnaire, did you have one or more negative experiences?");
         dbHelper.insertQuestion("Event_Appraisal","How intense was the most negative event?");
@@ -365,7 +365,7 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
     }
 
     private void getQuestionsFromDatabase() {
-        MDBF = dbHelper.getAllQuestions("MDBF");
+        MDBF = dbHelper.getMDBFQuestions();
         allQuestions.put("MDBF",MDBF);
         Event_Appraisal = dbHelper.getAllQuestions("Event_Appraisal");
         allQuestions.put("Event_Appraisal",Event_Appraisal);
