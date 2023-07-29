@@ -245,8 +245,8 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
                         boolean showExerciseIntervention = random.nextBoolean();
                         if (showExerciseIntervention) {
                             new MaterialAlertDialogBuilder(QuestionsActivity.this)
-                                .setTitle("Intervention Suggestion")
-                                .setMessage("As your mood is below 50%, we suggest that you do some intervention.\nA random one is selected to you")
+                                .setTitle((R.string.intervention_suggestion))
+                                .setMessage((R.string.as_your_mood_is_below_50_we_suggest_that_you_do_some_intervention_a_random_one_is_selected_to_you))
                                 .setPositiveButton("GO", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
@@ -255,7 +255,7 @@ public class QuestionsActivity extends AppCompatActivity implements SensorEventL
                                         startActivity(intent);
                                     }
                                 })
-                                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                                .setNegativeButton((R.string.cancel), new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
 

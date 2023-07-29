@@ -43,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             } else {
                 if (TextUtils.isEmpty(user.getEmail()) || TextUtils.isEmpty(user.getPassword())) {
-                    Toast.makeText(MainActivity.this, "You haven't signed up yet. Please sign up first.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, (R.string.you_haven_t_signed_up_yet_please_sign_up_first), Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(MainActivity.this, "Invalid credentials. Please try again.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, (R.string.invalid_credentials_please_try_again), Toast.LENGTH_SHORT).show();
                 }
             }
 

@@ -1,9 +1,10 @@
 package com.example.jien;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 public class TopBarHelper {
@@ -21,18 +22,24 @@ public class TopBarHelper {
         user.loadUserData(activity);
         String userName = user.getName();
 
-        setUpTopBar(userName);
+        setUpTopBar(activity, userName);
     }
 
-    private void setUpTopBar(String userName) {
+    private void setUpTopBar(final Activity activity, String userName) {
 
         userNameTextView.setText(userName);
 
-        burgerIcon.setOnClickListener(v -> {
 
+        burgerIcon.setOnClickListener(v -> {
+            // Handle burger icon click here
+            Intent intent = new Intent(activity, SettingsActivity.class);
+            activity.startActivity(intent);
         });
 
         notificationIcon.setOnClickListener(v -> {
+            // Handle burger icon click here
+            Intent intent = new Intent(activity, NotificationActivity.class);
+            activity.startActivity(intent);
 
         });
     }
