@@ -7,13 +7,16 @@ the user's mood and mental health.
 ## Requirment
 - Account Creation and Login: Users need to create an account using their username, email, and password 
 to log in to the app on their device.
-<div>
+
 ![Login](/readmepics/log)
+
 ![Start Page](/readmepics/start)
-</div>
+
 - The app requires installation only on Android System.
 -  minSdk 28
-- you can get more information about the App from [jien](https://jien.live/)
+- you can get more information about the App from : 
+[Jien](https://jien.live/)
+
 ## Features
 - Daily Cards: Three cards are presented for morning, afternoon, and evening periods. 
 Users can respond to the questions within each card when they receive the designated notification for that period.
@@ -27,4 +30,5 @@ The user can set a goal for the amount of water they aim to drink each day.
 The app will send reminders at specific times to encourage the user to drink water, and they can record the amount they consume using a built-in water counter.
 The app will also calculate the daily average of water intake for the user.
 - Multiple Languages Supported.
+
 ![Dashboard](/readmepics/dashboard)
