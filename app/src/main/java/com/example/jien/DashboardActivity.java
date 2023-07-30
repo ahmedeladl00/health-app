@@ -99,36 +99,27 @@ public class DashboardActivity extends AppCompatActivity {
 
 
         if (currentHour >= 17 && currentHour <= 19){
-
             cards.add(new Card(true,R.drawable.nightq,getString(R.string.night_questions)));
         }else{
             cards.add(new Card(false,R.drawable.nightq,getString(R.string.night_questions)));
         }
-        //TODO: Handle to connect Notepage to the Dashboard
 
-      /*  if  (true){
-
-            cards.add(new Card(true,R.drawable.notelogo,"Take notes"));
-        }else{
-            cards.add(new Card(false,R.drawable.notelogo,"Take notes"));
-        }
-        */
+        cards.add(new Card(true,R.drawable.notelogo,"Take Notes"));
 
         CardsAdapter.OnCardClickListener onCardClickListener = card -> {
+            Intent intent;
+            if (card.getTitle().equals("Take Notes")){
+                intent = new Intent(DashboardActivity.this, WriteNotizenActivity.class);
+                startActivity(intent);
+                return;
+            }
             if (!card.isAnswered()){
                 Toast.makeText(DashboardActivity.this, getString(R.string.sorry_it_s_not_the_right_time_to_answer_this_questioner), Toast.LENGTH_LONG).show();
                 return;
             }
-            Intent intent = new Intent(DashboardActivity.this, QuestionsActivity.class);
 
-            //TODO: Handle to connect Notepage to the Dashboard
+            intent = new Intent(DashboardActivity.this, QuestionActivity.class);
 
-          /*  if (card.getTitle().equals("Take notes")){
-
-                Intent newIntent = new Intent(DashboardActivity.this, WriteNotizenActivity.class);
-                startActivity(newIntent);
-            }
-            */
             if (card.getTitle().equals(getString(R.string.night_questions))){
                 intent.putExtra(getString(R.string.isnoon), true);
             }

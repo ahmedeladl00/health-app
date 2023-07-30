@@ -27,6 +27,12 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
+            android:name=".WriteNotizenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QuestionActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity
@@ -63,9 +69,6 @@
             android:name=".Terms_of_use"
             android:exported="false" />
         <activity
-            android:name=".QuestionsActivity"
-            android:exported="false" />
-        <activity
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
@@ -83,9 +86,6 @@
         <activity
             android:name=".StartPageActivity"
             android:exported="false" />
-        <activity android:name=".WriteNotizenActivity"
-            android:exported="false" />
-
         <activity
             android:name=".LoadingScreenActivity"
             android:exported="true">
