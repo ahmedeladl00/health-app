@@ -10,7 +10,7 @@ import androidx.core.app.ActivityCompat;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-public class Terms_of_use extends AppCompatActivity {
+public class TermsOfUseActivity extends AppCompatActivity {
 
     private CheckBox checkBox;
     private Button button;
@@ -22,7 +22,7 @@ public class Terms_of_use extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_terms_of_use_page);
+        setContentView(R.layout.activity_terms_of_use);
 
         checkBox = findViewById(R.id.termsCheckbox);
         button = findViewById(R.id.nextbutton);
@@ -31,7 +31,7 @@ public class Terms_of_use extends AppCompatActivity {
 
         button.setEnabled(false);
         button.setOnClickListener(v -> {
-            Intent intent = new Intent(Terms_of_use.this, DashboardActivity.class);
+            Intent intent = new Intent(TermsOfUseActivity.this, DashboardActivity.class);
             startActivity(intent);
         });
 
@@ -44,7 +44,7 @@ public class Terms_of_use extends AppCompatActivity {
                 materialAlertDialogBuilder.setPositiveButton("Accept", (dialogInterface, i) -> {
                     button.setEnabled(true);
                     dialogInterface.dismiss();
-                    ActivityCompat.requestPermissions(Terms_of_use.this,
+                    ActivityCompat.requestPermissions(TermsOfUseActivity.this,
                             new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},
                             REQUEST_CODE_PERMISSION);
                 });
