@@ -316,6 +316,7 @@ public class QuestionActivity extends AppCompatActivity implements SensorEventLi
                 currentArrayIndex += 2;
             }
             yesNoCounter++;
+            nextButton.performClick();
         });
 
         noButton.setOnClickListener(v -> {
@@ -327,6 +328,7 @@ public class QuestionActivity extends AppCompatActivity implements SensorEventLi
                 saveResponseToDatabase("Social_Context",1, 0);
             }
             yesNoCounter++;
+            nextButton.performClick();
         });
 
         socialSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
