@@ -154,7 +154,7 @@
     <TextView
         android:id="@+id/textViewDigits"
         android:layout_width="220dp"
-        android:layout_height="46dp"
+        android:layout_height="wrap_content"
         android:background="@color/water"
         android:text="TextView"
         android:textColor="@color/grey"
