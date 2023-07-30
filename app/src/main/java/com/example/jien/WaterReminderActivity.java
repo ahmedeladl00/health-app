@@ -57,8 +57,8 @@ public class WaterReminderActivity extends AppCompatActivity {
                 scheduleNotification(hour, minute);
             };
             TimePickerDialog timePickerDialog = new TimePickerDialog(WaterReminderActivity.this,R.style.TimePickerDialogTheme, onTimeSetListener,hour,minute,true);
-
             timePickerDialog.setTitle("Select Reminder");
+            timePickerDialog.getWindow().setBackgroundDrawableResource(android.R.color.darker_gray);
             timePickerDialog.show();
 
         });

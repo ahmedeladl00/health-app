@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PhysicalActivity"
-    android:background="@color/primary">
+    android:background="@color/white">
 
     <include
         android:id="@+id/top_bar_layout"
@@ -14,21 +14,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="match_parent"
+        android:layout_height="282dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-13dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/intro_background_bottom" />
+
     <Spinner
         android:id="@+id/spinnersactivities"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_25sdp"
-        android:layout_below="@+id/top_bar_layout"
         android:layout_above="@+id/text_view_countdown"
+        android:layout_below="@+id/top_bar_layout"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
         android:layout_marginStart="@dimen/_60sdp"
         android:layout_marginTop="@dimen/_55sdp"
         android:layout_marginEnd="@dimen/_60sdp"
         android:layout_marginBottom="@dimen/_75sdp"
-        app:layout_constraintVertical_bias="0.079"
-        android:background="@color/white"/>
+        app:layout_constraintVertical_bias="0.079" />
+
 
     <EditText
         android:id="@+id/edit_text_timer_duration"
@@ -37,15 +51,14 @@
         android:layout_above="@+id/text_view_countdown"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="@dimen/_90sdp"
-        android:layout_marginEnd="@dimen/_90sdp"
-        android:layout_marginBottom="@dimen/_31sdp"
-        android:hint="Timer Duration (in minutes)"
+        android:layout_marginStart="114dp"
+        android:layout_marginEnd="118dp"
+        android:layout_marginBottom="8dp"
+        android:hint="@string/timer_duration_in_minutes"
         android:inputType="number"
         android:textColorHint="@color/beige"
 
         />
-
 
     <TextView
         android:id="@+id/text_view_countdown"
@@ -54,11 +67,11 @@
         android:layout_above="@+id/button_start_pause"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="@dimen/_100sdp"
-        android:layout_marginEnd="@dimen/_100sdp"
-        android:layout_marginBottom="@dimen/_50sdp"
+        android:layout_marginStart="130dp"
+        android:layout_marginEnd="129dp"
+        android:layout_marginBottom="20dp"
         android:text="00:00"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="@dimen/_30sdp" />
 
     <Button
@@ -84,10 +97,10 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="@dimen/_100sdp"
-        android:layout_marginEnd="@dimen/_100sdp"
-        android:layout_marginBottom="@dimen/_157sdp"
-        android:text="Reset"
+        android:layout_marginStart="129dp"
+        android:layout_marginEnd="130dp"
+        android:layout_marginBottom="225dp"
+        android:text="@string/reset"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

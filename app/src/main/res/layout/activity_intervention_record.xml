@@ -15,14 +15,19 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="@dimen/_481sdp"
-        android:layout_height="@dimen/_550sdp"
+        android:layout_width="285dp"
+        android:layout_height="141dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_bar_layout"
+        app:srcCompat="@drawable/blue_top"/>
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="match_parent"
+        android:layout_height="282dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@mipmap/signupbackground" />
+        app:srcCompat="@drawable/intro_background_bottom"/>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -43,6 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:srcCompat="@mipmap/yoga" />
+
     </LinearLayout>
 
     <Spinner
@@ -54,7 +60,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"/>
 
     <TextView
         android:id="@+id/timerTextView"
@@ -75,7 +81,7 @@
         android:layout_margin="@dimen/_15sdp"
         android:backgroundTint="#1dbbe6"
         android:enabled="false"
-        android:text="Choose Intervention"
+        android:text="@string/choose_intervention"
         android:textColor="#fff"
         android:textSize="@dimen/_20ssp"
         android:textStyle="bold"
