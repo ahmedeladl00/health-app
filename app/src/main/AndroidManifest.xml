@@ -83,6 +83,9 @@
         <activity
             android:name=".StartPageActivity"
             android:exported="false" />
+        <activity android:name=".WriteNotizenActivity"
+            android:exported="false" />
+
         <activity
             android:name=".LoadingScreenActivity"
             android:exported="true">

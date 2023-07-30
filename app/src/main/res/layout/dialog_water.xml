@@ -28,7 +28,7 @@
             android:id="@+id/inputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter your goal"
+            android:hint="@string/enter_your_goal"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_8sdp"
-            android:text="Cancel"
+            android:text="@string/cancel"
             android:textColor="@android:color/white"
             android:backgroundTint="@color/danger" />
 
@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_8sdp"
-            android:text="Set Goal"
+            android:text="@string/set_goal"
             android:textColor="@android:color/white"
             android:backgroundTint="@color/success" />
 

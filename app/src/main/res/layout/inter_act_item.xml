@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_16sdp"
-            android:text="TextView"
+            android:text="@string/textview"
             android:textSize="@dimen/_32ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.06"
@@ -30,7 +30,7 @@
             android:id="@+id/txtDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="@string/textview"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.311"
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_16sdp"
-            android:text="TextView"
+            android:text="@string/textview"
             app:layout_constraintStart_toStartOf="@+id/interActName"
             app:layout_constraintTop_toBottomOf="@+id/interActName" />
 
@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_16sdp"
-            android:text="TextView"
+            android:text="@string/textview"
             app:layout_constraintStart_toEndOf="@+id/txtTimeFrom"
             app:layout_constraintTop_toTopOf="@+id/txtTimeFrom" />
 

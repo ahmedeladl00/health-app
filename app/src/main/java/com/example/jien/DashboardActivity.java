@@ -15,6 +15,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.function.ToDoubleBiFunction;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -103,7 +104,15 @@ public class DashboardActivity extends AppCompatActivity {
         }else{
             cards.add(new Card(false,R.drawable.nightq,getString(R.string.night_questions)));
         }
+        //TODO: Handle to connect Notepage to the Dashboard
 
+      /*  if  (true){
+
+            cards.add(new Card(true,R.drawable.notelogo,"Take notes"));
+        }else{
+            cards.add(new Card(false,R.drawable.notelogo,"Take notes"));
+        }
+        */
 
         CardsAdapter.OnCardClickListener onCardClickListener = card -> {
             if (!card.isAnswered()){
@@ -111,6 +120,15 @@ public class DashboardActivity extends AppCompatActivity {
                 return;
             }
             Intent intent = new Intent(DashboardActivity.this, QuestionsActivity.class);
+
+            //TODO: Handle to connect Notepage to the Dashboard
+
+          /*  if (card.getTitle().equals("Take notes")){
+
+                Intent newIntent = new Intent(DashboardActivity.this, WriteNotizenActivity.class);
+                startActivity(newIntent);
+            }
+            */
             if (card.getTitle().equals(getString(R.string.night_questions))){
                 intent.putExtra(getString(R.string.isnoon), true);
             }

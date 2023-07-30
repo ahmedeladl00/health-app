@@ -142,11 +142,11 @@
 
                 <ImageView
                     android:id="@+id/logoutBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="68dp"
+                    android:layout_height="63dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/payment" />
+                    app:srcCompat="@drawable/shutdown" />
 
                 <TextView
                     android:id="@+id/textView82"
@@ -257,7 +257,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Tel.Number"
+                android:text="@string/tel_number"
                 android:textColor="@color/water"
 
                 android:textSize="18sp" />
@@ -297,7 +297,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="University "
+                android:text="@string/university"
                 android:textColor="@color/water"
 
                 android:textSize="18sp" />
@@ -325,7 +325,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/editBtn"
+        android:id="@+id/dashImageBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"

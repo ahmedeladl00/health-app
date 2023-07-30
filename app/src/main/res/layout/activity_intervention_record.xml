@@ -75,7 +75,7 @@
         android:layout_margin="@dimen/_15sdp"
         android:backgroundTint="#1dbbe6"
         android:enabled="false"
-        android:text="Choose Intervention"
+        android:text="@string/choose_intervention"
         android:textColor="#fff"
         android:textSize="@dimen/_20ssp"
         android:textStyle="bold"

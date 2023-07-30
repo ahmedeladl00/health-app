@@ -40,7 +40,7 @@
         android:layout_marginStart="@dimen/_90sdp"
         android:layout_marginEnd="@dimen/_90sdp"
         android:layout_marginBottom="@dimen/_31sdp"
-        android:hint="Timer Duration (in minutes)"
+        android:hint="@string/timer_duration_in_minutes"
         android:inputType="number"
         android:textColorHint="@color/beige"
 
@@ -87,7 +87,7 @@
         android:layout_marginStart="@dimen/_100sdp"
         android:layout_marginEnd="@dimen/_100sdp"
         android:layout_marginBottom="@dimen/_157sdp"
-        android:text="Reset"
+        android:text="@string/reset"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

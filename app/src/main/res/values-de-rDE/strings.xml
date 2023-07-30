@@ -16,21 +16,23 @@
     <string name="settings">Einstellungen</string>
     <string name="long_text">
     <![CDATA[
-        **Terms of Use**
+        **Nutzungsbedingungen**
 
-        Thank you for using our application. Please read and understand the following terms before using the application:
+     Vielen Dank für die Nutzung unserer Anwendung. Bitte lesen und verstehen Sie die folgenden Bedingungen, bevor Sie die Anwendung verwenden:
 
-        1. Health Usage: This application is provided for general informational purposes only and is not intended to diagnose or treat any medical condition. You should consult a qualified healthcare professional before making any decisions or taking any actions related to your health.
+    1. Gesundheitsnutzung: Diese Anwendung dient nur allgemeinen Informationszwecken und ist nicht dazu bestimmt, eine medizinische Diagnose zu stellen oder eine medizinische Behandlung durchzuführen. Sie sollten vor jeglichen Entscheidungen oder Maßnahmen im Zusammenhang mit Ihrer Gesundheit einen qualifizierten Gesundheitsfachmann konsultieren.
 
-        2. Personal Data: Some personal information may be requested from the user for registration or customization purposes. We respect the privacy of our users and are committed to protecting and securing their personal data in accordance with our privacy policy.
+    2. Persönliche Daten: Von den Benutzern können einige persönliche Informationen für Registrierungs- oder Anpassungszwecke angefordert werden. Wir respektieren die Privatsphäre unserer Benutzer und verpflichten uns, ihre persönlichen Daten gemäß unserer Datenschutzrichtlinie zu schützen und zu sichern.
 
-        3. Proper Usage: You must comply with applicable laws and regulations while using the application. The application must not be used for any illegal or unethical purposes.
+    3. Richtige Nutzung: Sie müssen die geltenden Gesetze und Vorschriften einhalten, während Sie die Anwendung nutzen. Die Anwendung darf nicht für illegale oder unethische Zwecke verwendet werden.
 
-        4. Liability: We are not liable for any direct or indirect damages resulting from the use of this application or reliance on the information provided in it.
+    4. Haftung: Wir übernehmen keine Haftung für direkte oder indirekte Schäden, die durch die Nutzung dieser Anwendung oder das Vertrauen auf die darin bereitgestellten Informationen entstehen.
 
-        Please read and accept the terms of use before using the application.
+    Bitte lesen Sie die Nutzungsbedingungen, bevor Sie die Anwendung verwenden.
 
-        Please customize this text according to the needs and requirements of your specific application. After adding this text, you can display it to users when they start using the application and request their agreement to the terms before proceeding.
+    Bitte passen Sie diesen Text entsprechend den Anforderungen Ihrer spezifischen Anwendung an. Nachdem Sie diesen Text hinzugefügt haben, können Sie ihn den Benutzern anzeigen, wenn sie die Anwendung starten, und um ihre Zustimmung zu den Bedingungen bitten, bevor sie fortfahren.
+
+
     ]]>
 </string>
 
@@ -116,8 +118,22 @@
     <string name="currently_i_think_about_myself_that_i_am_a_failure">Aktuell denke ich über mich selbst, dass ich ein Versager bin.</string>
     <string name="since_the_last_questionnaire_i_reacted_impulsive_meaning_i_acted_without_thinking_about_potential_consequences">Seit dem letzten Fragebogen habe ich impulsiv reagiert - das bedeutet, ich habe ohne an mögliche Konsequenzen zu denken gehandelt.</string>
     <string name="since_the_last_questionnaire_i_have_been_angry_or_aggressive_to_another_person_which_i_regretted_later_on">Seit dem letzten Fragebogen war ich wütend oder aggressiv gegenüber einer anderen Person, was ich später bereut habe.</string>
-    <string name="invalid_credentials_please_try_again">Invalid credentials. Please try again.</string>
-    <string name="you_haven_t_signed_up_yet_please_sign_up_first">You haven\'t signed up yet. Please sign up first.</string>
+    <string name="invalid_credentials_please_try_again">Ungültige Anmeldeinformationen. Bitte versuchen Sie es erneut.</string>
+    <string name="you_haven_t_signed_up_yet_please_sign_up_first">Sie haben sich noch nicht angemeldet. Bitte melden Sie sich zuerst an.</string>
+    <string name="select_time">ZEIT AUSWÄHLEN</string>
+    <string name="noon_notifiaction">Mittagsbenachrichtigung</string>
+    <string name="night_notification">Nachtbenachrichtigung</string>
+    <string name="textview">Textansicht</string>
+    <string name="enter_your_goal">Geben Sie Ihr Ziel ein</string>
+    <string name="set_goal">Ziel festlegen</string>
+    <string name="list_of_physical_activities">Liste der körperlichen Aktivitäten</string>
+    <string name="list_of_interventions">Liste der Interventionen</string>
+    <string name="choose_intervention">Intervention auswählen</string>
+    <string name="timer_duration_in_minutes">Timerdauer (in Minuten)</string>
+    <string name="reset">Zurücksetzen</string>
+    <string name="tel_number">Telefonnummer</string>
+    <string name="university">Universität</string>
+
 
 
 </resources>
