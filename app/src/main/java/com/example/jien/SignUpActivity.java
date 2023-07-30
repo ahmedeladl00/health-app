@@ -40,7 +40,7 @@ public class SignUpActivity extends AppCompatActivity {
 
             user.saveUserData(SignUpActivity.this);
 
-            Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+            Intent intent = new Intent(SignUpActivity.this, Terms_of_use.class);
             startActivity(intent);
         });
 

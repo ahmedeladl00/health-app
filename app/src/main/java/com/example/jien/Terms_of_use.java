@@ -1,6 +1,7 @@
 package com.example.jien;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,6 +19,9 @@ public class Terms_of_use extends AppCompatActivity {
     private Button button;
     private MaterialAlertDialogBuilder materialAlertDialogBuilder;
 
+    private static final int REQUEST_CODE_PERMISSION = 1;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +31,7 @@ public class Terms_of_use extends AppCompatActivity {
 
         //termsCheckbox//check_id
         //nextbutton//button_id
+
         checkBox = findViewById(R.id.termsCheckbox);
         button = findViewById(R.id.nextbutton);
 
@@ -36,7 +41,7 @@ public class Terms_of_use extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Terms_of_use.this, DashboardActivity.class);
+                Intent intent = new Intent(Terms_of_use.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -48,12 +53,16 @@ public class Terms_of_use extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b){
                     materialAlertDialogBuilder.setTitle("Terms And Conditions");
-                    materialAlertDialogBuilder.setMessage("Descpions");
+                    materialAlertDialogBuilder.setMessage("Description");
                     materialAlertDialogBuilder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             button.setEnabled(true);
                             dialogInterface.dismiss();
+                            ActivityCompat.requestPermissions(Terms_of_use.this,
+                                    new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                                    REQUEST_CODE_PERMISSION);
+
                         }
                     });
                     materialAlertDialogBuilder.setNegativeButton("You must agree; otherwise, you are not welcome in our JIEN community.XD", new DialogInterface.OnClickListener() {
@@ -61,6 +70,7 @@ public class Terms_of_use extends AppCompatActivity {
                         public void onClick(DialogInterface dialogInterface, int i) {
                             dialogInterface.dismiss();
                             checkBox.setChecked(false);
+
                         }
                     });
                     materialAlertDialogBuilder.show();
