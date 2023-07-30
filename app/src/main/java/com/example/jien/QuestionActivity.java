@@ -68,6 +68,7 @@ public class QuestionActivity extends AppCompatActivity implements SensorEventLi
 
     private int currentArrayIndex = 0;
     private int currentQuestionIndex = 0;
+    private int backQuestion = 0;
     private int yesNoCounter = 0;
     private int response;
     private String selectedItem = "";
@@ -112,6 +113,7 @@ public class QuestionActivity extends AppCompatActivity implements SensorEventLi
 
         startButton = findViewById(R.id.startButton);
         FloatingActionButton nextButton = findViewById(R.id.nextButton);
+        FloatingActionButton backButton = findViewById(R.id.backButton);
         FloatingActionButton yesButton = findViewById(R.id.yesButton);
         FloatingActionButton noButton = findViewById(R.id.noButton);
         finishButton = findViewById(R.id.finishButton);
@@ -160,6 +162,7 @@ public class QuestionActivity extends AppCompatActivity implements SensorEventLi
                 currentQuestionIndex++;
 
                 if (currentQuestionIndex > MDBF.size()-1){
+                    backQuestion = currentQuestionIndex;
                     currentQuestionIndex = 0;
                     currentArrayIndex++;
                 }
@@ -186,6 +189,7 @@ public class QuestionActivity extends AppCompatActivity implements SensorEventLi
                 currentQuestionIndex++;
 
                 if (currentQuestionIndex > Event_Appraisal.size()-1){
+                    backQuestion = currentQuestionIndex;
                     currentQuestionIndex = 0;
                     currentArrayIndex++;
                 }
@@ -208,6 +212,7 @@ public class QuestionActivity extends AppCompatActivity implements SensorEventLi
 
                 currentQuestionIndex++;
                 if (currentQuestionIndex > Social_Context.size()-1){
+                    backQuestion = currentQuestionIndex;
                     currentQuestionIndex = 0;
                     currentArrayIndex++;
                 }
@@ -250,6 +255,7 @@ public class QuestionActivity extends AppCompatActivity implements SensorEventLi
                 saveResponseToDatabase("Rumination",currentQuestionIndex,response);
                 currentQuestionIndex++;
                 if (currentQuestionIndex > Rumination.size()-1){
+                    backQuestion = currentQuestionIndex;
                     currentQuestionIndex = 0;
                     currentArrayIndex++;
                 }
@@ -264,6 +270,7 @@ public class QuestionActivity extends AppCompatActivity implements SensorEventLi
                 mainSlider1.setVisibility(View.VISIBLE);
                 currentQuestionIndex++;
                 if (currentQuestionIndex > Self_Esteem.size()-1){
+                    backQuestion = currentQuestionIndex;
                     currentQuestionIndex = 0;
                     currentArrayIndex++;
                 }
@@ -274,6 +281,7 @@ public class QuestionActivity extends AppCompatActivity implements SensorEventLi
                 mainSlider2.setVisibility(View.VISIBLE);
                 currentQuestionIndex++;
                 if (currentQuestionIndex > Impulsivity.size()-1){
+                    backQuestion = currentQuestionIndex;
                     currentQuestionIndex = 0;
                     currentArrayIndex++;
                 }
@@ -403,6 +411,19 @@ public class QuestionActivity extends AppCompatActivity implements SensorEventLi
                 intent = new Intent(QuestionActivity.this, DashboardActivity.class);
             }
             startActivity(intent);
+        });
+
+        backButton.setOnClickListener(v->{
+            if (currentQuestionIndex == 0 || currentQuestionIndex == 1){
+                if (currentArrayIndex == 0){
+                    return;
+                }
+                currentArrayIndex--;
+                currentQuestionIndex = backQuestion-1;
+            } else {
+                currentQuestionIndex -= 2;
+            }
+            nextButton.performClick();
         });
 
     }
