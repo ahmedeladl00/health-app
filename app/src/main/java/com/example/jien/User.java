@@ -75,5 +75,14 @@ public class User {
         }
         return this.email.equals(email) && this.password.equals(password);
     }
+
+    public void deleteUserData(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS_KEY, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+        // After deleting the data from SharedPreferences, you should also reset the instance to null.
+        instance = null;
+    }
 }
 

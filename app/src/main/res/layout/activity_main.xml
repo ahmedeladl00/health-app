@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/white"
-
-    >
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -16,7 +14,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/blue_top" />
-
 
     <ImageView
         android:id="@+id/imageView18"
