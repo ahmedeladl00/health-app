@@ -54,7 +54,6 @@ public class StartPageActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedlang= parent.getItemAtPosition(position).toString();
-
                 if (selectedlang.equals("English")){
                     setLocal(StartPageActivity.this, "en");
                     finish();
@@ -73,12 +72,10 @@ public class StartPageActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     public void setLocal(Activity activity, String langCode){
         Locale locale= new Locale(langCode);
-      //  locale.setDefault(locale);
         Resources resources = activity.getResources();
         Configuration config = resources.getConfiguration();
         config.setLocale(locale);

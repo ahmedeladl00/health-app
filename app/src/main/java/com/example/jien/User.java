@@ -8,11 +8,12 @@ public class User {
     private String name;
     private String email;
     private String password;
-
+    private String language;
     private static final String SHARED_PREFS_KEY = "user_prefs";
     private static final String NAME_KEY = "name";
     private static final String EMAIL_KEY = "email";
     private static final String PASSWORD_KEY = "password";
+    private static final String LANGUAGE = "language";
 
     private static User instance;
 
@@ -51,6 +52,8 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    public String getLanguage(){ return language;}
+    public void setLanguage(String language) { this.language = language;}
 
     public void saveUserData(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS_KEY, Context.MODE_PRIVATE);
@@ -58,6 +61,7 @@ public class User {
         editor.putString(NAME_KEY, name);
         editor.putString(EMAIL_KEY, email);
         editor.putString(PASSWORD_KEY, password);
+        editor.putString(LANGUAGE,language);
         editor.apply();
     }
 
@@ -67,6 +71,7 @@ public class User {
         name = sharedPreferences.getString(NAME_KEY, "");
         email = sharedPreferences.getString(EMAIL_KEY, "");
         password = sharedPreferences.getString(PASSWORD_KEY, "");
+        language = sharedPreferences.getString(LANGUAGE,"");
     }
 
     public boolean isValidLogin(String email, String password) {
@@ -81,7 +86,6 @@ public class User {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
-        // After deleting the data from SharedPreferences, you should also reset the instance to null.
         instance = null;
     }
 }

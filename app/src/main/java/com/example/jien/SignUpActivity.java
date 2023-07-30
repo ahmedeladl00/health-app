@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.Locale;
+
 public class SignUpActivity extends AppCompatActivity {
     private EditText editTextName;
     private EditText editTextEmail;

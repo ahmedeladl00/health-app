@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -66,12 +67,18 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
-                    String currentLanguageCode = Locale.getDefault().getLanguage();
+                    User user = User.getInstance();
+                    user.loadUserData(SettingsActivity.this);
+                    String currentLanguageCode = user.getLanguage();
                     if (currentLanguageCode.equals("en")) {
-                        setLanguage("de"); //German
+                        setLanguage("de");
+                        user.setLanguage("de");
+                        user.saveUserData(SettingsActivity.this);
                         showToast("Language updated to German");
                     } else {
-                        setLanguage("en"); //English
+                        setLanguage("en");
+                        user.setLanguage("en");
+                        user.saveUserData(SettingsActivity.this);
                         showToast("Language updated to English");
                     }
                 } else if (position == 1) {
@@ -123,17 +130,23 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void setLanguage(String languageCode) {
-        Locale locale = new Locale(languageCode);
-        Locale.setDefault(locale);
-        Resources resources = getResources();
-        Configuration config = resources.getConfiguration();
-        config.setLocale(locale);
-        resources.updateConfiguration(config, resources.getDisplayMetrics());
-        recreate();
+        setLocal(SettingsActivity.this, languageCode);
+        finish();
+        Intent intent = new Intent(SettingsActivity.this, DashboardActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
-//
+
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public void setLocal(Activity activity, String langCode){
+        Locale locale= new Locale(langCode);
+        Resources resources = activity.getResources();
+        Configuration config = resources.getConfiguration();
+        config.setLocale(locale);
+        resources.updateConfiguration(config,resources.getDisplayMetrics());
     }
 
 }
