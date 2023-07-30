@@ -372,13 +372,11 @@ public class QuestionActivity extends AppCompatActivity implements SensorEventLi
 
         slider1.addOnChangeListener((slider, value, fromUser) -> {
             response = (int) value;
-            System.out.println(((currentQuestionIndex+1)%2) + " " + response);
             saveResponseToDatabase("Self_Esteem",((currentQuestionIndex+1)%2)+1,response);
         });
 
         slider2.addOnChangeListener((slider, value, fromUser) -> {
             response = (int) value;
-            System.out.println(((currentQuestionIndex+1)%2) + " " + response);
             saveResponseToDatabase("Impulsivity",((currentQuestionIndex+1)%2)+1,response);
         });
 
