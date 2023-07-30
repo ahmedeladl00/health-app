@@ -11,11 +11,12 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "Questionnaire.db";
-    private static final int DATABASE_VERSION = 24;
+    private static final int DATABASE_VERSION = 32;
 
     private static final String CREATE_TABLE_MDBF = "CREATE TABLE MDBF ("
             + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + "question_text TEXT,"
+            + "negative_question TEXT,"
+            + "positive_question TEXT,"
             + "response INTEGER DEFAULT 0)";
     public static final String CREATE_TABLE_EVENT_APPRAISAL = "CREATE TABLE Event_Appraisal ("
             + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -28,11 +29,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String CREATE_TABLE_SOCIAL_SITUATION = "CREATE TABLE Social_Situation ("
             + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
             + "question_text TEXT,"
-            + "response INTEGER DEFAULT 0)";
+            + "response TEXT DEFAULT NULL)";
     public static final String CREATE_TABLE_CONTEXT = "CREATE TABLE Context ("
             + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
             + "question_text TEXT,"
-            + "response INTEGER DEFAULT 0)";
+            + "response TEXT DEFAULT NULL)";
     public static final String CREATE_TABLE_RUMINATION = "CREATE TABLE Rumination ("
             + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
             + "question_text TEXT,"
@@ -53,6 +54,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + "time_to TEXT,"
             + "day TEXT)";
 
+    private static final String CREATE_STEP_DATA = "CREATE TABLE Step_Data ("
+            + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + "step_count INTEGER,"
+            + "timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)";
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -68,6 +74,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_SELF_ESTEEM);
         db.execSQL(CREATE_TABLE_IMPULSIVITY);
         db.execSQL(CREATE_TABLE_INTERVENTION);
+        db.execSQL(CREATE_STEP_DATA);
     }
 
     @Override
@@ -82,6 +89,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS Self_Esteem");
         db.execSQL("DROP TABLE IF EXISTS Impulsivity");
         db.execSQL("DROP TABLE IF EXISTS Intervention");
+        db.execSQL("DROP TABLE IF EXISTS Step_Data");
         onCreate(db);
     }
 
@@ -90,6 +98,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put("question_text", questionText);
         db.insert(TableName, null, values);
+        db.close();
+    }
+
+    public void insertMDBFQuestion(String negative, String positive){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("negative_question", negative);
+        values.put("positive_question", positive);
+        db.insert("MDBF",null, values);
         db.close();
     }
 
@@ -106,7 +123,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return questions;
     }
 
+    public List<List<String>> getMDBFQuestions() {
+        List<List<String>> questionsList = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {"negative_question", "positive_question"};
+
+        Cursor cursor = db.query("MDBF", columns, null, null, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            int negative = cursor.getColumnIndex("negative_question");
+            int positive = cursor.getColumnIndex("positive_question");
+            do {
+                String negativeQuestion = cursor.getString(negative);
+                String positiveQuestion = cursor.getString(positive);
+
+                List<String> pair = new ArrayList<>();
+                pair.add(negativeQuestion);
+                pair.add(positiveQuestion);
+                questionsList.add(pair);
+
+            } while (cursor.moveToNext());
+        }
+
+        // Close the cursor and the database
+        cursor.close();
+        db.close();
+
+        return questionsList;
+    }
+
     public void saveResponse(String TableName,int questionId, int response) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("response", response);
+        db.update(TableName, values, "id = ?", new String[]{String.valueOf(questionId)});
+        db.close();
+    }
+
+    public void saveResponse(String TableName,int questionId, String response) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("response", response);
@@ -136,5 +191,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return count == 0;
     }
+
+    public int avgCalculator(String tableName, int sliderMax) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String columnName = "response";
+        double avg = 0;
+
+        Cursor cursor = db.rawQuery("SELECT AVG((" + columnName + " / " + sliderMax + ") * 100) FROM " + tableName, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            avg = cursor.getDouble(0);
+            cursor.close();
+        }
+
+        db.close();
+        return (int) avg;
+    }
+
+    public int moodCalculator(){
+        return (avgCalculator("MDBF",100) +
+                avgCalculator("Self_Esteem",9) +
+                avgCalculator("Impulsivity",6)) / 3;
+    }
+    public void insertStepCounts(int stepCount, String timestamp){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("step_count", stepCount);
+        values.put("timestamp", timestamp);
+        db.insert("Step_Data",null, values);
+        db.close();
+    }
+
 
 }
