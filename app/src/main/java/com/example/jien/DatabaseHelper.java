@@ -197,7 +197,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String columnName = "response";
         double avg = 0;
 
-        Cursor cursor = db.rawQuery("SELECT AVG((" + columnName + " / " + sliderMax + ") * 100) FROM " + tableName, null);
+        Cursor cursor = db.rawQuery("SELECT AVG(" + columnName + ") / " + sliderMax + " * 100 FROM " + tableName, null);
 
         if (cursor != null && cursor.moveToFirst()) {
             avg = cursor.getDouble(0);
@@ -209,6 +209,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public int moodCalculator(){
+        System.out.println(avgCalculator("MDBF",100));
+        System.out.println(avgCalculator("Self_Esteem",9));
+        System.out.println(avgCalculator("Impulsivity",6));
         return (avgCalculator("MDBF",100) +
                 avgCalculator("Self_Esteem",9) +
                 avgCalculator("Impulsivity",6)) / 3;
