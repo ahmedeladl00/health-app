@@ -47,6 +47,8 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        new TopBarHelper(this);
+
         listView1 = (ListView) findViewById(R.id.settingsList1);
         SettingsBaseAdapter settingsBaseAdapter1 = new SettingsBaseAdapter(getApplicationContext(), settingsList1, settingsImg1);
         listView1.setAdapter(settingsBaseAdapter1);
@@ -97,7 +99,7 @@ public class SettingsActivity extends AppCompatActivity {
                     new MaterialAlertDialogBuilder(SettingsActivity.this)
                             .setTitle("Delete the account")
                             .setMessage("Are you sure the you want to delete the account")
-                            .setPositiveButton("GO", (dialog, which) -> {
+                            .setPositiveButton("DELETE", (dialog, which) -> {
                                 User.getInstance().deleteUserData(SettingsActivity.this);
 
                                 // Clear all activities and navigate to HomeActivity

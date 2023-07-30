@@ -18,7 +18,6 @@ public class TermsOfUseActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_PERMISSION = 1;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +33,6 @@ public class TermsOfUseActivity extends AppCompatActivity {
             Intent intent = new Intent(TermsOfUseActivity.this, DashboardActivity.class);
             startActivity(intent);
         });
-
-
 
         checkBox.setOnCheckedChangeListener((compoundButton, b) -> {
             if (b){
