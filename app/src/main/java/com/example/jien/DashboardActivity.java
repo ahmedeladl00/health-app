@@ -15,6 +15,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.function.ToDoubleBiFunction;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -118,6 +119,7 @@ public class DashboardActivity extends AppCompatActivity {
             }
 
             intent = new Intent(DashboardActivity.this, QuestionActivity.class);
+
             if (card.getTitle().equals(getString(R.string.night_questions))){
                 intent.putExtra(getString(R.string.isnoon), true);
             }

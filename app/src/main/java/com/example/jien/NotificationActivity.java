@@ -76,7 +76,7 @@ public class NotificationActivity extends AppCompatActivity {
                     morningBtn.setText(String.format(Locale.getDefault(), "%02d:%02d", hour, minute));
                     scheduleNotification(selectedHour, selectedMinute);
                     saveSelectedTime(key, selectedHour, selectedMinute);
-                } else if ((Objects.equals(key, NOON_TIME_KEY)) && (selectedHour >= 12 && selectedHour <= 14 && selectedMinute >= 0 && selectedMinute <= 59)) {
+                } else if ((Objects.equals(key, NOON_TIME_KEY)) && (selectedHour >= 12 && selectedHour <= 13 && selectedMinute >= 0 && selectedMinute <= 59)) {
                     noonBtn.setText(String.format(Locale.getDefault(), "%02d:%02d", hour, minute));
                     scheduleNotification(selectedHour, selectedMinute);
                     saveSelectedTime(key, selectedHour, selectedMinute);

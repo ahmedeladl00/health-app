@@ -3,28 +3,29 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/top_app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/water"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:theme="@style/ThemeOverlay.MaterialComponents.ActionBar"
-        app:titleTextColor="@color/white"
-        android:layout_marginTop="@dimen/_6sdp">
+        app:titleTextColor="@color/white">
 
         <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/user_pic"
             android:layout_width="@dimen/_45sdp"
             android:layout_height="wrap_content"
             android:src="@drawable/m1"
-            app:civ_border_color="#1dbbe6"
+            app:civ_border_color="@color/white"
             app:civ_border_width="@dimen/_2sdp"
             app:civ_shadow="false"
             app:civ_shadow_radius="@dimen/_1sdp"
-            android:id="@+id/user_pic"
 
             />
 
@@ -35,9 +36,9 @@
             android:layout_marginStart="18dp"
             android:layout_marginTop="@dimen/_8sdp"
             android:text="Full Name"
-            android:textColor="@color/water"
-            android:textStyle="bold"
+            android:textColor="@color/white"
             android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/profile_image"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,18 +46,30 @@
             android:id="@+id/burger_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_right_alt_menu"
             android:layout_gravity="right|center_vertical"
+
             android:layout_marginEnd="@dimen/_16sdp"
+            android:src="@drawable/ic_right_alt_menu"
+
             />
 
         <ImageView
             android:id="@+id/notification_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_notification"
             android:layout_gravity="right|center_vertical"
-            android:layout_marginEnd="@dimen/_16sdp"/>
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:src="@drawable/ic_notification" />
+
+        <ImageView
+            android:id="@+id/noteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:src="@drawable/notes"
+
+            />
 
     </com.google.android.material.appbar.MaterialToolbar>
 </androidx.constraintlayout.widget.ConstraintLayout>
