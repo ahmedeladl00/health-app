@@ -8,9 +8,9 @@ the user's mood and mental health.
 - Account Creation and Login: Users need to create an account using their username, email, and password 
 to log in to the app on their device.
 
-![Login](/readmepics/log)
+<img src="/readmepics/log.jpg" alt="Login" width="35%" height="35%">
 
-![Start Page](/readmepics/start)
+<img src="/readmepics/start.jpg" alt="Start Page" width="35%" height="35%">
 
 - The app requires installation only on Android System.
 -  minSdk 28
@@ -31,4 +31,4 @@ The app will send reminders at specific times to encourage the user to drink wat
 The app will also calculate the daily average of water intake for the user.
 - Multiple Languages Supported.
 
-![Dashboard](/readmepics/dashboard)
+<img src="/readmepics/dashboard.jpg" alt="Dashboard" width="35%" height="35%">
