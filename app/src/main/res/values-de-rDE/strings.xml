@@ -133,7 +133,7 @@
     <string name="reset">Zurücksetzen</string>
     <string name="tel_number">Telefonnummer</string>
     <string name="university">Universität</string>
-
+    <string name="digit_span_memory_test">Digit Span Memory Test</string>
 
 
 </resources>

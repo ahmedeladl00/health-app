@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ActiPhysList"
-    android:background="@color/primary">
+    android:background="@drawable/backgapy">
 
     <include
         android:id="@+id/top_bar_layout"
@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_16sdp"
         android:textSize="@dimen/_26ssp"
+        android:background="@color/white"
         android:textColor="@color/water"
         android:text="@string/list_of_physical_activities"
         app:layout_constraintEnd_toEndOf="parent"

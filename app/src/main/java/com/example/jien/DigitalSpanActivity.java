@@ -15,8 +15,8 @@ import java.util.Random;
 public class DigitalSpanActivity extends AppCompatActivity {
 
     private static final int MAX_LEVEL = 10;
-    private static final int SHOW_DELAY = 500;
-    private static final int USER_INPUT_DELAY = 5000;
+    private static final int SHOW_DELAY = 300;
+    private static final int USER_INPUT_DELAY = 2000;
 
     private TextView textViewDigits;
     private List<Integer> sequence;
@@ -86,7 +86,7 @@ public class DigitalSpanActivity extends AppCompatActivity {
     }
 
     private void handleUserInput(int input) {
-        int expectedNumber = sequence.remove(0); // Remove the first number from the sequence
+        int expectedNumber = sequence.remove(0);
 
         if (input == expectedNumber) {
             if (sequence.isEmpty()) {
@@ -106,6 +106,8 @@ public class DigitalSpanActivity extends AppCompatActivity {
         } else {
             textViewDigits.setText("Wrong! Your level: " + currentLevel);
             userPlaying = false;
+            Handler handler = new Handler();
+            handler.postDelayed(this::finish, USER_INPUT_DELAY);
         }
     }
 }

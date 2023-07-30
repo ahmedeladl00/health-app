@@ -53,7 +53,7 @@ public class TopBarHelper {
         });
 
         noteBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(activity, WriteNotizenActivity.class);
+            Intent intent = new Intent(activity, DigitalSpanActivity.class);
             activity.startActivity(intent);
 
         });

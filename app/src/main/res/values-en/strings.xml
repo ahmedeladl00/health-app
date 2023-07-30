@@ -130,6 +130,7 @@
     <string name="reset">Reset</string>
     <string name="tel_number">Tel.Number</string>
     <string name="university">University</string>
+    <string name="digit_span_memory_test">Digit Span Memory Test</string>
 
 
 </resources>
