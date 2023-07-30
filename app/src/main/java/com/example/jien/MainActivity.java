@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             User user = User.getInstance();
 
             if (user.isValidLogin(email, password)) {
-                Intent intent = new Intent(MainActivity.this, Terms_of_use.class);
+                Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
                 startActivity(intent);
             } else {
                 if (TextUtils.isEmpty(user.getEmail()) || TextUtils.isEmpty(user.getPassword())) {

@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_16sdp"
         android:textSize="@dimen/_26ssp"
+        android:textColor="@color/water"
         android:text="@string/list_of_physical_activities"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
