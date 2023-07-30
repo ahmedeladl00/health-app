@@ -58,6 +58,21 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/pinmap" />
 
+        <Button
+            android:id="@+id/saveBtn"
+            style="@style/MyFab"
+            android:layout_width="134dp"
+            android:layout_height="62dp"
+            android:backgroundTint="@color/water"
+            android:text="Save"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ediText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ediText"
+            app:layout_constraintVertical_bias="0.915" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
