@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary">
+    android:background="@color/primary"
+    tools:context=".QuestionActivity">
 
     <include
         android:id="@+id/top_bar_layout"
@@ -50,7 +51,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView6"
-        app:layout_constraintVertical_bias="0.53"
         tools:text="Are you ready to start your well-being test ?" />
 
     <TextView
@@ -66,73 +66,165 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView6"
         app:layout_constraintStart_toStartOf="@+id/imageView6"
         app:layout_constraintTop_toBottomOf="@+id/qTitleTextView"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 
-
-    <com.google.android.material.slider.Slider
-        android:id="@+id/slider"
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainSlider0"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_15sdp"
-        android:max="100"
-        android:stepSize="1"
-        android:valueFrom="0"
-        android:valueTo="100"
-        android:visibility="gone"
-        app:labelBehavior="withinBounds"
         app:layout_constraintBottom_toTopOf="@+id/control"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionTextView"
-        app:thumbColor="@color/beige"
-        app:trackColorActive="@color/beige"
-        app:trackColorInactive="@color/white"
-        app:haloColor="@color/gold" />
+        android:visibility="gone">
 
-    <com.google.android.material.slider.Slider
-        android:id="@+id/slider2"
-        android:layout_width="match_parent"
+        <com.google.android.material.slider.Slider
+            android:id="@+id/slider0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15sdp"
+            android:max="100"
+            android:stepSize="1"
+            android:valueFrom="0"
+            android:valueTo="100"
+            app:labelBehavior="withinBounds"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:thumbColor="@color/beige"
+            app:trackColorActive="@color/beige"
+            app:trackColorInactive="@color/white"
+            app:haloColor="@color/gold" />
+
+        <TextView
+            android:id="@+id/negativeTxt0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            app:layout_constraintStart_toStartOf="@+id/slider0"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/positiveTxt0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100"
+            app:layout_constraintEnd_toEndOf="@+id/slider0"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainSlider1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_15sdp"
-        android:max="100"
-        android:stepSize="1"
-        android:valueFrom="0"
-        android:valueTo="9"
-        android:visibility="gone"
-        app:labelBehavior="withinBounds"
         app:layout_constraintBottom_toTopOf="@+id/control"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionTextView"
-        app:thumbColor="@color/beige"
-        app:trackColorActive="@color/beige"
-        app:trackColorInactive="@color/white"
-        app:haloColor="@color/gold"
+        android:visibility="gone">
 
-        />
+        <com.google.android.material.slider.Slider
+            android:id="@+id/slider1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15sdp"
+            android:max="9"
+            android:stepSize="1"
+            android:valueFrom="0"
+            android:valueTo="9"
+            app:labelBehavior="withinBounds"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:thumbColor="@color/beige"
+            app:trackColorActive="@color/beige"
+            app:trackColorInactive="@color/white"
+            app:haloColor="@color/gold"/>
 
-    <com.google.android.material.slider.Slider
-        android:id="@+id/slider3"
-        android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/negativeTxt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            app:layout_constraintStart_toStartOf="@+id/slider1"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/positiveTxt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9"
+            app:layout_constraintEnd_toEndOf="@+id/slider1"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainSlider2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_15sdp"
-        android:max="100"
-        android:stepSize="1"
-        android:valueFrom="0"
-        android:valueTo="6"
-        android:visibility="gone"
-        app:labelBehavior="withinBounds"
         app:layout_constraintBottom_toTopOf="@+id/control"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionTextView"
-        app:thumbColor="@color/beige"
-        app:trackColorActive="@color/beige"
-        app:trackColorInactive="@color/white"
-        app:haloColor="@color/gold"/>
+        android:visibility="gone">
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/slider2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15sdp"
+            android:max="6"
+            android:stepSize="1"
+            android:valueFrom="0"
+            android:valueTo="6"
+            app:labelBehavior="withinBounds"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:thumbColor="@color/beige"
+            app:trackColorActive="@color/beige"
+            app:trackColorInactive="@color/white"
+            app:haloColor="@color/gold"/>
+
+        <TextView
+            android:id="@+id/negativeTxt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            app:layout_constraintStart_toStartOf="@+id/slider2"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/positiveTxt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6"
+            app:layout_constraintEnd_toEndOf="@+id/slider2"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/socialSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/CustomSpinnerStyle"
@@ -141,9 +233,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionTextView"
         android:visibility="gone"
-        android:background="#97CADB"
+        android:background="#97CADB"/>
 
-        />
+    <Spinner
+        android:id="@+id/contextSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/CustomSpinnerStyle"
+        app:layout_constraintBottom_toTopOf="@+id/control"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionTextView"
+        android:background="#97CADB"
+        android:visibility="gone"/>
+
+    <EditText
+        android:id="@+id/otherTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Answer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contextSpinner"
+        android:visibility="gone"/>
 
     <LinearLayout
         android:id="@+id/yesNoQuestion"
@@ -157,7 +272,6 @@
         android:orientation="horizontal"
         android:visibility="gone">
 
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/noButton"
             style="@style/MyFab"
@@ -169,11 +283,6 @@
             android:text="No"
             app:tint="@android:color/white" />
 
-
-
-        />
-
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/yesButton"
             style="@style/MyFab"
@@ -184,10 +293,6 @@
             android:src="@drawable/checked"
             android:text="@string/yes"
             app:tint="@android:color/white" />
-
-
-
-        />
 
     </LinearLayout>
 
@@ -203,7 +308,6 @@
         android:orientation="horizontal"
         android:visibility="gone">
 
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/backButton"
             style="@style/MyFab"
@@ -213,7 +317,6 @@
             android:backgroundTint="@color/beige"
             android:src="@drawable/ic_arrow"
             android:text="Back"
-
             app:tint="@android:color/white">
 
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
@@ -227,12 +330,9 @@
             android:backgroundTint="@color/gold"
             android:src="@drawable/next"
             android:text="Next"
-
             app:tint="@android:color/white">
 
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
-
-
 
     </LinearLayout>
 
@@ -251,7 +351,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:tint="@android:color/white">
+        app:tint="@android:color/white"
+        android:background="@color/water">
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
@@ -271,6 +372,6 @@
         android:visibility="gone"
         >
 
-</com.google.android.material.floatingactionbutton.FloatingActionButton>
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
