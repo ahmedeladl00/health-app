@@ -90,7 +90,7 @@ public class NotificationActivity extends AppCompatActivity {
             }
         };
 
-        TimePickerDialog timePickerDialog = new TimePickerDialog(this, onTimeSetListener, hour, minute, true);
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this,R.style.NotificationDialogTheme,onTimeSetListener, hour, minute, true);
         timePickerDialog.setTitle("Select Time");
         timePickerDialog.show();
     }

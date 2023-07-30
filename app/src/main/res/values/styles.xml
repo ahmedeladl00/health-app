@@ -4,6 +4,9 @@
     <style name="TimePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog">
         <item name="colorAccent">@color/water</item>
     </style>
+    <style name="NotificationDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/danger</item>
+    </style>
 
     <style name="MyFab" parent="Widget.MaterialComponents.FloatingActionButton">
         <item name="shapeAppearance">@style/RoundShape</item>
