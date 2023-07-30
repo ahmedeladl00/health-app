@@ -11,7 +11,7 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "Questionnaire.db";
-    private static final int DATABASE_VERSION = 32;
+    private static final int DATABASE_VERSION = 33;
 
     private static final String CREATE_TABLE_MDBF = "CREATE TABLE MDBF ("
             + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -79,7 +79,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Drop existing tables if needed and recreate them
         db.execSQL("DROP TABLE IF EXISTS MDBF");
         db.execSQL("DROP TABLE IF EXISTS Event_Appraisal");
         db.execSQL("DROP TABLE IF EXISTS Social_Context");
@@ -146,7 +145,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
 
-        // Close the cursor and the database
         cursor.close();
         db.close();
 
