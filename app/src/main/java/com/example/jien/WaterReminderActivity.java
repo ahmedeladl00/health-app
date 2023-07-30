@@ -115,6 +115,9 @@ public class WaterReminderActivity extends AppCompatActivity {
 
         final AlertDialog dialog = builder.create();
 
+        TextView dialogTitle = dialogView.findViewById(R.id.dialogTitle);
+        dialogTitle.setText("Add Water");
+
         Button positiveButton = dialogView.findViewById(R.id.positiveButton);
         Button negativeButton = dialogView.findViewById(R.id.negativeButton);
 
