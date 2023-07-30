@@ -31,7 +31,7 @@ public class TermsOfUseActivity extends AppCompatActivity {
 
         button.setEnabled(false);
         button.setOnClickListener(v -> {
-            Intent intent = new Intent(TermsOfUseActivity.this, DashboardActivity.class);
+            Intent intent = new Intent(TermsOfUseActivity.this, MainActivity.class);
             startActivity(intent);
         });
 
