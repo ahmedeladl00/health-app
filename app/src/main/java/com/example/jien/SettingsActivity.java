@@ -31,11 +31,11 @@ import java.util.List;
 import java.util.Locale;
 
 public class SettingsActivity extends AppCompatActivity {
-    String[] settingsList1 = {"Language", "Profile"};
+    String[] settingsList1 = {"Language", "Profile"," Homebutton"};
     String[] settingsList2 = {"Notifications", "Data Collection"};
     String[] settingsList3 = {"Delete Account", "Logout"};
 
-    int[] settingsImg1 = {R.drawable.ic_language, R.drawable.ic_profile};
+    int[] settingsImg1 = {R.drawable.ic_language, R.drawable.ic_profile, R.drawable.homes};
     int[] settingsImg2 = {R.drawable.ic_notification, R.drawable.ic_data};
     int[] settingsImg3 = {R.drawable.ic_delete, R.drawable.ic_logout};
 
@@ -83,6 +83,9 @@ public class SettingsActivity extends AppCompatActivity {
                     }
                 } else if (position == 1) {
                     Intent intent = new Intent(SettingsActivity.this,ProfileActivity.class);
+                    startActivity(intent);
+                } else if (position == 2) {
+                    Intent intent = new Intent(SettingsActivity.this,DashboardActivity.class);
                     startActivity(intent);
                 }
             }

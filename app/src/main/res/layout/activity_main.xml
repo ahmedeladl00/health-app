@@ -113,18 +113,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
         app:layout_constraintVertical_bias="0.16000003" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/forget_password"
-        android:textSize="@dimen/_20ssp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail2"
-        app:layout_constraintVertical_bias="0.19999999"
-        android:fontFamily="arial"/>
+
 
     <Button
         android:id="@+id/logInBtn"
@@ -135,7 +124,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail2"
         style="@style/MyFab"
         android:textColor="#fff"
         android:textStyle="bold"
