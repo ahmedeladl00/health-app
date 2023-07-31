@@ -61,8 +61,8 @@
     <string name="user">Benutzer/in</string>
     <string name="write_a_note_about">Schreiben Sie eine Notiz über:</string>
     <string name="write_your_notes_here">Schreiben Sie hier Ihre Notizen ...</string>
-    <string name="log_in">Anmeldung</string>
-    <string name="sign_up">New Anmeldung </string>
+    <string name="log_in">Einloggen</string>
+    <string name="sign_up">Anmeldung</string>
     <string name="please_log_in">Bitte loggen Sie sich ein</string>
     <string name="email">Email</string>
     <string name="password">Passwort</string>
