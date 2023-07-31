@@ -65,7 +65,6 @@ public class User {
         editor.apply();
     }
 
-    // Load user data from SharedPreferences
     public void loadUserData(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS_KEY, Context.MODE_PRIVATE);
         name = sharedPreferences.getString(NAME_KEY, "");
@@ -88,5 +87,11 @@ public class User {
         editor.apply();
         instance = null;
     }
-}
 
+    public void saveLanguagePreference(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS_KEY, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(LANGUAGE, language);
+        editor.apply();
+    }
+}

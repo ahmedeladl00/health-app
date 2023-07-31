@@ -58,11 +58,14 @@ public class StartPageActivity extends AppCompatActivity {
                     setLocal(StartPageActivity.this, "en");
                     finish();
                     startActivity(getIntent());
-
+                    User.getInstance().setLanguage("en");
+                    User.getInstance().saveLanguagePreference(StartPageActivity.this);
                 }else if (selectedlang.equals("German")){
                     setLocal(StartPageActivity.this,"de");
                     finish();
                     startActivity(getIntent());
+                    User.getInstance().setLanguage("de");
+                    User.getInstance().saveLanguagePreference(StartPageActivity.this);
                 }
             }
 
@@ -80,7 +83,5 @@ public class StartPageActivity extends AppCompatActivity {
         Configuration config = resources.getConfiguration();
         config.setLocale(locale);
         resources.updateConfiguration(config,resources.getDisplayMetrics());
-
-
     }
 }
